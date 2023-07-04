@@ -13,6 +13,4 @@ class MeusCampeonatosViewController: UIViewController {
         super.viewDidLoad()
 
     }
-    
-
 }
