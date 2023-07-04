@@ -18,7 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         window?.rootViewController = MainTabbarViewController()
-        window?.makeKeyAndVisible() 
+        window?.makeKeyAndVisible()
+        window?.tintColor = PaleteColor.primary
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

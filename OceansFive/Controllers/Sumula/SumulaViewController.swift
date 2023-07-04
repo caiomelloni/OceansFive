@@ -13,6 +13,7 @@ class SumulaViewController: UIViewController {
 
     let items = ["TimeA", "TimeB", "Pontos", "Informações"]
     let haptic = UISelectionFeedbackGenerator()
+    let tableVw = TimeTableView()
 
     //MARK: UI - Elements
     lazy var segmentedControl: UISegmentedControl = {
@@ -42,19 +43,35 @@ class SumulaViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         haptic.prepare()
+
         view.backgroundColor = .systemBackground
 
         view.addSubview(segmentedControl)
-        view.addSubview(colorView)
-        NSLayoutConstraint.activate([
-            segmentedControl.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 2),
-            segmentedControl.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
-            view.trailingAnchor.constraint(equalToSystemSpacingAfter: segmentedControl.trailingAnchor, multiplier: 2),
+        //view.addSubview(colorView)
+        view.addSubview(tableVw)
+        tableVw.translatesAutoresizingMaskIntoConstraints = false
 
-            colorView.heightAnchor.constraint(equalToConstant: 200),
-            colorView.widthAnchor.constraint(equalToConstant: 200),
-            colorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            colorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        NSLayoutConstraint.activate([
+//            segmentedControl.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 8),
+//            segmentedControl.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
+//            view.trailingAnchor.constraint(equalToSystemSpacingAfter: segmentedControl.trailingAnchor, multiplier: 2),
+            segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+//            segmentedControl.heightAnchor.constraint(equalToConstant: 100),
+            //segmentedControl.bottomAnchor.constraint(equalTo: tableVw.topAnchor, constant: 50),
+
+            tableVw.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 8),
+            tableVw.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 1),
+            tableVw.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 1),
+            tableVw.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
+//            tableVw.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            tableVw.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+
+//            colorView.heightAnchor.constraint(equalToConstant: 200),
+//            colorView.widthAnchor.constraint(equalToConstant: 200),
+//            colorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            colorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
             ])
 
         configNavBarItems()

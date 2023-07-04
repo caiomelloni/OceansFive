@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Jogador {
+struct Jogador: Equatable {
     let id: UUID
     let nome: String
     let pontos: Int

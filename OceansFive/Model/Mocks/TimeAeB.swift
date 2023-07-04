@@ -26,6 +26,8 @@ class TimeViewModel {
     ]
 }
 
+let timeA = TimeViewModel().times[0]
+let timeB = TimeViewModel().times[1]
 
 let timeA_jogadores: [Jogador] = [
     Jogador(id: UUID(), nome: "Igor Almo", pontos: 0, faltas: 0),

@@ -20,17 +20,14 @@ class MainTabbarViewController: UITabBarController {
         explorarVC.tabBarItem.image = UIImage(systemName: "trophy.fill")
         explorarVC.tabBarItem.selectedImage = UIImage(systemName: "trophy.fill")?.withTintColor(PaleteColor.primary, renderingMode: .alwaysOriginal)
         explorarVC.tabBarItem.title = "Explorar"
-        explorarVC.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: PaleteColor.primary], for:.selected)
         
         meusCampeonatosVC.tabBarItem.image = UIImage(systemName: "basketball.fill")
         meusCampeonatosVC.tabBarItem.selectedImage = UIImage(systemName: "basketball.fill")?.withTintColor(PaleteColor.primary, renderingMode: .alwaysOriginal)
         meusCampeonatosVC.tabBarItem.title = "Meus Campeonatos"
-        meusCampeonatosVC.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: PaleteColor.primary], for:.selected)
         
         perfilVC.tabBarItem.image = UIImage(systemName: "person.fill")
         perfilVC.tabBarItem.selectedImage = UIImage(systemName: "person.fill")?.withTintColor(PaleteColor.primary, renderingMode: .alwaysOriginal)
         perfilVC.tabBarItem.title = "Perfil"
-        perfilVC.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: PaleteColor.primary], for:.selected)
 
         setViewControllers([explorarVC, meusCampeonatosVC, perfilVC], animated: true)
     }

@@ -10,5 +10,7 @@ import Foundation
 struct Campeonato {
     let id: UUID
     let nome: String
+    let qtdTimes: Int
     let times: [Time]
+    //let colaboradores: [Colaboradores]
 }
