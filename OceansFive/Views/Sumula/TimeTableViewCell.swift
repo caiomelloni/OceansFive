@@ -24,40 +24,22 @@ class TimeTableViewCell: UITableViewCell {
 //        return stackVw
 //    }()
 
-    private lazy var numeroLbl: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.numberOfLines = 0
-        lbl.font = .systemFont(ofSize: 12, weight: .light)
-        lbl.textColor = .label
-        return lbl
-    }()
-    private lazy var nomeLbl: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.numberOfLines = 0
-        lbl.font = .systemFont(ofSize: 12, weight: .light)
-        lbl.textColor = .label
-        return lbl
-    }()
 
-    private lazy var pontosLbl: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.numberOfLines = 0
-        lbl.font = .systemFont(ofSize: 12, weight: .light)
-        lbl.textColor = .label
-        return lbl
-    }()
+    private lazy var numeroLbl: UILabel = cellLbl()
+    private lazy var nomeLbl: UILabel = cellLbl()
+    private lazy var pontosLbl: UILabel = cellLbl()
+    private lazy var faltasLbl: UILabel = cellLbl()
 
-    private lazy var faltasLbl: UILabel = {
+    private func cellLbl() -> UILabel {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.numberOfLines = 0
-        lbl.font = .systemFont(ofSize: 12, weight: .light)
+        lbl.font = .systemFont(ofSize: 14, weight: .light)
         lbl.textColor = .label
         return lbl
-    }()
+    }
+
+
     override func prepareForReuse() {
         super.prepareForReuse()
         self.jogador = nil
@@ -96,29 +78,18 @@ class TimeTableViewCell: UITableViewCell {
             rowVw.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
 
             numeroLbl.topAnchor.constraint(equalTo: rowVw.topAnchor, constant: 16),
-            //numeroLbl.bottomAnchor.constraint(equalTo: rowVw.bottomAnchor, constant: -16),
-            numeroLbl.leadingAnchor.constraint(equalTo: rowVw.leadingAnchor, constant: 32),
-            //numeroLbl.trailingAnchor.constraint(equalTo: rowVw.trailingAnchor, constant: -8),
+            numeroLbl.leadingAnchor.constraint(equalTo: rowVw.leadingAnchor, constant: 56),
 
             faltasLbl.topAnchor.constraint(equalTo: numeroLbl.topAnchor),
-            //faltasLbl.bottomAnchor.constraint(equalTo: numeroLbl.bottomAnchor),
-            //faltasLbl.leadingAnchor.constraint(equalTo: pontosLbl.trailingAnchor, constant: 8),
-            faltasLbl.trailingAnchor.constraint(equalTo: rowVw.trailingAnchor, constant: -32),
+            faltasLbl.trailingAnchor.constraint(equalTo: rowVw.trailingAnchor, constant: -48),
 
             pontosLbl.topAnchor.constraint(equalTo: numeroLbl.topAnchor),
             pontosLbl.bottomAnchor.constraint(equalTo: numeroLbl.bottomAnchor),
-            pontosLbl.trailingAnchor.constraint(equalTo: faltasLbl.leadingAnchor, constant: -32),
-//            pontosLbl.leadingAnchor.constraint(equalTo: nomeLbl.trailingAnchor, constant: 16),
+            pontosLbl.trailingAnchor.constraint(equalTo: faltasLbl.leadingAnchor, constant: -64),
 
             nomeLbl.topAnchor.constraint(equalTo: numeroLbl.topAnchor),
             nomeLbl.bottomAnchor.constraint(equalTo: numeroLbl.bottomAnchor),
-            nomeLbl.leadingAnchor.constraint(equalTo: numeroLbl.trailingAnchor, constant: 32),
-            //nomeLbl.trailingAnchor.constraint(equalTo: pontosLbl.leadingAnchor, constant: -16),
-
-            //pontosLbl.topAnchor.constraint(equalTo: numeroLbl.topAnchor),
-            //pontosLbl.bottomAnchor.constraint(equalTo: numeroLbl.bottomAnchor),
-            //pontosLbl.leadingAnchor.constraint(equalTo: nomeLbl.trailingAnchor, constant: 8),
-            //nomeLbl.trailingAnchor.constraint(equalTo: rowVw.trailingAnchor, constant: 8),
+            nomeLbl.leadingAnchor.constraint(equalTo: numeroLbl.trailingAnchor, constant: 64),
 
 
 

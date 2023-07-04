@@ -20,7 +20,7 @@ class SumulaViewController: UIViewController {
         let view = UISegmentedControl(items: items)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.selectedSegmentIndex = 0
-        view.addTarget(self, action: #selector(colorChanged), for: .valueChanged)
+        view.addTarget(self, action: #selector(changeSelector), for: .valueChanged)
         return view
 
     }()
@@ -35,11 +35,19 @@ class SumulaViewController: UIViewController {
 
     // MARK: - methods
 
+//    func changeView() {
+//        if segmentedControl.selectedSegmentIndex == 0 || segmentedControl.selectedSegmentIndex == 1{
+//
+//        }
+//    }
+
     override func loadView() {
         super.loadView()
         setup()
     }
 
+    //unc changeView
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         haptic.prepare()
@@ -47,31 +55,21 @@ class SumulaViewController: UIViewController {
         view.backgroundColor = .systemBackground
 
         view.addSubview(segmentedControl)
-        //view.addSubview(colorView)
+
         view.addSubview(tableVw)
         tableVw.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-//            segmentedControl.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 8),
-//            segmentedControl.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
-//            view.trailingAnchor.constraint(equalToSystemSpacingAfter: segmentedControl.trailingAnchor, multiplier: 2),
             segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
             segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-//            segmentedControl.heightAnchor.constraint(equalToConstant: 100),
-            //segmentedControl.bottomAnchor.constraint(equalTo: tableVw.topAnchor, constant: 50),
 
             tableVw.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 8),
             tableVw.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 1),
             tableVw.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 1),
             tableVw.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
-//            tableVw.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            tableVw.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 
-//            colorView.heightAnchor.constraint(equalToConstant: 200),
-//            colorView.widthAnchor.constraint(equalToConstant: 200),
-//            colorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            colorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+
             ])
 
         configNavBarItems()
@@ -83,22 +81,23 @@ class SumulaViewController: UIViewController {
             barButtonSystemItem: .add,
             target: self,
             action: nil
-)
+        )
     }
 
-    @objc func colorChanged() {
+    @objc func changeSelector() {
+
         haptic.selectionChanged()
         switch segmentedControl.selectedSegmentIndex {
             case 0:
-                colorView.backgroundColor = .blue
+                tableVw.loadData(segmentedControl.selectedSegmentIndex)
             case 1:
-                colorView.backgroundColor = .red
+                tableVw.loadData(segmentedControl.selectedSegmentIndex)
             case 2:
                 colorView.backgroundColor = .cyan
             case 3:
                 colorView.backgroundColor = .purple
             default:
-                colorView.backgroundColor = .white
+                tableVw.loadData(segmentedControl.selectedSegmentIndex)
         }
     }
 
