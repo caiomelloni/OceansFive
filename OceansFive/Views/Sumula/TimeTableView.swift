@@ -27,5 +27,5 @@ class TimeTableView: UITableView {
     }
     */
 
-    
+
 }

@@ -34,6 +34,11 @@ class SumulaViewController: UIViewController {
 
     // MARK: - methods
 
+    override func loadView() {
+        super.loadView()
+        setup()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         haptic.prepare()
@@ -51,6 +56,17 @@ class SumulaViewController: UIViewController {
             colorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             colorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
             ])
+
+        configNavBarItems()
+    }
+
+    private func configNavBarItems() {
+        navigationController?.navigationBar.tintColor = PaleteColor.primary
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: nil
+)
     }
 
     @objc func colorChanged() {
@@ -69,4 +85,11 @@ class SumulaViewController: UIViewController {
         }
     }
 
+}
+
+
+private extension SumulaViewController {
+    func setup() {
+        self.navigationController?.navigationBar.topItem?.title = "Preencher Súmula"
+    }
 }
