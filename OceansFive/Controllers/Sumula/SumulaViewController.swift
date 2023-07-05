@@ -32,7 +32,8 @@ class SumulaViewController: UIViewController {
 
     override func loadView() {
         super.loadView()
-        setup()
+        títuloSv()
+        tableVw.loadData(segmentedControl.selectedSegmentIndex)
     }
 
 
@@ -43,17 +44,15 @@ class SumulaViewController: UIViewController {
         view.backgroundColor = .systemBackground
 
         view.addSubview(segmentedControl)
+        view.addSubview(tableVw)
 
-//        view.addSubview(tableVw)
-//        tableVw.translatesAutoresizingMaskIntoConstraints = false
-
+        NSLayoutConstraint.activate(configurarView(tableVw))
         NSLayoutConstraint.activate([
             segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
             segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             ])
 
-//        NSLayoutConstraint.activate(configurarView(tableVw))
 
         configNavBarItems()
     }
@@ -72,22 +71,22 @@ class SumulaViewController: UIViewController {
         haptic.selectionChanged()
         switch segmentedControl.selectedSegmentIndex {
             case 0:
-                view.addSubview(tableVw)
-                tableVw.translatesAutoresizingMaskIntoConstraints = false
+                pontosVw.removeFromSuperview()
+                tableVw.removeFromSuperview()
                 NSLayoutConstraint.activate(configurarView(tableVw))
                 tableVw.loadData(segmentedControl.selectedSegmentIndex)
+
             case 1:
-                view.addSubview(tableVw)
-                tableVw.translatesAutoresizingMaskIntoConstraints = false
+                pontosVw.removeFromSuperview()
+                tableVw.removeFromSuperview()
                 NSLayoutConstraint.activate(configurarView(tableVw))
                 tableVw.loadData(segmentedControl.selectedSegmentIndex)
             case 2:
+                pontosVw.removeFromSuperview()
                 tableVw.removeFromSuperview()
-                view.addSubview(pontosVw)
-                pontosVw.translatesAutoresizingMaskIntoConstraints = false
                 NSLayoutConstraint.activate(configurarView(pontosVw))
-
             case 3:
+                pontosVw.removeFromSuperview()
                 tableVw.removeFromSuperview()
             default:
                 //colorView.backgroundColor = .purple
@@ -99,15 +98,18 @@ class SumulaViewController: UIViewController {
 
 
 private extension SumulaViewController {
-    func setup() {
+    func títuloSv() {
         self.navigationController?.navigationBar.topItem?.title = "Preencher Súmula"
+
     }
 
-    func configurarView(_ view: UIView) -> [NSLayoutConstraint] {
-        return [tableVw.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 8),
-        view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 1),
-        view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 1),
-        view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)]
+    func configurarView(_ vw: UIView) -> [NSLayoutConstraint] {
+        view.addSubview(vw)
+        vw.translatesAutoresizingMaskIntoConstraints = false
+        return [vw.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 8),
+                vw.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 1),
+                vw.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 1),
+                vw.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0)]
     }
 
 

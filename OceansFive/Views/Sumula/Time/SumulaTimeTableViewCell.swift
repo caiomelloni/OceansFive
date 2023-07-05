@@ -17,14 +17,6 @@ class SumulaTimeTableViewCell: UITableViewCell {
         return vw
     }()
 
-//    private lazy var contentStackVw: UIStackView = {
-//        let stackVw = UIStackView()
-//        stackVw.translatesAutoresizingMaskIntoConstraints = false
-//        stackVw.axis = .horizontal
-//        return stackVw
-//    }()
-
-
     private lazy var numeroLbl: UILabel = cellLbl()
     private lazy var nomeLbl: UILabel = cellLbl()
     private lazy var pontosLbl: UILabel = cellLbl()
@@ -34,7 +26,7 @@ class SumulaTimeTableViewCell: UITableViewCell {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.numberOfLines = 0
-        lbl.font = .systemFont(ofSize: 14, weight: .light)
+        lbl.font = .systemFont(ofSize: 14, weight: .regular)
         lbl.textColor = .label
         return lbl
     }

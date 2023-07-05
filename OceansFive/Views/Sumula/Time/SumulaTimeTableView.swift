@@ -62,7 +62,6 @@ class SumulaTimeTableView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        loadData(0)
         setup()
     }
     
