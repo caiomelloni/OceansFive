@@ -12,8 +12,9 @@
 		9562FD9B2A53074D005945A9 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FD9A2A53074D005945A9 /* Time.swift */; };
 		9562FD9D2A5307A1005945A9 /* Campenato.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FD9C2A5307A1005945A9 /* Campenato.swift */; };
 		9562FDA32A530879005945A9 /* TimeAeB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FDA22A530879005945A9 /* TimeAeB.swift */; };
-		9562FDA72A531156005945A9 /* TimeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FDA62A531156005945A9 /* TimeTableView.swift */; };
-		9562FDA92A5312DE005945A9 /* TimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FDA82A5312DE005945A9 /* TimeTableViewCell.swift */; };
+		9562FDA72A531156005945A9 /* SumulaTimeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FDA62A531156005945A9 /* SumulaTimeTableView.swift */; };
+		9562FDA92A5312DE005945A9 /* SumulaTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FDA82A5312DE005945A9 /* SumulaTimeTableViewCell.swift */; };
+		9562FDF62A559701005945A9 /* SumulaPontosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FDF52A559701005945A9 /* SumulaPontosView.swift */; };
 		F8FC3E472A4CC7F20033E3E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FC3E462A4CC7F20033E3E0 /* AppDelegate.swift */; };
 		F8FC3E492A4CC7F20033E3E0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FC3E482A4CC7F20033E3E0 /* SceneDelegate.swift */; };
 		F8FC3E4B2A4CC7F20033E3E0 /* MainTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FC3E4A2A4CC7F20033E3E0 /* MainTabbarViewController.swift */; };
@@ -31,8 +32,9 @@
 		9562FD9A2A53074D005945A9 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		9562FD9C2A5307A1005945A9 /* Campenato.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campenato.swift; sourceTree = "<group>"; };
 		9562FDA22A530879005945A9 /* TimeAeB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAeB.swift; sourceTree = "<group>"; };
-		9562FDA62A531156005945A9 /* TimeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableView.swift; sourceTree = "<group>"; };
-		9562FDA82A5312DE005945A9 /* TimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewCell.swift; sourceTree = "<group>"; };
+		9562FDA62A531156005945A9 /* SumulaTimeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumulaTimeTableView.swift; sourceTree = "<group>"; };
+		9562FDA82A5312DE005945A9 /* SumulaTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumulaTimeTableViewCell.swift; sourceTree = "<group>"; };
+		9562FDF52A559701005945A9 /* SumulaPontosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumulaPontosView.swift; sourceTree = "<group>"; };
 		F8FC3E432A4CC7F20033E3E0 /* OceansFive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OceansFive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8FC3E462A4CC7F20033E3E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8FC3E482A4CC7F20033E3E0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,8 +70,8 @@
 		9562FD892A52F593005945A9 /* Sumula */ = {
 			isa = PBXGroup;
 			children = (
-				9562FDA62A531156005945A9 /* TimeTableView.swift */,
-				9562FDA82A5312DE005945A9 /* TimeTableViewCell.swift */,
+				9562FDF12A55953B005945A9 /* Pontos */,
+				9562FDF02A559519005945A9 /* Time */,
 			);
 			path = Sumula;
 			sourceTree = "<group>";
@@ -99,6 +101,23 @@
 				9562FDA22A530879005945A9 /* TimeAeB.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		9562FDF02A559519005945A9 /* Time */ = {
+			isa = PBXGroup;
+			children = (
+				9562FDA62A531156005945A9 /* SumulaTimeTableView.swift */,
+				9562FDA82A5312DE005945A9 /* SumulaTimeTableViewCell.swift */,
+			);
+			path = Time;
+			sourceTree = "<group>";
+		};
+		9562FDF12A55953B005945A9 /* Pontos */ = {
+			isa = PBXGroup;
+			children = (
+				9562FDF52A559701005945A9 /* SumulaPontosView.swift */,
+			);
+			path = Pontos;
 			sourceTree = "<group>";
 		};
 		F8FC3E3A2A4CC7F20033E3E0 = {
@@ -231,20 +250,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9562FDA92A5312DE005945A9 /* TimeTableViewCell.swift in Sources */,
+				9562FDA92A5312DE005945A9 /* SumulaTimeTableViewCell.swift in Sources */,
 				F8FC3E632A4CCB740033E3E0 /* PerfilViewController.swift in Sources */,
 				9562FD992A5306FF005945A9 /* Jogador.swift in Sources */,
 				9562FD9B2A53074D005945A9 /* Time.swift in Sources */,
 				F8FC3E662A4CCE4B0033E3E0 /* CustomColor.swift in Sources */,
 				F8FC3E4B2A4CC7F20033E3E0 /* MainTabbarViewController.swift in Sources */,
 				F8FC3E612A4CCB440033E3E0 /* MeusCampeonatosViewController.swift in Sources */,
+				9562FDF62A559701005945A9 /* SumulaPontosView.swift in Sources */,
 				F8FC3E472A4CC7F20033E3E0 /* AppDelegate.swift in Sources */,
 				9562FD9D2A5307A1005945A9 /* Campenato.swift in Sources */,
 				F8FC3E492A4CC7F20033E3E0 /* SceneDelegate.swift in Sources */,
 				F8FC3E5F2A4CCAFB0033E3E0 /* ExplorarViewController.swift in Sources */,
 				9562FD922A530378005945A9 /* SumulaViewController.swift in Sources */,
 				9562FDA32A530879005945A9 /* TimeAeB.swift in Sources */,
-				9562FDA72A531156005945A9 /* TimeTableView.swift in Sources */,
+				9562FDA72A531156005945A9 /* SumulaTimeTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

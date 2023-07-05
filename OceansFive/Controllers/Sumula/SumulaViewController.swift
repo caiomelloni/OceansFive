@@ -13,7 +13,8 @@ class SumulaViewController: UIViewController {
 
     let items = ["TimeA", "TimeB", "Pontos", "Informações"]
     let haptic = UISelectionFeedbackGenerator()
-    let tableVw = TimeTableView()
+    let tableVw = SumulaTimeTableView()
+    let pontosVw = SumulaPontosView()
 
     //MARK: UI - Elements
     lazy var segmentedControl: UISegmentedControl = {
@@ -25,29 +26,16 @@ class SumulaViewController: UIViewController {
 
     }()
 
-    let colorView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemBlue
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
-
     // MARK: - methods
 
-//    func changeView() {
-//        if segmentedControl.selectedSegmentIndex == 0 || segmentedControl.selectedSegmentIndex == 1{
-//
-//        }
-//    }
+
 
     override func loadView() {
         super.loadView()
         setup()
     }
 
-    //unc changeView
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         haptic.prepare()
@@ -56,21 +44,16 @@ class SumulaViewController: UIViewController {
 
         view.addSubview(segmentedControl)
 
-        view.addSubview(tableVw)
-        tableVw.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(tableVw)
+//        tableVw.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
             segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-
-            tableVw.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 8),
-            tableVw.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 1),
-            tableVw.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 1),
-            tableVw.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
-
-
             ])
+
+//        NSLayoutConstraint.activate(configurarView(tableVw))
 
         configNavBarItems()
     }
@@ -89,15 +72,26 @@ class SumulaViewController: UIViewController {
         haptic.selectionChanged()
         switch segmentedControl.selectedSegmentIndex {
             case 0:
+                view.addSubview(tableVw)
+                tableVw.translatesAutoresizingMaskIntoConstraints = false
+                NSLayoutConstraint.activate(configurarView(tableVw))
                 tableVw.loadData(segmentedControl.selectedSegmentIndex)
             case 1:
+                view.addSubview(tableVw)
+                tableVw.translatesAutoresizingMaskIntoConstraints = false
+                NSLayoutConstraint.activate(configurarView(tableVw))
                 tableVw.loadData(segmentedControl.selectedSegmentIndex)
             case 2:
-                colorView.backgroundColor = .cyan
+                tableVw.removeFromSuperview()
+                view.addSubview(pontosVw)
+                pontosVw.translatesAutoresizingMaskIntoConstraints = false
+                NSLayoutConstraint.activate(configurarView(pontosVw))
+
             case 3:
-                colorView.backgroundColor = .purple
+                tableVw.removeFromSuperview()
             default:
-                tableVw.loadData(segmentedControl.selectedSegmentIndex)
+                //colorView.backgroundColor = .purple
+                tableVw.removeFromSuperview()
         }
     }
 
@@ -108,4 +102,13 @@ private extension SumulaViewController {
     func setup() {
         self.navigationController?.navigationBar.topItem?.title = "Preencher Súmula"
     }
+
+    func configurarView(_ view: UIView) -> [NSLayoutConstraint] {
+        return [tableVw.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 8),
+        view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 1),
+        view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 1),
+        view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)]
+    }
+
+
 }

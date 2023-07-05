@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TimeTableView: UIView {
+class SumulaTimeTableView: UIView {
 
     //private lazy var timeViewModel = TimeViewModel()
 
@@ -28,7 +28,7 @@ class TimeTableView: UIView {
         tv.rowHeight = UITableView.automaticDimension
         tv.estimatedRowHeight = 44
         tv.separatorStyle = .singleLine
-        tv.register(TimeTableViewCell.self, forCellReuseIdentifier: TimeTableViewCell.cellId)
+        tv.register(SumulaTimeTableViewCell.self, forCellReuseIdentifier: SumulaTimeTableViewCell.cellId)
         return tv
     }()
     
@@ -72,16 +72,17 @@ class TimeTableView: UIView {
         } else if index == 1 {
             time = timeB
         }
-
         timeTableVw.reloadData()
     }
 }
 
 
 
-extension TimeTableView {
+extension SumulaTimeTableView {
     func setup() {
 
+        self.translatesAutoresizingMaskIntoConstraints = false
+        
         numeroLbl.text = "Número"
         nomeLbl.text = "Nome"
         pontosLbl.text = "Pontos"
@@ -128,7 +129,7 @@ extension TimeTableView {
 
 }
 
-extension TimeTableView: UITableViewDataSource {
+extension SumulaTimeTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return time.jogadores.count
     }
@@ -138,7 +139,7 @@ extension TimeTableView: UITableViewDataSource {
 
         let jogador_indice = time.jogadores.firstIndex(where: { $0 == jogador }) as! Int
         //let jogador = timeA_jogadores[0]
-        let cell = timeTableVw.dequeueReusableCell(withIdentifier: TimeTableViewCell.cellId, for: indexPath) as! TimeTableViewCell
+        let cell = timeTableVw.dequeueReusableCell(withIdentifier: SumulaTimeTableViewCell.cellId, for: indexPath) as! SumulaTimeTableViewCell
         cell.configure(with: jogador, index: jogador_indice)
         return cell
     }

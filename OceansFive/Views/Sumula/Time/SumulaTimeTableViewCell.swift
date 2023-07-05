@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TimeTableViewCell: UITableViewCell {
+class SumulaTimeTableViewCell: UITableViewCell {
 
     static let cellId = "TimeTableViewCell"
 
@@ -49,10 +49,7 @@ class TimeTableViewCell: UITableViewCell {
 
     private var jogador: Jogador?
 
-
-
     func configure(with item: Jogador, index: Int ) {
-
 
         self.jogador = item
 
@@ -90,13 +87,6 @@ class TimeTableViewCell: UITableViewCell {
             nomeLbl.topAnchor.constraint(equalTo: numeroLbl.topAnchor),
             nomeLbl.bottomAnchor.constraint(equalTo: numeroLbl.bottomAnchor),
             nomeLbl.leadingAnchor.constraint(equalTo: numeroLbl.trailingAnchor, constant: 64),
-
-
-
-
-
         ])
-
-
     }
 }
