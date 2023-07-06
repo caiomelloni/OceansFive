@@ -13,7 +13,7 @@ class MainTabbarViewController: UITabBarController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         
-        let explorarVC = UINavigationController(rootViewController: ExplorarViewController())
+        let explorarVC = UINavigationController(rootViewController: Criar_Torneio ())
         let meusCampeonatosVC = UINavigationController(rootViewController: SumulaViewController())
         let perfilVC = UINavigationController(rootViewController: PerfilViewController())
 

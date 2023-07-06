@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31FD702F2A55AE6F000F4C87 /* Criar Torneio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FD702E2A55AE6F000F4C87 /* Criar Torneio.swift */; };
 		9562FD922A530378005945A9 /* SumulaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FD912A530378005945A9 /* SumulaViewController.swift */; };
 		9562FD992A5306FF005945A9 /* Jogador.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FD982A5306FF005945A9 /* Jogador.swift */; };
 		9562FD9B2A53074D005945A9 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FD9A2A53074D005945A9 /* Time.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31FD702E2A55AE6F000F4C87 /* Criar Torneio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Criar Torneio.swift"; sourceTree = "<group>"; };
 		9562FD912A530378005945A9 /* SumulaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumulaViewController.swift; sourceTree = "<group>"; };
 		9562FD982A5306FF005945A9 /* Jogador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jogador.swift; sourceTree = "<group>"; };
 		9562FD9A2A53074D005945A9 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
@@ -59,6 +61,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31FD702D2A55ADEB000F4C87 /* Criar Torneio */ = {
+			isa = PBXGroup;
+			children = (
+				31FD702E2A55AE6F000F4C87 /* Criar Torneio.swift */,
+			);
+			path = "Criar Torneio";
+			sourceTree = "<group>";
+		};
 		9562FD882A52F587005945A9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +165,7 @@
 		F8FC3E5A2A4CCA4E0033E3E0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				31FD702D2A55ADEB000F4C87 /* Criar Torneio */,
 				9562FD902A53035D005945A9 /* Sumula */,
 				F8FC3E5B2A4CCA810033E3E0 /* Core */,
 			);
@@ -265,6 +276,7 @@
 				9562FD922A530378005945A9 /* SumulaViewController.swift in Sources */,
 				9562FDA32A530879005945A9 /* TimeAeB.swift in Sources */,
 				9562FDA72A531156005945A9 /* SumulaTimeTableView.swift in Sources */,
+				31FD702F2A55AE6F000F4C87 /* Criar Torneio.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
