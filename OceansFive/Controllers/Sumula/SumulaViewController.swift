@@ -94,7 +94,8 @@ class SumulaViewController: UIViewController {
 
 private extension SumulaViewController {
     func títuloSv() {
-        self.navigationController?.navigationBar.topItem?.title = "Preencher Súmula"
+        self.title = "Preencher Súmula"
+        self.navigationController?.navigationBar.topItem?.backButtonTitle = "Jogos"
     }
 
     func insertViewSection(_ vw: UIView) {

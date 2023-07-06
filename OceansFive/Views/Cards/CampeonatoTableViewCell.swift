@@ -15,6 +15,7 @@ class CampeonatoTableViewCell: UITableViewCell {
     let vw = UIView()
         vw.translatesAutoresizingMaskIntoConstraints = false
         vw.layer.cornerRadius = CGFloat(12)
+        
         return vw
     }()
     

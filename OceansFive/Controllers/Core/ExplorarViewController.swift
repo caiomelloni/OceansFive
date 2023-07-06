@@ -33,7 +33,8 @@ override func viewDidLoad() {
     tablevw.delegate = self
     tablevw.dataSource = self
     
-    self.navigationController?.navigationBar.topItem?.title = "Explorar"
+    //self.navigationController?.navigationBar.topItem?.title = "Explorar"
+    self.title = "Explorar"
     self.navigationController?.navigationBar.prefersLargeTitles = true
     view.backgroundColor = .secondarySystemBackground
 //    self.view.backgroundColor = .blue
@@ -48,6 +49,10 @@ extension ExplorarViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tablevw.dequeueReusableCell(withIdentifier: CampeonatoTableViewCell.Cellid, for: indexPath) as! CampeonatoTableViewCell
         cell.configure()
+        cell.setOnClickListener {
+            let newViewController = CampeonatoViewController()
+            self.navigationController?.pushViewController(newViewController, animated: true)
+        }
         return cell
     }
     
