@@ -79,13 +79,13 @@
 			path = Cards;
 			sourceTree = "<group>";
 		};
-		9562FD882A52F587005945A9 /* Views */ = {
+		9562FD882A52F587005945A9 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				0358C62F2A55924B0089B267 /* Cards */,
 				9562FD892A52F593005945A9 /* Sumula */,
 			);
-			path = Views;
+			path = View;
 			sourceTree = "<group>";
 		};
 		9562FD892A52F593005945A9 /* Sumula */ = {
@@ -166,7 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				9562FD932A5305F0005945A9 /* Model */,
-				9562FD882A52F587005945A9 /* Views */,
+				9562FD882A52F587005945A9 /* View */,
 				F8FC3E642A4CCE020033E3E0 /* Utils */,
 				F8FC3E5A2A4CCA4E0033E3E0 /* Controllers */,
 				F8FC3E462A4CC7F20033E3E0 /* AppDelegate.swift */,
