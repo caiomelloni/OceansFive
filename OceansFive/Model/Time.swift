@@ -17,13 +17,7 @@ struct Time {
     let jogadores: [Jogador]
 }
 
-struct TimeJogando {
-    var time: Time
-    var faltas: Array<Array<UUID>>
-    var tempos: Array<Array<Int>>
-    var jadoresJogando: [Jogador]
-    var pontos: Array<Array<UUID>>
-}
 
 
 
+		

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0358C6312A5592BC0089B267 /* CampeonatoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0358C6302A5592BC0089B267 /* CampeonatoTableViewCell.swift */; };
+		0358C6332A56DED70089B267 /* Sumula.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0358C6322A56DED70089B267 /* Sumula.swift */; };
+		0358C6352A56EE230089B267 /* TimeJogando.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0358C6342A56EE230089B267 /* TimeJogando.swift */; };
+		0358C6372A56EE450089B267 /* Pontos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0358C6362A56EE450089B267 /* Pontos.swift */; };
 		9562FD922A530378005945A9 /* SumulaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FD912A530378005945A9 /* SumulaViewController.swift */; };
 		9562FD992A5306FF005945A9 /* Jogador.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FD982A5306FF005945A9 /* Jogador.swift */; };
 		9562FD9B2A53074D005945A9 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FD9A2A53074D005945A9 /* Time.swift */; };
@@ -28,6 +32,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0358C6302A5592BC0089B267 /* CampeonatoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampeonatoTableViewCell.swift; sourceTree = "<group>"; };
+		0358C6322A56DED70089B267 /* Sumula.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sumula.swift; sourceTree = "<group>"; };
+		0358C6342A56EE230089B267 /* TimeJogando.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeJogando.swift; sourceTree = "<group>"; };
+		0358C6362A56EE450089B267 /* Pontos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pontos.swift; sourceTree = "<group>"; };
 		9562FD912A530378005945A9 /* SumulaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumulaViewController.swift; sourceTree = "<group>"; };
 		9562FD982A5306FF005945A9 /* Jogador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jogador.swift; sourceTree = "<group>"; };
 		9562FD9A2A53074D005945A9 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
@@ -61,9 +69,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0358C62F2A55924B0089B267 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				0358C6302A5592BC0089B267 /* CampeonatoTableViewCell.swift */,
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
 		9562FD882A52F587005945A9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0358C62F2A55924B0089B267 /* Cards */,
 				9562FD892A52F593005945A9 /* Sumula */,
 			);
 			path = Views;
@@ -91,9 +108,12 @@
 			isa = PBXGroup;
 			children = (
 				9562FDA12A530866005945A9 /* Mocks */,
+				0358C6322A56DED70089B267 /* Sumula.swift */,
 				9562FD982A5306FF005945A9 /* Jogador.swift */,
 				9562FD9A2A53074D005945A9 /* Time.swift */,
 				9562FD9C2A5307A1005945A9 /* Campenato.swift */,
+				0358C6342A56EE230089B267 /* TimeJogando.swift */,
+				0358C6362A56EE450089B267 /* Pontos.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -254,13 +274,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				9562FDA92A5312DE005945A9 /* SumulaTimeTableViewCell.swift in Sources */,
+				9562FDA92A5312DE005945A9 /* TimeTableViewCell.swift in Sources */,
+				0358C6312A5592BC0089B267 /* CampeonatoTableViewCell.swift in Sources */,
 				F8FC3E632A4CCB740033E3E0 /* PerfilViewController.swift in Sources */,
 				9562FD992A5306FF005945A9 /* Jogador.swift in Sources */,
 				9562FD9B2A53074D005945A9 /* Time.swift in Sources */,
+				0358C6332A56DED70089B267 /* Sumula.swift in Sources */,
 				F8FC3E662A4CCE4B0033E3E0 /* CustomColor.swift in Sources */,
 				F8FC3E4B2A4CC7F20033E3E0 /* MainTabbarViewController.swift in Sources */,
 				F8FC3E612A4CCB440033E3E0 /* MeusCampeonatosViewController.swift in Sources */,
 				9562FDF62A559701005945A9 /* SumulaPontosView.swift in Sources */,
+				0358C6352A56EE230089B267 /* TimeJogando.swift in Sources */,
+				0358C6372A56EE450089B267 /* Pontos.swift in Sources */,
 				F8FC3E472A4CC7F20033E3E0 /* AppDelegate.swift in Sources */,
 				9562FD9D2A5307A1005945A9 /* Campenato.swift in Sources */,
 				F8FC3E492A4CC7F20033E3E0 /* SceneDelegate.swift in Sources */,
