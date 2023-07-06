@@ -17,7 +17,8 @@ class MeusCampeonatosViewController: UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         view.backgroundColor = .systemBackground
 
-        view.addSubview(<#T##view: UIView##UIView#>)
+//        view.addSubview(criarTorneioVw)
+//        NSLayoutConstraint.activate([)
 
     }
 }
