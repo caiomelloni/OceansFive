@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct Pontos {
+struct Pontos: Equatable {
     var lanceLivrePonto: Array<Array<UUID>>
     var doisPontos: Array<Array<UUID>>
     var tresPontos: Array<Array<UUID>>
 }
+

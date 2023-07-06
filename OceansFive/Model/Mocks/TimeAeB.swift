@@ -26,33 +26,40 @@ class TimeViewModel {
     ]
 }
 
+let timeA = TimeViewModel().times[0]
+let timeB = TimeViewModel().times[1]
+
+
+let pts = Pontos(lanceLivrePonto: [[UUID()]], doisPontos: [[UUID()]], tresPontos: [[UUID()]])
+let flts = Faltas(jogoID: UUID(), qtdFaltas: 0)
+
 let timeA_jogadores: [Jogador] = [
-    Jogador(id: UUID(), nome: "Igor Almo", pontos: 0, faltas: 0),
-    Jogador(id: UUID(), nome: "Marcelo PPP", pontos: 0, faltas: 0),
-    Jogador(id: UUID(), nome: "Caio Alberto", pontos: 0, faltas: 0),
-    Jogador(id: UUID(), nome: "Leblon Filho", pontos: 0, faltas: 0),
-    Jogador(id: UUID(), nome: "Bruno Alvees", pontos: 0, faltas: 0),
-    Jogador(id: UUID(), nome: "Lucas Messi", pontos: 0, faltas: 0),
-    Jogador(id: UUID(), nome: "Nivaldo olveira", pontos: 0, faltas: 0),
-    Jogador(id: UUID(), nome: "Carlos Adão", pontos: 0, faltas: 0),
-    Jogador(id: UUID(), nome: "Joao da nica", pontos: 0, faltas: 0),
-    Jogador(id: UUID(), nome: "Chespirito", pontos: 0, faltas: 0),
-    Jogador(id: UUID(), nome: "Seu Barriga", pontos: 0, faltas: 0),
-    Jogador(id: UUID(), nome: "Dona Florinda", pontos: 0, faltas: 0),
+    Jogador(id: UUID(), nome: "Igor Almo", pontos: pts, faltas: flts),
+    Jogador(id: UUID(), nome: "Marcelo PPP", pontos: pts, faltas: flts),
+    Jogador(id: UUID(), nome: "Caio Alberto", pontos: pts, faltas: flts),
+    Jogador(id: UUID(), nome: "Leblon Filho", pontos: pts, faltas: flts),
+    Jogador(id: UUID(), nome: "Bruno Alvees", pontos: pts, faltas: flts),
+    Jogador(id: UUID(), nome: "Lucas Messi", pontos: pts, faltas: flts),
+    Jogador(id: UUID(), nome: "Nivaldo olveira", pontos: pts, faltas: flts),
+    Jogador(id: UUID(), nome: "Carlos Adão", pontos: pts, faltas: flts),
+    Jogador(id: UUID(), nome: "Joao da nica", pontos: pts, faltas: flts),
+    Jogador(id: UUID(), nome: "Chespirito", pontos: pts, faltas: flts),
+    Jogador(id: UUID(), nome: "Seu Barriga", pontos: pts, faltas: flts),
+    Jogador(id: UUID(), nome: "Dona Florinda", pontos: pts, faltas: flts),
 ]
 
 
 let timeB_jogadores: [Jogador] = [
-    Jogador(id: UUID(), nome: "Goku Gohan", pontos: 0, faltas: 0),
-    Jogador(id: UUID(), nome: "Gohan Gohan", pontos: 0, faltas: 0),
-    Jogador(id: UUID(), nome: "Titi Gohan", pontos: 0, faltas: 0),
-    Jogador(id: UUID(), nome: "Bulma Trunks", pontos: 0, faltas: 0),
-    Jogador(id: UUID(), nome: "Vegeta Saiajyn", pontos: 0, faltas: 0),
-    Jogador(id: UUID(), nome: "Radix Gohan", pontos: 0, faltas: 0),
-    Jogador(id: UUID(), nome: "Kuririn Trunks", pontos: 0, faltas: 0),
-    Jogador(id: UUID(), nome: "Trunks Trunks", pontos: 0, faltas: 0),
-    Jogador(id: UUID(), nome: "Majin Bu", pontos: 0, faltas: 0),
-    Jogador(id: UUID(), nome: "Cell", pontos: 0, faltas: 0),
-    Jogador(id: UUID(), nome: "Android 18", pontos: 0, faltas: 0),
-    Jogador(id: UUID(), nome: "Android 17", pontos: 0, faltas: 0),
+    Jogador(id: UUID(), nome: "Goku Gohan", pontos: pts, faltas: flts),
+    Jogador(id: UUID(), nome: "Gohan Gohan", pontos: pts, faltas: flts),
+    Jogador(id: UUID(), nome: "Titi Gohan", pontos: pts, faltas: flts),
+    Jogador(id: UUID(), nome: "Bulma Trunks", pontos: pts, faltas: flts),
+    Jogador(id: UUID(), nome: "Vegeta Saiajyn", pontos: pts, faltas: flts),
+    Jogador(id: UUID(), nome: "Radix Gohan", pontos: pts, faltas: flts),
+    Jogador(id: UUID(), nome: "Kuririn Trunks", pontos: pts, faltas: flts),
+    Jogador(id: UUID(), nome: "Trunks Trunks", pontos: pts, faltas: flts),
+    Jogador(id: UUID(), nome: "Majin Bu", pontos: pts, faltas: flts),
+    Jogador(id: UUID(), nome: "Cell", pontos: pts, faltas: flts),
+    Jogador(id: UUID(), nome: "Android 18", pontos: pts, faltas: flts),
+    Jogador(id: UUID(), nome: "Android 17", pontos: pts, faltas: flts),
 ]

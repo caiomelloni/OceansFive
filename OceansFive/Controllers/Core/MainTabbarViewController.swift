@@ -29,7 +29,6 @@ class MainTabbarViewController: UITabBarController {
         perfilVC.tabBarItem.image = UIImage(systemName: "person.fill")
         perfilVC.tabBarItem.selectedImage = UIImage(systemName: "person.fill")
         perfilVC.tabBarItem.title = "Perfil"
-        
         setViewControllers([explorarVC, meusCampeonatosVC, perfilVC], animated: true)
     }
 

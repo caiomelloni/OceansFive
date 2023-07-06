@@ -13,48 +13,44 @@ class SumulaViewController: UIViewController {
 
     let items = ["TimeA", "TimeB", "Pontos", "Informações"]
     let haptic = UISelectionFeedbackGenerator()
+    let tableVw = SumulaTimeTableView()
+    let pontosVw = SumulaPontosView()
 
     //MARK: UI - Elements
     lazy var segmentedControl: UISegmentedControl = {
         let view = UISegmentedControl(items: items)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.selectedSegmentIndex = 0
-        view.addTarget(self, action: #selector(colorChanged), for: .valueChanged)
+        view.addTarget(self, action: #selector(changeSelector), for: .valueChanged)
         return view
 
     }()
-
-    let colorView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemBlue
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
 
     // MARK: - methods
 
+
+
     override func loadView() {
         super.loadView()
-        setup()
+        títuloSv()
+        tableVw.loadData(segmentedControl.selectedSegmentIndex)
     }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         haptic.prepare()
+
         view.backgroundColor = .systemBackground
 
         view.addSubview(segmentedControl)
-        view.addSubview(colorView)
-        NSLayoutConstraint.activate([
-            segmentedControl.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 2),
-            segmentedControl.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
-            view.trailingAnchor.constraint(equalToSystemSpacingAfter: segmentedControl.trailingAnchor, multiplier: 2),
+//        view.addSubview(tableVw)
 
-            colorView.heightAnchor.constraint(equalToConstant: 200),
-            colorView.widthAnchor.constraint(equalToConstant: 200),
-            colorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            colorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        NSLayoutConstraint.activate(configurarView(tableVw))
+        NSLayoutConstraint.activate([
+            segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             ])
 
         configNavBarItems()
@@ -66,22 +62,33 @@ class SumulaViewController: UIViewController {
             barButtonSystemItem: .add,
             target: self,
             action: nil
-)
+        )
     }
 
-    @objc func colorChanged() {
+    @objc func changeSelector() {
+
         haptic.selectionChanged()
         switch segmentedControl.selectedSegmentIndex {
             case 0:
-                colorView.backgroundColor = .blue
+                pontosVw.removeFromSuperview()
+                tableVw.removeFromSuperview()
+                NSLayoutConstraint.activate(configurarView(tableVw))
+                tableVw.loadData(segmentedControl.selectedSegmentIndex)
+
             case 1:
-                colorView.backgroundColor = .red
+                pontosVw.removeFromSuperview()
+                tableVw.removeFromSuperview()
+                NSLayoutConstraint.activate(configurarView(tableVw))
+                tableVw.loadData(segmentedControl.selectedSegmentIndex)
             case 2:
-                colorView.backgroundColor = .cyan
+                pontosVw.removeFromSuperview()
+                tableVw.removeFromSuperview()
+                NSLayoutConstraint.activate(configurarView(pontosVw))
             case 3:
-                colorView.backgroundColor = .purple
+                pontosVw.removeFromSuperview()
+                tableVw.removeFromSuperview()
             default:
-                colorView.backgroundColor = .white
+                tableVw.removeFromSuperview()
         }
     }
 
@@ -89,7 +96,17 @@ class SumulaViewController: UIViewController {
 
 
 private extension SumulaViewController {
-    func setup() {
+    func títuloSv() {
         self.navigationController?.navigationBar.topItem?.title = "Preencher Súmula"
+
+    }
+
+    func configurarView(_ vw: UIView) -> [NSLayoutConstraint] {
+        view.addSubview(vw)
+        vw.translatesAutoresizingMaskIntoConstraints = false
+        return [vw.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 8),
+                vw.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 1),
+                vw.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 1),
+                vw.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0)]
     }
 }
