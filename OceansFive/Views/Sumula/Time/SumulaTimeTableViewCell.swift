@@ -46,8 +46,8 @@ class SumulaTimeTableViewCell: UITableViewCell {
 
         numeroLbl.text = String(describing: index)
         nomeLbl.text = jogador?.nome
-        pontosLbl.text = jogador?.pontos.codingKey.stringValue
-        faltasLbl.text = jogador?.faltas.codingKey.stringValue
+        pontosLbl.text = "\(jogador?.pontos.tresPontos[0].count ?? 0 )"
+        faltasLbl.text = "0"
 
         self.contentView.addSubview(rowVw)
 

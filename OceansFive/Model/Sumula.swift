@@ -11,8 +11,8 @@ import UIKit
 
 struct Sumula {
     let id : UUID
-    let timeA: timeJogando
-    let timeB: timeJogando
+    let timeA: TimeJogando
+    let timeB: TimeJogando
     let campeonato: Campeonato
     var periodosExtra: Int = 0
     let arbitros: [String]

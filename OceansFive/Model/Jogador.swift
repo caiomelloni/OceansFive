@@ -6,12 +6,11 @@
 //
 
 import Foundation
-import UIKit
 
 struct Jogador: Equatable {
     let id: UUID
     let nome: String
     let pontos: Pontos
-    let faltas: Dictionary<UUID,Int>
+    let faltas: Faltas
     //let times: [Time]
 }

@@ -19,6 +19,7 @@
 		9562FDA72A531156005945A9 /* SumulaTimeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FDA62A531156005945A9 /* SumulaTimeTableView.swift */; };
 		9562FDA92A5312DE005945A9 /* SumulaTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FDA82A5312DE005945A9 /* SumulaTimeTableViewCell.swift */; };
 		9562FDF62A559701005945A9 /* SumulaPontosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FDF52A559701005945A9 /* SumulaPontosView.swift */; };
+		958511472A57101E004B4787 /* Faltas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958511462A57101E004B4787 /* Faltas.swift */; };
 		95BE05D62A56F6AB00216B04 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BE05D52A56F6AB00216B04 /* ViewController.swift */; };
 		F8FC3E472A4CC7F20033E3E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FC3E462A4CC7F20033E3E0 /* AppDelegate.swift */; };
 		F8FC3E492A4CC7F20033E3E0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FC3E482A4CC7F20033E3E0 /* SceneDelegate.swift */; };
@@ -44,6 +45,7 @@
 		9562FDA62A531156005945A9 /* SumulaTimeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumulaTimeTableView.swift; sourceTree = "<group>"; };
 		9562FDA82A5312DE005945A9 /* SumulaTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumulaTimeTableViewCell.swift; sourceTree = "<group>"; };
 		9562FDF52A559701005945A9 /* SumulaPontosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumulaPontosView.swift; sourceTree = "<group>"; };
+		958511462A57101E004B4787 /* Faltas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faltas.swift; sourceTree = "<group>"; };
 		95BE05D52A56F6AB00216B04 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F8FC3E432A4CC7F20033E3E0 /* OceansFive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OceansFive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8FC3E462A4CC7F20033E3E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				9562FD9C2A5307A1005945A9 /* Campenato.swift */,
 				0358C6342A56EE230089B267 /* TimeJogando.swift */,
 				0358C6362A56EE450089B267 /* Pontos.swift */,
+				958511462A57101E004B4787 /* Faltas.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -274,7 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9562FDA92A5312DE005945A9 /* SumulaTimeTableViewCell.swift in Sources */,
-				9562FDA92A5312DE005945A9 /* TimeTableViewCell.swift in Sources */,
+				9562FDA92A5312DE005945A9 /* SumulaTimeTableViewCell.swift in Sources */,
 				0358C6312A5592BC0089B267 /* CampeonatoTableViewCell.swift in Sources */,
 				F8FC3E632A4CCB740033E3E0 /* PerfilViewController.swift in Sources */,
 				9562FD992A5306FF005945A9 /* Jogador.swift in Sources */,
@@ -287,6 +290,7 @@
 				0358C6352A56EE230089B267 /* TimeJogando.swift in Sources */,
 				0358C6372A56EE450089B267 /* Pontos.swift in Sources */,
 				F8FC3E472A4CC7F20033E3E0 /* AppDelegate.swift in Sources */,
+				958511472A57101E004B4787 /* Faltas.swift in Sources */,
 				9562FD9D2A5307A1005945A9 /* Campenato.swift in Sources */,
 				F8FC3E492A4CC7F20033E3E0 /* SceneDelegate.swift in Sources */,
 				F8FC3E5F2A4CCAFB0033E3E0 /* ExplorarViewController.swift in Sources */,

@@ -18,8 +18,8 @@ class SumulaTimeTableView: UIView {
                               tecnico: "",
                               jogadores: [Jogador(id: UUID(),
                                                   nome: "",
-                                                  pontos: 0,
-                                                  faltas: 0)
+                                                  pontos: pts,
+                                                  faltas: flts)
                               ])
 
     private lazy var timeTableVw: UITableView = {
