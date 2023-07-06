@@ -46,14 +46,14 @@ class SumulaPreenchidaViewController: UIViewController {
           
           //Navbar
           let navbar = navigationController?.navigationBar
-          navbar?.topItem?.title = "Flu 00 X 00 Fla"
+          self.title = "Flu 00 X 00 Fla"
           navbar?.prefersLargeTitles = true
           navbar?.topItem?.rightBarButtonItem = {
              let btn = UIBarButtonItem()
               btn.image = UIImage(systemName: "plus")
               return btn
           }()
-          navbar?.topItem?.backButtonTitle = "Jogo"
+          navbar?.topItem?.backButtonTitle = "Jogos"
           //
           
           view.backgroundColor = .systemBackground
