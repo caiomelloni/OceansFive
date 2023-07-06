@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F81235212A572D3A00953E1C /* JogosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81235202A572D3A00953E1C /* JogosView.swift */; };
+		F81235232A572F7800953E1C /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81235222A572F7800953E1C /* UIViewExtension.swift */; };
 		F8439EC02A544A1000375491 /* SumulaPreenchidaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8439EBF2A544A1000375491 /* SumulaPreenchidaViewController.swift */; };
 		F8439EC52A54CC9900375491 /* PlayersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8439EC42A54CC9900375491 /* PlayersList.swift */; };
 		F8439EC72A55AF3500375491 /* EstatisticaTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8439EC62A55AF3500375491 /* EstatisticaTableView.swift */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F81235202A572D3A00953E1C /* JogosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JogosView.swift; sourceTree = "<group>"; };
+		F81235222A572F7800953E1C /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		F8439EBF2A544A1000375491 /* SumulaPreenchidaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumulaPreenchidaViewController.swift; sourceTree = "<group>"; };
 		F8439EC42A54CC9900375491 /* PlayersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersList.swift; sourceTree = "<group>"; };
 		F8439EC62A55AF3500375491 /* EstatisticaTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstatisticaTableView.swift; sourceTree = "<group>"; };
@@ -83,6 +87,7 @@
 		F8439ECC2A55F38C00375491 /* Campeonato */ = {
 			isa = PBXGroup;
 			children = (
+				F81235202A572D3A00953E1C /* JogosView.swift */,
 			);
 			path = Campeonato;
 			sourceTree = "<group>";
@@ -151,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				F8FC3E652A4CCE4B0033E3E0 /* CustomColor.swift */,
+				F81235222A572F7800953E1C /* UIViewExtension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -227,7 +233,9 @@
 			files = (
 				F8439EC02A544A1000375491 /* SumulaPreenchidaViewController.swift in Sources */,
 				F8FC3E632A4CCB740033E3E0 /* PerfilViewController.swift in Sources */,
+				F81235212A572D3A00953E1C /* JogosView.swift in Sources */,
 				F8FC3E662A4CCE4B0033E3E0 /* CustomColor.swift in Sources */,
+				F81235232A572F7800953E1C /* UIViewExtension.swift in Sources */,
 				F8439ECF2A55F3B900375491 /* CampeonatoViewController.swift in Sources */,
 				F8FC3E4B2A4CC7F20033E3E0 /* MainTabbarViewController.swift in Sources */,
 				F8439EC72A55AF3500375491 /* EstatisticaTableView.swift in Sources */,
