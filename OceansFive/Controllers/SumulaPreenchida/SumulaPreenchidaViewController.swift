@@ -33,7 +33,7 @@ class SumulaPreenchidaViewController: UIViewController {
     }()
     
     let infosView: InfosView = {
-        let iview = InfosView()
+        let iview = InfosView(infos)
         iview.translatesAutoresizingMaskIntoConstraints = false
         iview.backgroundColor = .secondarySystemBackground
         return iview
