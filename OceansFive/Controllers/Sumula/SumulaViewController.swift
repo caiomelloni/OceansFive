@@ -44,7 +44,7 @@ class SumulaViewController: UIViewController {
         view.backgroundColor = .systemBackground
 
         view.addSubview(segmentedControl)
-        view.addSubview(tableVw)
+//        view.addSubview(tableVw)
 
         NSLayoutConstraint.activate(configurarView(tableVw))
         NSLayoutConstraint.activate([
@@ -52,7 +52,6 @@ class SumulaViewController: UIViewController {
             segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             ])
-
 
         configNavBarItems()
     }
@@ -86,10 +85,10 @@ class SumulaViewController: UIViewController {
                 tableVw.removeFromSuperview()
                 NSLayoutConstraint.activate(configurarView(pontosVw))
             case 3:
+
                 pontosVw.removeFromSuperview()
                 tableVw.removeFromSuperview()
             default:
-                //colorView.backgroundColor = .purple
                 tableVw.removeFromSuperview()
         }
     }
@@ -111,6 +110,4 @@ private extension SumulaViewController {
                 vw.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 1),
                 vw.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0)]
     }
-
-
 }

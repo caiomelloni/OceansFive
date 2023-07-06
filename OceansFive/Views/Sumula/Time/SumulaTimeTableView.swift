@@ -11,6 +11,7 @@ class SumulaTimeTableView: UIView {
 
     //private lazy var timeViewModel = TimeViewModel()
 
+
     private var time: Time = Time(id: UUID(),
                               nome: "",
                               abreviado: "",
@@ -64,6 +65,8 @@ class SumulaTimeTableView: UIView {
         super.layoutSubviews()
         setup()
     }
+
+    
     
     func loadData(_ index: Int) {
         if index == 0 {

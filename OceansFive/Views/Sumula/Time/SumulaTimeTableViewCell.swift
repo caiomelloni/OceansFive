@@ -31,7 +31,6 @@ class SumulaTimeTableViewCell: UITableViewCell {
         return lbl
     }
 
-
     override func prepareForReuse() {
         super.prepareForReuse()
         self.jogador = nil
@@ -49,9 +48,6 @@ class SumulaTimeTableViewCell: UITableViewCell {
         nomeLbl.text = jogador?.nome
         pontosLbl.text = jogador?.pontos.codingKey.stringValue
         faltasLbl.text = jogador?.faltas.codingKey.stringValue
-
-
-
 
         self.contentView.addSubview(rowVw)
 

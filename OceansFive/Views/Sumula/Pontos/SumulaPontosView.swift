@@ -18,7 +18,7 @@ class SumulaPontosView: UIView {
     private func placarLbl(_ text: String) -> UILabel{
         let lbl: UILabel = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.numberOfLines = 1
+        lbl.numberOfLines = 0
         lbl.font = .systemFont(ofSize: 28, weight: .semibold)
         lbl.text = "\(text)"
         return lbl
@@ -62,35 +62,60 @@ class SumulaPontosView: UIView {
         return btn
     }
 
+
     override func layoutSubviews() {
         super.layoutSubviews()
         self.translatesAutoresizingMaskIntoConstraints = false
         configurar()
     }
+
+
+    private lazy var timeAbr1: UILabel = placarLbl("TiA")
+    private lazy var timeAbr2: UILabel = placarLbl("TiB")
+    private lazy var x: UILabel = placarLbl("x")
+    private lazy var pontosTime1: UILabel = placarLbl("0")
+    private lazy var pontosTime2: UILabel = placarLbl("0")
+    private lazy var quarto: UILabel = quartoLbl("1")
+    private lazy var viewPlacar: UIView = viewInicial()
+    private lazy var viewBotoes: UIView = viewInicial()
+    private lazy var viewBotoesTime1: UIView = viewInicial()
+    private lazy var viewBotoesTime2: UIView = viewInicial()
+    private lazy var btnControleQuarto: UIView = botaoaMaior(text: "Final de Quarto", image: "clock.fill")
+    private lazy var btnLanceLivreTime1: UIButton = botaoMenor(text: "Ponto ", image: "1.square.fill")
+    private lazy var btn2PtsTime1: UIButton = botaoMenor(text: "Pontos", image: "2.square.fill")
+    private lazy var btn3PtsTime1: UIButton = botaoMenor(text: "Pontos", image: "3.square.fill")
+    private lazy var btnFaltasTime1: UIButton = botaoMenor(text: "Faltas ", image: "exclamationmark.square.fill")
+    private lazy var btnTempoTime1: UIButton = botaoMenor(text: "Tempo ", image: "pause.fill")
+    private lazy var btnEditarTime1: UIButton = botaoMenor(text: "Editar ", image: "eraser.fill")
+    private lazy var btnLanceLivreTime2: UIButton = botaoMenor(text: "Ponto ", image: "2.square.fill")
+    private lazy var btn2PtsTime2: UIButton = botaoMenor(text: "Pontos", image: "2.square.fill")
+    private lazy var btn3PtsTime2: UIButton = botaoMenor(text: "Pontos", image: "3.square.fill")
+    private lazy var btnFaltasTime2: UIButton = botaoMenor(text: "Faltas ", image: "exclamationmark.square.fill")
+    private lazy var btnTempoTime2: UIButton = botaoMenor(text: "Tempo ", image: "pause.fill")
+    private lazy var btnEditarTime2: UIButton = botaoMenor(text: "Editar ", image: "eraser.fill")
 }
 
 
 extension SumulaPontosView {
     func configurar() {
-            var timeAbr1: UILabel
-            var timeAbr2: UILabel
-            var x: UILabel
-            var pontosTime1: UILabel
-            var pontosTime2: UILabel
-            var quarto: UILabel
-            var viewPlacar: UIView
 
-            timeAbr1 = placarLbl("TiA")
-            timeAbr2 = placarLbl("TiB")
-            x = placarLbl("x")
-            pontosTime1 = placarLbl("0")
-            pontosTime2 = placarLbl("0")
-            quarto = quartoLbl("1")
-            viewPlacar = viewInicial()
+
+
+
+
+
+
+
+//            timeAbr1 =
+//            timeAbr2 =
+//            x =
+//            pontosTime1 =
+//            pontosTime2 =
+//            quarto =
+//            viewPlacar =
 
             self.addSubview(viewPlacar)
             viewPlacar.addSubview(timeAbr1)
-            viewPlacar.addSubview(timeAbr2)
             viewPlacar.addSubview(timeAbr2)
             viewPlacar.addSubview(x)
             viewPlacar.addSubview(pontosTime1)
@@ -121,15 +146,15 @@ extension SumulaPontosView {
                 quarto.topAnchor.constraint(equalTo: x.bottomAnchor),
             ])
 
-        var viewBotoes: UIView
-        var viewBotoesTime1: UIView
-        var viewBotoesTime2: UIView
-        var btnControleQuarto: UIView
 
-        viewBotoes = viewInicial()
-        viewBotoesTime1 = viewInicial()
-        viewBotoesTime2 = viewInicial()
-        btnControleQuarto = botaoaMaior(text: "Final de Quarto", image: "clock.fill")
+
+
+
+
+//        viewBotoes =
+//        viewBotoesTime1 =
+//        viewBotoesTime2 =
+//        btnControleQuarto =
 
         self.addSubview(viewBotoes)
         viewBotoes.addSubview(viewBotoesTime1)
@@ -143,21 +168,21 @@ extension SumulaPontosView {
             viewBotoes.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -8),
         ])
 
-            var btnLanceLivreTime1: UIButton
-            var btn2PtsTime1: UIButton
-            var btn3PtsTime1: UIButton
-            var btnFaltasTime1: UIButton
-            var btnTempoTime1: UIButton
-            var btnEditarTime1: UIButton
 
 
 
-        btnLanceLivreTime1 = botaoMenor(text: "Ponto ", image: "1.square.fill")
-        btn2PtsTime1 = botaoMenor(text: "Pontos", image: "2.square.fill")
-        btn3PtsTime1 = botaoMenor(text: "Pontos", image: "3.square.fill")
-        btnFaltasTime1 = botaoMenor(text: "Faltas ", image: "exclamationmark.square.fill")
-        btnTempoTime1 = botaoMenor(text: "Tempo ", image: "pause.fill")
-        btnEditarTime1 = botaoMenor(text: "Editar ", image: "eraser.fill")
+
+
+
+
+
+
+//        btnLanceLivreTime1 =
+//        btn2PtsTime1 =
+//        btn3PtsTime1 =
+//        btnFaltasTime1 =
+//        btnTempoTime1 =
+//        btnEditarTime1 =
 
         viewBotoesTime1.addSubview(btnLanceLivreTime1)
         viewBotoesTime1.addSubview(btn2PtsTime1)
@@ -194,21 +219,21 @@ extension SumulaPontosView {
 
             ])
 
-            var btnLanceLivreTime2: UIButton
-            var btn2PtsTime2: UIButton
-            var btn3PtsTime2: UIButton
-            var btnFaltasTime2: UIButton
-            var btnTempoTime2: UIButton
-            var btnEditarTime2: UIButton
 
 
 
-        btnLanceLivreTime2 = botaoMenor(text: "Ponto ", image: "2.square.fill")
-        btn2PtsTime2 = botaoMenor(text: "Pontos", image: "2.square.fill")
-        btn3PtsTime2 = botaoMenor(text: "Pontos", image: "3.square.fill")
-        btnFaltasTime2 = botaoMenor(text: "Faltas ", image: "exclamationmark.square.fill")
-        btnTempoTime2 = botaoMenor(text: "Tempo ", image: "pause.fill")
-        btnEditarTime2 = botaoMenor(text: "Editar ", image: "eraser.fill")
+
+
+
+
+
+
+//        btnLanceLivreTime2 =
+//        btn2PtsTime2 =
+//        btn3PtsTime2 =
+//        btnFaltasTime2 =
+//        btnTempoTime2 =
+//        btnEditarTime2 =
 
         viewBotoesTime2.addSubview(btnLanceLivreTime2)
         viewBotoesTime2.addSubview(btn2PtsTime2)
