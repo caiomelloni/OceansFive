@@ -9,12 +9,16 @@ import UIKit
 
 class SumulaViewController: UIViewController {
 
+    var currentView: UIView = UIView()
     // MARK: Properties
 
     let items = ["TimeA", "TimeB", "Pontos", "Informações"]
     let haptic = UISelectionFeedbackGenerator()
     let tableVw = SumulaTimeTableView()
     let pontosVw = SumulaPontosView()
+    let infosVw = InfosView(
+        infos_vazia
+    )
 
     //MARK: UI - Elements
     lazy var segmentedControl: UISegmentedControl = {
@@ -41,11 +45,12 @@ class SumulaViewController: UIViewController {
         super.viewDidLoad()
         haptic.prepare()
 
-        view.backgroundColor = .systemBackground
+        currentView = tableVw
+        view.backgroundColor = .secondarySystemBackground
 
         view.addSubview(segmentedControl)
 
-        NSLayoutConstraint.activate(configurarView(tableVw))
+        insertViewSection(currentView)
         NSLayoutConstraint.activate([
             segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
             segmentedControl.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
@@ -69,26 +74,18 @@ class SumulaViewController: UIViewController {
         haptic.selectionChanged()
         switch segmentedControl.selectedSegmentIndex {
             case 0:
-                pontosVw.removeFromSuperview()
-                tableVw.removeFromSuperview()
-                NSLayoutConstraint.activate(configurarView(tableVw))
+                insertViewSection(tableVw)
                 tableVw.loadData(segmentedControl.selectedSegmentIndex)
-
             case 1:
-                pontosVw.removeFromSuperview()
-                tableVw.removeFromSuperview()
-                NSLayoutConstraint.activate(configurarView(tableVw))
+                insertViewSection(tableVw)
                 tableVw.loadData(segmentedControl.selectedSegmentIndex)
             case 2:
-                tableVw.removeFromSuperview()
-                NSLayoutConstraint.activate(configurarView(pontosVw))
-                
+                insertViewSection(pontosVw)
             case 3:
-                pontosVw.removeFromSuperview()
-                tableVw.removeFromSuperview()
+                insertViewSection(infosVw)
             default:
-                pontosVw.removeFromSuperview()
-                tableVw.removeFromSuperview()
+                segmentedControl.selectedSegmentIndex = 0
+
         }
     }
 
@@ -100,12 +97,16 @@ private extension SumulaViewController {
         self.navigationController?.navigationBar.topItem?.title = "Preencher Súmula"
     }
 
-    func configurarView(_ vw: UIView) -> [NSLayoutConstraint] {
+    func insertViewSection(_ vw: UIView) {
+        currentView.removeFromSuperview()
+        currentView = vw
         view.addSubview(vw)
-        vw.translatesAutoresizingMaskIntoConstraints = false
-        return [vw.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 8),
-                vw.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
-                vw.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
-                vw.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0)]
+        currentView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([currentView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 8),
+                currentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+                currentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+                currentView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0)])
     }
+
+    
 }

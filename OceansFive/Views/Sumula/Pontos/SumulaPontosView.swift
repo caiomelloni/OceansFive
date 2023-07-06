@@ -212,7 +212,5 @@ extension SumulaPontosView {
             btnControleQuarto.centerXAnchor.constraint(equalTo: viewBotoes.centerXAnchor),
             btnControleQuarto.bottomAnchor.constraint(equalTo: viewBotoes.bottomAnchor, constant: -8)
         ])
-
-        print()
     }
 }
