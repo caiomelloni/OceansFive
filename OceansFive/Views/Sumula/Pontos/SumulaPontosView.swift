@@ -99,7 +99,6 @@ class SumulaPontosView: UIView {
 extension SumulaPontosView {
     func configurar() {
 
-
             self.addSubview(viewPlacar)
             viewPlacar.addSubview(timeAbr1)
             viewPlacar.addSubview(timeAbr2)
@@ -140,10 +139,9 @@ extension SumulaPontosView {
         NSLayoutConstraint.activate([
             viewBotoes.topAnchor.constraint(equalTo: quarto.bottomAnchor, constant: 0),
             viewBotoes.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -8),
-            viewBotoes.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 8),
-            viewBotoes.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -8),
+            viewBotoes.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
+            viewBotoes.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
         ])
-
 
         viewBotoesTime1.addSubview(btnLanceLivreTime1)
         viewBotoesTime1.addSubview(btn2PtsTime1)
@@ -152,13 +150,11 @@ extension SumulaPontosView {
         viewBotoesTime1.addSubview(btnTempoTime1)
         viewBotoesTime1.addSubview(btnEditarTime1)
 
-
             NSLayoutConstraint.activate([
-                viewBotoesTime1.widthAnchor.constraint(lessThanOrEqualTo: viewBotoes.widthAnchor, multiplier: 0.5),
+                viewBotoesTime1.widthAnchor.constraint(equalTo: viewBotoes.widthAnchor, multiplier: 0.5),
                 viewBotoesTime1.topAnchor.constraint(equalTo: viewBotoes.topAnchor, constant: 0),
                 viewBotoesTime1.bottomAnchor.constraint(equalTo: viewBotoes.bottomAnchor, constant: -8),
                 viewBotoesTime1.leadingAnchor.constraint(equalTo: viewBotoes.leadingAnchor, constant: 8),
-
 
                 btnLanceLivreTime1.topAnchor.constraint(equalTo: viewBotoesTime1.topAnchor, constant: 16),
                 btnLanceLivreTime1.centerXAnchor.constraint(equalTo: viewBotoesTime1.centerXAnchor),
@@ -177,24 +173,7 @@ extension SumulaPontosView {
 
                 btnEditarTime1.centerXAnchor.constraint(equalTo: viewBotoesTime1.centerXAnchor),
                 btnEditarTime1.topAnchor.constraint(equalTo: btnTempoTime1.bottomAnchor, constant: 16),
-
             ])
-
-
-
-
-
-
-
-
-
-
-//        btnLanceLivreTime2 =
-//        btn2PtsTime2 =
-//        btn3PtsTime2 =
-//        btnFaltasTime2 =
-//        btnTempoTime2 =
-//        btnEditarTime2 =
 
         viewBotoesTime2.addSubview(btnLanceLivreTime2)
         viewBotoesTime2.addSubview(btn2PtsTime2)
@@ -203,13 +182,11 @@ extension SumulaPontosView {
         viewBotoesTime2.addSubview(btnTempoTime2)
         viewBotoesTime2.addSubview(btnEditarTime2)
 
-
             NSLayoutConstraint.activate([
-                viewBotoesTime2.widthAnchor.constraint(lessThanOrEqualTo: viewBotoes.widthAnchor, multiplier: 0.5),
+                viewBotoesTime2.widthAnchor.constraint(equalTo: viewBotoes.widthAnchor, multiplier: 0.5),
                 viewBotoesTime2.topAnchor.constraint(equalTo: viewBotoes.topAnchor, constant: 0),
                 viewBotoesTime2.bottomAnchor.constraint(equalTo: viewBotoes.bottomAnchor, constant: -8),
                 viewBotoesTime2.trailingAnchor.constraint(equalTo: viewBotoes.trailingAnchor, constant: -8),
-
 
                 btnLanceLivreTime2.topAnchor.constraint(equalTo: viewBotoesTime2.topAnchor, constant: 16),
                 btnLanceLivreTime2.centerXAnchor.constraint(equalTo: viewBotoesTime2.centerXAnchor),
@@ -228,11 +205,10 @@ extension SumulaPontosView {
 
                 btnEditarTime2.centerXAnchor.constraint(equalTo: viewBotoesTime2.centerXAnchor),
                 btnEditarTime2.topAnchor.constraint(equalTo: btnTempoTime2.bottomAnchor, constant: 16),
-
             ])
 
         NSLayoutConstraint.activate([
-            btnControleQuarto.widthAnchor.constraint(greaterThanOrEqualTo: viewBotoes.widthAnchor, multiplier: 0.8),
+            btnControleQuarto.widthAnchor.constraint(equalTo: viewBotoes.widthAnchor, multiplier: 0.8),
             btnControleQuarto.centerXAnchor.constraint(equalTo: viewBotoes.centerXAnchor),
             btnControleQuarto.bottomAnchor.constraint(equalTo: viewBotoes.bottomAnchor, constant: -8)
         ])
