@@ -16,4 +16,8 @@ struct Time {
     //let campeonatos: [Campeonato]
     let jogadores: [Jogador]
 }
+
+
+
+
 		

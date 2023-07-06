@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import UIKit
 
 struct Jogador {
     let id: UUID
     let nome: String
-    let pontos: Int
-    let faltas: Int
+    let pontos: Pontos
+    let faltas: Dictionary<UUID,Int>
     //let times: [Time]
 }
