@@ -87,7 +87,7 @@ class SumulaPontosView: UIView {
     private lazy var btnFaltasTime1: UIButton = botaoMenor(text: "Faltas ", image: "exclamationmark.square.fill")
     private lazy var btnTempoTime1: UIButton = botaoMenor(text: "Tempo ", image: "pause.fill")
     private lazy var btnEditarTime1: UIButton = botaoMenor(text: "Editar ", image: "eraser.fill")
-    private lazy var btnLanceLivreTime2: UIButton = botaoMenor(text: "Ponto ", image: "2.square.fill")
+    private lazy var btnLanceLivreTime2: UIButton = botaoMenor(text: "Ponto ", image: "1.square.fill")
     private lazy var btn2PtsTime2: UIButton = botaoMenor(text: "Pontos", image: "2.square.fill")
     private lazy var btn3PtsTime2: UIButton = botaoMenor(text: "Pontos", image: "3.square.fill")
     private lazy var btnFaltasTime2: UIButton = botaoMenor(text: "Faltas ", image: "exclamationmark.square.fill")
