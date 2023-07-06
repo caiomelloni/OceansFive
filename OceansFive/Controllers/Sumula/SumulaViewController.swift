@@ -44,13 +44,12 @@ class SumulaViewController: UIViewController {
         view.backgroundColor = .systemBackground
 
         view.addSubview(segmentedControl)
-//        view.addSubview(tableVw)
 
         NSLayoutConstraint.activate(configurarView(tableVw))
         NSLayoutConstraint.activate([
             segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
-            segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            segmentedControl.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            segmentedControl.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             ])
 
         configNavBarItems()
@@ -81,13 +80,14 @@ class SumulaViewController: UIViewController {
                 NSLayoutConstraint.activate(configurarView(tableVw))
                 tableVw.loadData(segmentedControl.selectedSegmentIndex)
             case 2:
-                pontosVw.removeFromSuperview()
                 tableVw.removeFromSuperview()
                 NSLayoutConstraint.activate(configurarView(pontosVw))
+                
             case 3:
                 pontosVw.removeFromSuperview()
                 tableVw.removeFromSuperview()
             default:
+                pontosVw.removeFromSuperview()
                 tableVw.removeFromSuperview()
         }
     }
@@ -98,15 +98,14 @@ class SumulaViewController: UIViewController {
 private extension SumulaViewController {
     func títuloSv() {
         self.navigationController?.navigationBar.topItem?.title = "Preencher Súmula"
-
     }
 
     func configurarView(_ vw: UIView) -> [NSLayoutConstraint] {
         view.addSubview(vw)
         vw.translatesAutoresizingMaskIntoConstraints = false
         return [vw.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 8),
-                vw.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 1),
-                vw.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 1),
+                vw.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
+                vw.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
                 vw.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0)]
     }
 }

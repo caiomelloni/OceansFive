@@ -33,13 +33,6 @@ class SumulaTimeTableView: UIView {
         return tv
     }()
     
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
     private func headerLbl() -> UILabel {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
@@ -143,6 +136,7 @@ extension SumulaTimeTableView: UITableViewDataSource {
         //let jogador = timeA_jogadores[0]
         let cell = timeTableVw.dequeueReusableCell(withIdentifier: SumulaTimeTableViewCell.cellId, for: indexPath) as! SumulaTimeTableViewCell
         cell.configure(with: jogador, index: jogador_indice)
+        
         return cell
     }
 }

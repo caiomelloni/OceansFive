@@ -65,7 +65,7 @@ class SumulaPontosView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.translatesAutoresizingMaskIntoConstraints = false
+        //self.translatesAutoresizingMaskIntoConstraints = false
         configurar()
     }
 
@@ -100,20 +100,6 @@ extension SumulaPontosView {
     func configurar() {
 
 
-
-
-
-
-
-
-//            timeAbr1 =
-//            timeAbr2 =
-//            x =
-//            pontosTime1 =
-//            pontosTime2 =
-//            quarto =
-//            viewPlacar =
-
             self.addSubview(viewPlacar)
             viewPlacar.addSubview(timeAbr1)
             viewPlacar.addSubview(timeAbr2)
@@ -127,7 +113,7 @@ extension SumulaPontosView {
                 viewPlacar.leadingAnchor.constraint(equalTo: self.leadingAnchor),
                 viewPlacar.trailingAnchor.constraint(equalTo: self.trailingAnchor),
 
-                x.topAnchor.constraint(equalToSystemSpacingBelow: viewPlacar.topAnchor, multiplier: 1),
+                x.topAnchor.constraint(equalTo: viewPlacar.topAnchor, constant: 0),
                 x.centerXAnchor.constraint(equalTo: viewPlacar.centerXAnchor),
 
                 pontosTime1.topAnchor.constraint(equalTo: x.topAnchor),
@@ -146,16 +132,6 @@ extension SumulaPontosView {
                 quarto.topAnchor.constraint(equalTo: x.bottomAnchor),
             ])
 
-
-
-
-
-
-//        viewBotoes =
-//        viewBotoesTime1 =
-//        viewBotoesTime2 =
-//        btnControleQuarto =
-
         self.addSubview(viewBotoes)
         viewBotoes.addSubview(viewBotoesTime1)
         viewBotoes.addSubview(viewBotoesTime2)
@@ -168,21 +144,6 @@ extension SumulaPontosView {
             viewBotoes.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -8),
         ])
 
-
-
-
-
-
-
-
-
-
-//        btnLanceLivreTime1 =
-//        btn2PtsTime1 =
-//        btn3PtsTime1 =
-//        btnFaltasTime1 =
-//        btnTempoTime1 =
-//        btnEditarTime1 =
 
         viewBotoesTime1.addSubview(btnLanceLivreTime1)
         viewBotoesTime1.addSubview(btn2PtsTime1)
@@ -275,5 +236,7 @@ extension SumulaPontosView {
             btnControleQuarto.centerXAnchor.constraint(equalTo: viewBotoes.centerXAnchor),
             btnControleQuarto.bottomAnchor.constraint(equalTo: viewBotoes.bottomAnchor, constant: -8)
         ])
+
+        print()
     }
 }
