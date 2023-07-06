@@ -11,6 +11,10 @@ class MeusCampeonatosViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.topItem?.title = "Meus Campeonatos"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        view.backgroundColor = .systemBackground
 
     }
 }

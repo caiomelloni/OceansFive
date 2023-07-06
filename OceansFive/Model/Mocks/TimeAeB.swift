@@ -26,7 +26,6 @@ class TimeViewModel {
     ]
 }
 
-
 let timeA_jogadores: [Jogador] = [
     Jogador(id: UUID(), nome: "Igor Almo", pontos: 0, faltas: 0),
     Jogador(id: UUID(), nome: "Marcelo PPP", pontos: 0, faltas: 0),
