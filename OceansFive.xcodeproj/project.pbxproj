@@ -11,6 +11,7 @@
 		F8439EC52A54CC9900375491 /* PlayersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8439EC42A54CC9900375491 /* PlayersList.swift */; };
 		F8439EC72A55AF3500375491 /* EstatisticaTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8439EC62A55AF3500375491 /* EstatisticaTableView.swift */; };
 		F8439EC92A55E59600375491 /* InfosTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8439EC82A55E59600375491 /* InfosTableView.swift */; };
+		F8439ECF2A55F3B900375491 /* CampeonatoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8439ECE2A55F3B900375491 /* CampeonatoViewController.swift */; };
 		F8FC3E472A4CC7F20033E3E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FC3E462A4CC7F20033E3E0 /* AppDelegate.swift */; };
 		F8FC3E492A4CC7F20033E3E0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FC3E482A4CC7F20033E3E0 /* SceneDelegate.swift */; };
 		F8FC3E4B2A4CC7F20033E3E0 /* MainTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FC3E4A2A4CC7F20033E3E0 /* MainTabbarViewController.swift */; };
@@ -27,6 +28,7 @@
 		F8439EC42A54CC9900375491 /* PlayersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersList.swift; sourceTree = "<group>"; };
 		F8439EC62A55AF3500375491 /* EstatisticaTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstatisticaTableView.swift; sourceTree = "<group>"; };
 		F8439EC82A55E59600375491 /* InfosTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfosTableView.swift; sourceTree = "<group>"; };
+		F8439ECE2A55F3B900375491 /* CampeonatoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampeonatoViewController.swift; sourceTree = "<group>"; };
 		F8FC3E432A4CC7F20033E3E0 /* OceansFive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OceansFive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8FC3E462A4CC7F20033E3E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8FC3E482A4CC7F20033E3E0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 		F8439ECA2A55EFB500375491 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F8439ECC2A55F38C00375491 /* Campeonato */,
 				F8439ECB2A55EFBF00375491 /* SumulaPreenchida */,
 			);
 			path = Views;
@@ -75,6 +78,21 @@
 				F8439EC82A55E59600375491 /* InfosTableView.swift */,
 			);
 			path = SumulaPreenchida;
+			sourceTree = "<group>";
+		};
+		F8439ECC2A55F38C00375491 /* Campeonato */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Campeonato;
+			sourceTree = "<group>";
+		};
+		F8439ECD2A55F39D00375491 /* Campeonato */ = {
+			isa = PBXGroup;
+			children = (
+				F8439ECE2A55F3B900375491 /* CampeonatoViewController.swift */,
+			);
+			path = Campeonato;
 			sourceTree = "<group>";
 		};
 		F8FC3E3A2A4CC7F20033E3E0 = {
@@ -111,6 +129,7 @@
 		F8FC3E5A2A4CCA4E0033E3E0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F8439ECD2A55F39D00375491 /* Campeonato */,
 				F8439EC12A54962000375491 /* SumulaPreenchida */,
 				F8FC3E5B2A4CCA810033E3E0 /* Core */,
 			);
@@ -209,6 +228,7 @@
 				F8439EC02A544A1000375491 /* SumulaPreenchidaViewController.swift in Sources */,
 				F8FC3E632A4CCB740033E3E0 /* PerfilViewController.swift in Sources */,
 				F8FC3E662A4CCE4B0033E3E0 /* CustomColor.swift in Sources */,
+				F8439ECF2A55F3B900375491 /* CampeonatoViewController.swift in Sources */,
 				F8FC3E4B2A4CC7F20033E3E0 /* MainTabbarViewController.swift in Sources */,
 				F8439EC72A55AF3500375491 /* EstatisticaTableView.swift in Sources */,
 				F8FC3E612A4CCB440033E3E0 /* MeusCampeonatosViewController.swift in Sources */,
