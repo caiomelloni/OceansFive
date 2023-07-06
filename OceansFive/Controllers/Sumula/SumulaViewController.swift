@@ -85,7 +85,6 @@ class SumulaViewController: UIViewController {
                 tableVw.removeFromSuperview()
                 NSLayoutConstraint.activate(configurarView(pontosVw))
             case 3:
-
                 pontosVw.removeFromSuperview()
                 tableVw.removeFromSuperview()
             default:
