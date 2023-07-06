@@ -61,12 +61,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		31FD702D2A55ADEB000F4C87 /* Criar Torneio */ = {
+		31FD702D2A55ADEB000F4C87 /* CriarTorneio */ = {
 			isa = PBXGroup;
 			children = (
 				31FD702E2A55AE6F000F4C87 /* Criar Torneio.swift */,
 			);
-			path = "Criar Torneio";
+			path = CriarTorneio;
 			sourceTree = "<group>";
 		};
 		9562FD882A52F587005945A9 /* Views */ = {
@@ -165,7 +165,7 @@
 		F8FC3E5A2A4CCA4E0033E3E0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				31FD702D2A55ADEB000F4C87 /* Criar Torneio */,
+				31FD702D2A55ADEB000F4C87 /* CriarTorneio */,
 				9562FD902A53035D005945A9 /* Sumula */,
 				F8FC3E5B2A4CCA810033E3E0 /* Core */,
 			);
