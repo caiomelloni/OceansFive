@@ -68,6 +68,8 @@ class CampeonatoViewController: UIViewController {
             }),
             Jogo(timeA: "LCN", timeB: "LAU", placar: "57 x 37", backgroundColor: .darkGray, onClick: {
                 
+                self.navigationController?.pushViewController(SumulaPreenchidaViewController(), animated: true)
+                
             }),
             Jogo(timeA: "LCN", timeB: "LAU", placar: "57 x 37", backgroundColor: .black, onClick: {
                 
