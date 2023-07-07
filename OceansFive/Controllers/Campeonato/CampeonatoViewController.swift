@@ -62,11 +62,13 @@ class CampeonatoViewController: UIViewController {
         let jogos: [Jogo] = [
             Jogo(timeA: "LCN", timeB: "LAU", placar: "-- x --", backgroundColor: .red, onClick: {
                 //tela do marcelo aqui
-                let newViewController = ExplorarViewController()
+                let newViewController = SumulaViewController()
                 self.navigationController?.pushViewController(newViewController, animated: true)
 
             }),
             Jogo(timeA: "LCN", timeB: "LAU", placar: "57 x 37", backgroundColor: .darkGray, onClick: {
+                
+                self.navigationController?.pushViewController(SumulaPreenchidaViewController(), animated: true)
                 
             }),
             Jogo(timeA: "LCN", timeB: "LAU", placar: "57 x 37", backgroundColor: .black, onClick: {
@@ -92,14 +94,15 @@ class CampeonatoViewController: UIViewController {
     func setNavBar() {
         //Navbar
         let navbar = navigationController?.navigationBar
-        navbar?.topItem?.title = "Campeonato"
+        //navbar?.topItem?.title = "Campeonato"
+        self.title = "Campeonato"
         navbar?.prefersLargeTitles = true
         navbar?.topItem?.rightBarButtonItem = {
            let btn = UIBarButtonItem()
             btn.image = UIImage(systemName: "list.bullet.circle")
             return btn
         }()
-        navbar?.topItem?.backButtonTitle = "Meus campeonatos"
+        navbar?.topItem?.backButtonTitle = "Explorar"
         //
     }
     

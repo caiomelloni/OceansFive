@@ -17,10 +17,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        //window?.rootViewController = MainTabbarViewController()
-        window?.rootViewController = UINavigationController(rootViewController: CampeonatoViewController())
-        window?.makeKeyAndVisible() 
+        window?.rootViewController = MainTabbarViewController()
+        window?.makeKeyAndVisible()
+        window?.tintColor = PaleteColor.primary
     }
+    
+    
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
