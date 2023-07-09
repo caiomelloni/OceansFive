@@ -14,7 +14,7 @@ class MainTabbarViewController: UITabBarController {
         view.backgroundColor = .systemBackground
         
         let explorarVC = UINavigationController(rootViewController: ExplorarViewController())
-        let meusCampeonatosVC = UINavigationController(rootViewController: Criar_Torneio())
+        let meusCampeonatosVC = UINavigationController(rootViewController: MeusCampeonatosViewController())
         let perfilVC = UINavigationController(rootViewController: PerfilViewController())
         
         
@@ -30,6 +30,8 @@ class MainTabbarViewController: UITabBarController {
         perfilVC.tabBarItem.selectedImage = UIImage(systemName: "person.fill")
         perfilVC.tabBarItem.title = "Perfil"
         setViewControllers([explorarVC, meusCampeonatosVC, perfilVC], animated: true)
+        
+        self.tabBar.backgroundColor = .systemBackground
     }
 
 
