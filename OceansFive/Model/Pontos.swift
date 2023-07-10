@@ -12,8 +12,8 @@ import Foundation
 // se for no tipo Sumula contem o ID do jogador que marcou o ponto, repetidas vezes representando o numero de cestas marcadas pelo jogador
 // se for no Tipo Jogador, contem o ID do jogo, repetidas vezes representando o numero de cestas marcadas naquele jogo
 struct Pontos: Equatable {
-    var lanceLivrePonto: Array<Array<UUID>>
-    var doisPontos: Array<Array<UUID>>
-    var tresPontos: Array<Array<UUID>>
+    var lanceLivrePonto: Array<Array<UUID>> = [[],[],[],[]]
+    var doisPontos: Array<Array<UUID>> = [[],[],[],[]]
+    var tresPontos: Array<Array<UUID>> = [[],[],[],[]]
 }
 
