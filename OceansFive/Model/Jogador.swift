@@ -6,11 +6,13 @@
 //
 
 import Foundation
-
+// os arrays representam os quartos, estes dados sao preenchidos ao final do jogo
 struct Jogador: Equatable {
-    let id: UUID
+    let id: UUID = UUID()
     let nome: String
-    let pontos: Pontos
-    let faltas: Faltas
+    let pontos: Pontos = Pontos(lanceLivrePonto: [[],[],[],[]],
+                                doisPontos: [[],[],[],[]],
+                                tresPontos: [[],[],[],[]])
+    let faltas: [[Faltas?]] = [[],[],[],[]]
     //let times: [Time]
 }

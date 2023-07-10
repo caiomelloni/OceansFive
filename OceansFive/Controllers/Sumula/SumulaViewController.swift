@@ -7,8 +7,35 @@
 
 import UIKit
 
+protocol SumulaViewDelegate: AnyObject {
+    func didTapBtn(_ buttonTag: Int)
+}
+
 class SumulaViewController: UIViewController {
 
+    lazy var sumula: Sumula = Sumula(id: UUID(),
+                            timeA: TimeJogando(time: timeA,
+                                               faltas: [[],[],[],[]],
+                                               tempos: [[]],
+                                               jogando: [],
+                                               ponto: Pontos(lanceLivrePonto: [[],[],[]],
+                                                             doisPontos: [[],[],[]],
+                                                             tresPontos: [[],[],[]]),
+                                                             numeroJogador: [:]),
+                            timeB: TimeJogando(time: timeB,
+                                               faltas: [[],[],[],[]],
+                                               tempos: [[]],
+                                               jogando: [],
+                                               ponto: Pontos(lanceLivrePonto: [[],[],[]],
+                                                             doisPontos: [[],[],[]],
+                                                             tresPontos: [[],[],[]]),
+                                                             numeroJogador: [:]),
+                            campeonato: campeonato_mock,
+                            arbitros: ["JuJu"],
+                            local: "Boqueirão",
+                            horarioInicio: Date(),
+                            horarioTermino: Date(),
+                            mesa: ["Fausto Silva", "Marcos Mion"])
     var currentView: UIView = UIView()
     // MARK: Properties
 
@@ -69,6 +96,8 @@ class SumulaViewController: UIViewController {
         )
     }
 
+
+
     @objc func changeSelector() {
 
         haptic.selectionChanged()
@@ -76,10 +105,12 @@ class SumulaViewController: UIViewController {
             case 0:
                 insertViewSection(tableVw)
                 tableVw.loadData(segmentedControl.selectedSegmentIndex)
+                
             case 1:
                 insertViewSection(tableVw)
                 tableVw.loadData(segmentedControl.selectedSegmentIndex)
             case 2:
+                pontosVw.delegate = self
                 insertViewSection(pontosVw)
             case 3:
                 insertViewSection(infosVw)
@@ -88,6 +119,78 @@ class SumulaViewController: UIViewController {
 
         }
     }
+
+}
+
+extension SumulaViewController: SumulaViewDelegate {
+    func didTapBtn(_ buttonTag: Int) {
+        switch buttonTag {
+            case 0:
+                didTapBtnPts(pts: 1, time: sumula.timeA)
+                print("\(buttonTag) tapped")
+                print(sumula.timeA)
+            case 1:
+                didTapBtnPts(pts: 2, time: sumula.timeA)
+                print("\(buttonTag) tapped")
+            case 2:
+                didTapBtnPts(pts: 3, time: sumula.timeA)
+                print("\(buttonTag) tapped")
+            case 3:
+                print("\(buttonTag) tapped")
+            case 4:
+                print("\(buttonTag) tapped")
+            case 5:
+                print("\(buttonTag) tapped")
+            case 6:
+                didTapBtnPts(pts: 1, time: sumula.timeB)
+                print("\(buttonTag) tapped")
+            case 7:
+                didTapBtnPts(pts: 2, time: sumula.timeB)
+                print("\(buttonTag) tapped")
+            case 8:
+                didTapBtnPts(pts: 3, time: sumula.timeB)
+                print("\(buttonTag) tapped")
+            case 9:
+                print("\(buttonTag) tapped")
+            case 10:
+                print("\(buttonTag) tapped")
+            case 11:
+                print("\(buttonTag) tapped")
+            default:
+                print("did tap button")
+        }
+        func didTapBtnPts(pts: Int, time: TimeJogando) {
+            addButtonTapped(pts: pts, time: time)
+        }
+        func didTapBtnFalta() {}
+        func didTapBtnTempo() {}
+        func didTapBtnEditar() {}
+    }
+
+    func addButtonTapped(pts: Int, time: TimeJogando) {
+        let alertController = UIAlertController(title: "\(time.time.nome)", message: "Adicionar \(pts) ponto(s) ao jogador.", preferredStyle: .alert)
+        alertController.addTextField { (textField) in
+          textField.placeholder = "Digite o número"
+          textField.keyboardType = .phonePad
+        }
+        let okAction = UIAlertAction(title: "Concluir", style: .default) { (_) in
+          if let numberString = alertController.textFields?.first?.text,
+            let number = Int(numberString) {
+            // Ação a ser executada quando o botão "Concluir" do alerta modal for pressionado
+            print("Número digitado: \(number)")
+          } else {
+            print("Número inválido")
+          }
+        }
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .destructive, handler: nil)
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+      }
+
+//    let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped)
+//)
 
 }
 

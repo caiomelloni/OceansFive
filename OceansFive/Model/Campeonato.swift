@@ -16,8 +16,6 @@ struct Campeonato {
     //let colaboradores: [Colaboradores]
 }
 
-var camp1:Campeonato = Campeonato(image: UIImage(imageLiteralResourceName: "cpi"), id: UUID(), nome: "TUC", qtdTimes: 1, times: TimeViewModel().times)
+var campeonato_mock: Campeonato = Campeonato(image: UIImage(imageLiteralResourceName: "cpi"), id: UUID(), nome: "TUC", qtdTimes: 1, times: TimeViewModel().times)
 
     
-
-
