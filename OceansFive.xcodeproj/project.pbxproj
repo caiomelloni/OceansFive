@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0358C6312A5592BC0089B267 /* CampeonatoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0358C6302A5592BC0089B267 /* CampeonatoTableViewCell.swift */; };
+		0358C6312A5592BC0089B267 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0358C6302A5592BC0089B267 /* CardView.swift */; };
 		0358C6332A56DED70089B267 /* Sumula.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0358C6322A56DED70089B267 /* Sumula.swift */; };
 		0358C6352A56EE230089B267 /* TimeJogando.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0358C6342A56EE230089B267 /* TimeJogando.swift */; };
 		0358C6372A56EE450089B267 /* Pontos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0358C6362A56EE450089B267 /* Pontos.swift */; };
@@ -25,6 +25,7 @@
 		95CE6C2C2A573EC300776860 /* SumulaInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CE6C2B2A573EC300776860 /* SumulaInfoView.swift */; };
 		F81235212A572D3A00953E1C /* JogosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81235202A572D3A00953E1C /* JogosView.swift */; };
 		F81235232A572F7800953E1C /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81235222A572F7800953E1C /* UIViewExtension.swift */; };
+		F8325A322A5AE83400233CBA /* CardSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8325A312A5AE83400233CBA /* CardSection.swift */; };
 		F8439EC02A544A1000375491 /* SumulaPreenchidaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8439EBF2A544A1000375491 /* SumulaPreenchidaViewController.swift */; };
 		F8439EC52A54CC9900375491 /* PlayersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8439EC42A54CC9900375491 /* PlayersList.swift */; };
 		F8439EC72A55AF3500375491 /* EstatisticaTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8439EC62A55AF3500375491 /* EstatisticaTableView.swift */; };
@@ -42,7 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0358C6302A5592BC0089B267 /* CampeonatoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampeonatoTableViewCell.swift; sourceTree = "<group>"; };
+		0358C6302A5592BC0089B267 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		0358C6322A56DED70089B267 /* Sumula.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sumula.swift; sourceTree = "<group>"; };
 		0358C6342A56EE230089B267 /* TimeJogando.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeJogando.swift; sourceTree = "<group>"; };
 		0358C6362A56EE450089B267 /* Pontos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pontos.swift; sourceTree = "<group>"; };
@@ -60,6 +61,7 @@
 		95CE6C2B2A573EC300776860 /* SumulaInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumulaInfoView.swift; sourceTree = "<group>"; };
 		F81235202A572D3A00953E1C /* JogosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JogosView.swift; sourceTree = "<group>"; };
 		F81235222A572F7800953E1C /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		F8325A312A5AE83400233CBA /* CardSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSection.swift; sourceTree = "<group>"; };
 		F8439EBF2A544A1000375491 /* SumulaPreenchidaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumulaPreenchidaViewController.swift; sourceTree = "<group>"; };
 		F8439EC42A54CC9900375491 /* PlayersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersList.swift; sourceTree = "<group>"; };
 		F8439EC62A55AF3500375491 /* EstatisticaTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstatisticaTableView.swift; sourceTree = "<group>"; };
@@ -92,7 +94,8 @@
 		0358C62F2A55924B0089B267 /* Cards */ = {
 			isa = PBXGroup;
 			children = (
-				0358C6302A5592BC0089B267 /* CampeonatoTableViewCell.swift */,
+				0358C6302A5592BC0089B267 /* CardView.swift */,
+				F8325A312A5AE83400233CBA /* CardSection.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -103,14 +106,6 @@
 				31FD702E2A55AE6F000F4C87 /* Criar Torneio.swift */,
 			);
 			path = CriarTorneio;
-			sourceTree = "<group>";
-		};
-		9562FD882A52F587005945A9 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				0358C6302A5592BC0089B267 /* CampeonatoTableViewCell.swift */,
-			);
-			path = Cards;
 			sourceTree = "<group>";
 		};
 		9562FD892A52F593005945A9 /* Sumula */ = {
@@ -353,7 +348,7 @@
 			files = (
 				9562FDA92A5312DE005945A9 /* SumulaTimeTableViewCell.swift in Sources */,
 				9562FDA92A5312DE005945A9 /* SumulaTimeTableViewCell.swift in Sources */,
-				0358C6312A5592BC0089B267 /* CampeonatoTableViewCell.swift in Sources */,
+				0358C6312A5592BC0089B267 /* CardView.swift in Sources */,
 				F8439EC02A544A1000375491 /* SumulaPreenchidaViewController.swift in Sources */,
 				F8FC3E632A4CCB740033E3E0 /* PerfilViewController.swift in Sources */,
 				95CE6C2C2A573EC300776860 /* SumulaInfoView.swift in Sources */,
@@ -378,6 +373,7 @@
 				F8439EC52A54CC9900375491 /* PlayersList.swift in Sources */,
 				F8FC3E5F2A4CCAFB0033E3E0 /* ExplorarViewController.swift in Sources */,
 				9562FD922A530378005945A9 /* SumulaViewController.swift in Sources */,
+				F8325A322A5AE83400233CBA /* CardSection.swift in Sources */,
 				9562FDA32A530879005945A9 /* TimeAeB.swift in Sources */,
 				95BE05D62A56F6AB00216B04 /* ViewController.swift in Sources */,
 				9562FDA72A531156005945A9 /* SumulaTimeTableView.swift in Sources */,
