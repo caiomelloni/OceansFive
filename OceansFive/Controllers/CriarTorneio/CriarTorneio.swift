@@ -1,4 +1,5 @@
 import UIKit
+import CloudKit
 
 class Criar_Torneio: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     let tableData = ["Nome", "Formato", "Quantidade de Times", "Adicionar Colaboradores"]
@@ -189,19 +190,19 @@ class Criar_Torneio: UIViewController, UITableViewDataSource, UITableViewDelegat
     func showFormatOptions() {
         let alertController = UIAlertController(title: "Formato", message: nil, preferredStyle: .actionSheet)
 
-        let mataMataAction = UIAlertAction(title: "Mata-Mata", style: .default) { [weak self] _ in
+        let mataMataAction = UIAlertAction(title: FormatoTorneio.mataMata.rawValue, style: .default) { [weak self] _ in
             self?.formatSelected = "Mata-Mata"
             self?.tableView.reloadData()
         }
         alertController.addAction(mataMataAction)
 
-        let faseGruposAction = UIAlertAction(title: "Fase de Grupos", style: .default) { [weak self] _ in
+        let faseGruposAction = UIAlertAction(title: FormatoTorneio.faseGrupos.rawValue, style: .default) { [weak self] _ in
             self?.formatSelected = "Fase de Grupos"
             self?.tableView.reloadData()
         }
         alertController.addAction(faseGruposAction)
 
-        let faseGruposMataMataAction = UIAlertAction(title: "Fase de Grupos + Mata-Mata", style: .default) { [weak self] _ in
+        let faseGruposMataMataAction = UIAlertAction(title: FormatoTorneio.faseGruposMaisMataMata.rawValue, style: .default) { [weak self] _ in
             self?.formatSelected = "Fase de Grupos + Mata-Mata"
             self?.tableView.reloadData()
         }
@@ -248,7 +249,16 @@ class Criar_Torneio: UIViewController, UITableViewDataSource, UITableViewDelegat
 
     @objc func saveButtonTapped() {
         // Lógica para salvar os dados
-        print("Salvar botão pressionado")
+        print("botão salver pressionado")
+        
+        let nomeTorneio = nameTextField?.text
+        let formato = FormatoTorneio(rawValue: formatSelected ?? FormatoTorneio.faseGrupos.rawValue)
+        let qtdTimes = quantityStepper?.value
+
+        Backend.createTorneio(nome: nomeTorneio!, formato: formato!, qtdTimes: Int(qtdTimes!)) { record, error in
+           // lidar com handler de erro e feedback ao usuario
+        }
+       
     }
     
     // MARK: - UITextFieldDelegate

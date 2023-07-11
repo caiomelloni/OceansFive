@@ -10,11 +10,11 @@ import UIKit
 class MeusCampeonatosViewController: UIViewController {
     
     var cardsSection: CardsSectionView = CardsSectionView(cards: [])
-  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initCardsSection()
-        setUpTitle()
+        setUpAppBar()
         layout()
     }
     
@@ -31,10 +31,17 @@ class MeusCampeonatosViewController: UIViewController {
         ])
     }
     
-    func setUpTitle() {
+    func setUpAppBar() {
         self.title = "Meus Campeonatos"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         view.backgroundColor = .secondarySystemBackground
+        self.navigationController?.navigationBar.topItem?.rightBarButtonItem = {
+            let btn = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createTorneior))
+            
+            
+            btn.image = UIImage(systemName: "plus")
+            return btn
+        }()
     }
     
     func initCardsSection() {
@@ -54,6 +61,10 @@ class MeusCampeonatosViewController: UIViewController {
         
         cardsSection = CardsSectionView(cards: cards)
         
+    }
+    
+    @objc func createTorneior() {
+        self.navigationController?.pushViewController(Criar_Torneio(), animated: true)
     }
 }
 
