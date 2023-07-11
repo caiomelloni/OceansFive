@@ -9,5 +9,5 @@ import Foundation
 
 struct Faltas: Equatable {
     let jogoID: UUID
-    let qtdFaltas: Int
+    var qtdFaltas: Int
 }

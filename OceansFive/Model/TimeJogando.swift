@@ -13,5 +13,11 @@ struct TimeJogando {
     var tempos: Array<Array<Int>>
     var jogando: [Jogador]
     var ponto: Pontos
-    var numeroJogador: Dictionary<UUID,Int>
+    var numeroJogador: Dictionary<Int,UUID>
 }
+
+
+
+// Criação dos times jogando
+var timeJogando1 = TimeJogando(time: time1, faltas: [], tempos: [], jogando: [], ponto: Pontos(lanceLivrePonto: [[],[],[],[]], doisPontos: [[],[],[],[]], tresPontos: [[],[],[],[]]), numeroJogador: [:])
+let timeJogando2 = TimeJogando(time: time2, faltas: [], tempos: [], jogando: [], ponto: Pontos(lanceLivrePonto: [[],[],[],[]], doisPontos: [[],[],[],[]], tresPontos: [[],[],[],[]]), numeroJogador: [:])
