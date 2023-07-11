@@ -76,9 +76,25 @@ struct Sum {
         }
     }
     
-    func atualizatabela() {
+    func falta() {
+        falt.qtdFaltas += 1
         
         
+            timeJogando1.faltas[periodo].append(timeJogando1.numeroJogador[10]!)
+            
+            for (index, jg) in jogadores1.enumerated() {
+                if jg.id == timeJogando1.numeroJogador[10]{
+                    //colocar o UUID do jogo e nao do jogador
+                    jogadores1[index].faltas.qtdFaltas += 1
+                }
+                else{
+                }
+        }
+        
+    }
+    
+    func tempo() {
+        timeJogando1.tempos[periodo].append(timeJogando1.tempos[periodo].count + 1)
     }
     
     

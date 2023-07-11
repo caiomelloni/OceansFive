@@ -19,5 +19,5 @@ struct TimeJogando {
 
 
 // Criação dos times jogando
-var timeJogando1 = TimeJogando(time: time1, faltas: [], tempos: [], jogando: [], ponto: Pontos(lanceLivrePonto: [[],[],[],[]], doisPontos: [[],[],[],[]], tresPontos: [[],[],[],[]]), numeroJogador: [:])
-let timeJogando2 = TimeJogando(time: time2, faltas: [], tempos: [], jogando: [], ponto: Pontos(lanceLivrePonto: [[],[],[],[]], doisPontos: [[],[],[],[]], tresPontos: [[],[],[],[]]), numeroJogador: [:])
+var timeJogando1 = TimeJogando(time: time1, faltas: [[],[],[],[]], tempos: [[],[],[],[]], jogando: [], ponto: Pontos(lanceLivrePonto: [[],[],[],[]], doisPontos: [[],[],[],[]], tresPontos: [[],[],[],[]]), numeroJogador: [:])
+let timeJogando2 = TimeJogando(time: time2, faltas: [[],[],[],[]], tempos: [[],[],[],[]], jogando: [], ponto: Pontos(lanceLivrePonto: [[],[],[],[]], doisPontos: [[],[],[],[]], tresPontos: [[],[],[],[]]), numeroJogador: [:])

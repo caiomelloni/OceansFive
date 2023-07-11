@@ -14,13 +14,13 @@ class TimeViewModel {
             nome: "TimeA",
             abreviado: "TiA",
             tecnico: "Maradona",
-            jogadores: timeA_jogadores
+            jogadores: jogadores1
             ),
         Time(id: UUID(),
             nome: "TimeB",
             abreviado: "TiB",
             tecnico: "Pelé",
-            jogadores: timeB_jogadores
+            jogadores: jogadores2
             ),
 
     ]

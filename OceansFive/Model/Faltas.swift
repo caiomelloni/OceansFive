@@ -11,3 +11,6 @@ struct Faltas: Equatable {
     let jogoID: UUID
     var qtdFaltas: Int
 }
+
+var falt = Faltas(jogoID: UUID(), qtdFaltas: 0)
+

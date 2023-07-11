@@ -17,7 +17,7 @@ struct Jogador: Equatable {
 
 
 var jogadores1 = [
-    Jogador(id: UUID(), nome: "João Silva", pontos: Pontos(lanceLivrePonto: [[],[],[],[]], doisPontos: [[],[],[],[]], tresPontos: [[],[],[],[]]), faltas: Faltas(jogoID: UUID(), qtdFaltas: 0)),
+    Jogador(id: UUID(), nome: "João Silva", pontos: Pontos(lanceLivrePonto: [[UUID()],[],[],[]], doisPontos: [[],[],[],[]], tresPontos: [[],[],[],[]]), faltas: Faltas(jogoID: UUID(), qtdFaltas: 0)),
     Jogador(id: UUID(), nome: "Pedro Santos", pontos: Pontos(lanceLivrePonto: [[],[],[],[]], doisPontos: [[],[],[],[]], tresPontos: [[],[],[],[]]), faltas: Faltas(jogoID: UUID(), qtdFaltas: 0)),
     Jogador(id: UUID(), nome: "André Oliveira", pontos: Pontos(lanceLivrePonto: [[],[],[],[]], doisPontos: [[],[],[],[]], tresPontos: [[],[],[],[]]), faltas: Faltas(jogoID: UUID(), qtdFaltas: 0)),
     Jogador(id: UUID(), nome: "Lucas Rodrigues", pontos: Pontos(lanceLivrePonto: [[],[],[],[]], doisPontos: [[],[],[],[]], tresPontos: [[],[],[],[]]), faltas: Faltas(jogoID: UUID(), qtdFaltas: 0)),
