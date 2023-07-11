@@ -36,6 +36,18 @@ let tabelaClassificacao: [Info] = [
 
 ]
 
+let pontos: [Info] = [
+    Info(icon: NumberIcon.view("1"), leading: "Leblon", trailing: "9 pts"),
+    Info(icon: NumberIcon.view("2"), leading: "Marcelão", trailing: "6 pts"),
+    Info(icon: NumberIcon.view("3"), leading: "Brunão", trailing: "4 pts"),
+    Info(icon: NumberIcon.view("4"), leading: "Caião", trailing: "3 pts"),
+    Info(icon: NumberIcon.view("5"), leading: "Pavas", trailing: "1 pts"),
+    Info(icon: NumberIcon.view("6"), leading: "Leblon", trailing: "0 pts"),
+    Info(icon: NumberIcon.view("7"), leading: "Marcelão", trailing: "0 pts"),
+    Info(icon: NumberIcon.view("8"), leading: "Brunão", trailing: "0 pts"),
+
+]
+
 class InfosView: UIView {
    
     private var tableData: [Info] = []

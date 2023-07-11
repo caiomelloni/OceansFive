@@ -11,7 +11,7 @@ import UIKit
 
 class CampeonatoViewController: UIViewController {
     
-    let segmentedControlItems = ["Tabela", "Jogos", "Estatisticas"]
+    let segmentedControlItems = ["Tabela", "Jogos", "Cestinhas"]
     
     lazy var segmentedControl: UISegmentedControl = {
         let vw = UISegmentedControl(items: segmentedControlItems)
@@ -21,6 +21,12 @@ class CampeonatoViewController: UIViewController {
         return vw
     }()
     
+    let statsVW: UIView = {
+       let view = InfosView(pontos)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     let tabelaView: InfosView = {
         let view = InfosView(tabelaClassificacao)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -28,8 +34,6 @@ class CampeonatoViewController: UIViewController {
     }()
     
     var jogosView: UIView = UIView()
-        
-    
     var currentView: UIView = UIView()
 
     override func viewDidLoad() {
@@ -113,7 +117,7 @@ class CampeonatoViewController: UIViewController {
         case 1:
             setCurrentView(jogosView)
         case 2:
-            print("2")
+            setCurrentView(statsVW)
         default:
             print("out of range segmented control item")
         }
