@@ -21,3 +21,13 @@ struct Sumula {
     var horarioTermino: Date
     var mesa: [String]
 }
+
+
+let sumula = Sumula(id: UUID(), timeA: timeJogando1, timeB: timeJogando2, campeonato: camp1, periodosExtra: 0, arbitros: ["Árbitro 1", "Árbitro 2"], local: "Ginásio XYZ", horarioInicio: Date(), horarioTermino: Date(), mesa: ["Membro 1", "Membro 2"])
+
+
+
+
+
+
+

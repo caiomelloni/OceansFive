@@ -18,6 +18,10 @@ struct Time {
 }
 
 
+// Criação dos times
+let time1 = Time(id: UUID(), nome: "Time 1", abreviado: "T1", tecnico: "Técnico 1", jogadores: jogadores1)
+
+let time2 = Time(id: UUID(), nome: "Time 2", abreviado: "T2", tecnico: "Técnico 2", jogadores: jogadores2)
 
 
 		
