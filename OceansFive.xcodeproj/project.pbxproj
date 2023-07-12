@@ -16,12 +16,14 @@
 		9562FD922A530378005945A9 /* SumulaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FD912A530378005945A9 /* SumulaViewController.swift */; };
 		9562FD992A5306FF005945A9 /* Jogador.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FD982A5306FF005945A9 /* Jogador.swift */; };
 		9562FD9B2A53074D005945A9 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FD9A2A53074D005945A9 /* Time.swift */; };
-		9562FD9D2A5307A1005945A9 /* Campenato.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FD9C2A5307A1005945A9 /* Campenato.swift */; };
+		9562FD9D2A5307A1005945A9 /* Campeonato.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FD9C2A5307A1005945A9 /* Campeonato.swift */; };
 		9562FDA32A530879005945A9 /* TimeAeB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FDA22A530879005945A9 /* TimeAeB.swift */; };
 		9562FDA72A531156005945A9 /* SumulaTimeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FDA62A531156005945A9 /* SumulaTimeTableView.swift */; };
 		9562FDA92A5312DE005945A9 /* SumulaTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FDA82A5312DE005945A9 /* SumulaTimeTableViewCell.swift */; };
 		9562FDF62A559701005945A9 /* SumulaPontosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FDF52A559701005945A9 /* SumulaPontosView.swift */; };
 		958511472A57101E004B4787 /* Faltas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958511462A57101E004B4787 /* Faltas.swift */; };
+		95AB7F982A5DA527005ACC36 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AB7F972A5DA527005ACC36 /* Database.swift */; };
+		95AB7F9A2A5DB788005ACC36 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AB7F992A5DB788005ACC36 /* Singleton.swift */; };
 		95BE05D62A56F6AB00216B04 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BE05D52A56F6AB00216B04 /* ViewController.swift */; };
 		95CE6C2C2A573EC300776860 /* SumulaInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CE6C2B2A573EC300776860 /* SumulaInfoView.swift */; };
 		F81235212A572D3A00953E1C /* JogosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81235202A572D3A00953E1C /* JogosView.swift */; };
@@ -53,12 +55,14 @@
 		9562FD912A530378005945A9 /* SumulaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumulaViewController.swift; sourceTree = "<group>"; };
 		9562FD982A5306FF005945A9 /* Jogador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jogador.swift; sourceTree = "<group>"; };
 		9562FD9A2A53074D005945A9 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
-		9562FD9C2A5307A1005945A9 /* Campenato.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campenato.swift; sourceTree = "<group>"; };
+		9562FD9C2A5307A1005945A9 /* Campeonato.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campeonato.swift; sourceTree = "<group>"; };
 		9562FDA22A530879005945A9 /* TimeAeB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAeB.swift; sourceTree = "<group>"; };
 		9562FDA62A531156005945A9 /* SumulaTimeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumulaTimeTableView.swift; sourceTree = "<group>"; };
 		9562FDA82A5312DE005945A9 /* SumulaTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumulaTimeTableViewCell.swift; sourceTree = "<group>"; };
 		9562FDF52A559701005945A9 /* SumulaPontosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumulaPontosView.swift; sourceTree = "<group>"; };
 		958511462A57101E004B4787 /* Faltas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faltas.swift; sourceTree = "<group>"; };
+		95AB7F972A5DA527005ACC36 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		95AB7F992A5DB788005ACC36 /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		95BE05D52A56F6AB00216B04 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		95CE6C2B2A573EC300776860 /* SumulaInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumulaInfoView.swift; sourceTree = "<group>"; };
 		F81235202A572D3A00953E1C /* JogosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JogosView.swift; sourceTree = "<group>"; };
@@ -136,7 +140,7 @@
 				0358C6322A56DED70089B267 /* Sumula.swift */,
 				9562FD982A5306FF005945A9 /* Jogador.swift */,
 				9562FD9A2A53074D005945A9 /* Time.swift */,
-				9562FD9C2A5307A1005945A9 /* Campenato.swift */,
+				9562FD9C2A5307A1005945A9 /* Campeonato.swift */,
 				0358C6342A56EE230089B267 /* TimeJogando.swift */,
 				0358C6362A56EE450089B267 /* Pontos.swift */,
 				958511462A57101E004B4787 /* Faltas.swift */,
@@ -148,7 +152,9 @@
 		9562FDA12A530866005945A9 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				95AB7F972A5DA527005ACC36 /* Database.swift */,
 				9562FDA22A530879005945A9 /* TimeAeB.swift */,
+				95AB7F992A5DB788005ACC36 /* Singleton.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -357,6 +363,7 @@
 				95CE6C2C2A573EC300776860 /* SumulaInfoView.swift in Sources */,
 				9562FD992A5306FF005945A9 /* Jogador.swift in Sources */,
 				9562FD9B2A53074D005945A9 /* Time.swift in Sources */,
+				95AB7F9A2A5DB788005ACC36 /* Singleton.swift in Sources */,
 				0358C6332A56DED70089B267 /* Sumula.swift in Sources */,
 				F81235212A572D3A00953E1C /* JogosView.swift in Sources */,
 				F8FC3E662A4CCE4B0033E3E0 /* CustomColor.swift in Sources */,
@@ -370,7 +377,7 @@
 				0358C6372A56EE450089B267 /* Pontos.swift in Sources */,
 				F8FC3E472A4CC7F20033E3E0 /* AppDelegate.swift in Sources */,
 				958511472A57101E004B4787 /* Faltas.swift in Sources */,
-				9562FD9D2A5307A1005945A9 /* Campenato.swift in Sources */,
+				9562FD9D2A5307A1005945A9 /* Campeonato.swift in Sources */,
 				F8FC3E492A4CC7F20033E3E0 /* SceneDelegate.swift in Sources */,
 				F8439EC92A55E59600375491 /* InfosTableView.swift in Sources */,
 				F8439EC52A54CC9900375491 /* PlayersList.swift in Sources */,
@@ -379,6 +386,7 @@
 				F8325A322A5AE83400233CBA /* CardSection.swift in Sources */,
 				9562FDA32A530879005945A9 /* TimeAeB.swift in Sources */,
 				95BE05D62A56F6AB00216B04 /* ViewController.swift in Sources */,
+				95AB7F982A5DA527005ACC36 /* Database.swift in Sources */,
 				9562FDA72A531156005945A9 /* SumulaTimeTableView.swift in Sources */,
 				0358C63E2A5C309A0089B267 /* Funcoes.swift in Sources */,
 				31FD702F2A55AE6F000F4C87 /* Criar Torneio.swift in Sources */,

@@ -62,8 +62,9 @@ class SumulaTimeTableViewCell: UITableViewCell {
         nomeLbl.text = jogador?.nome
         pontosLbl.text = "\(lv + dp + tp)"
         faltasLbl.text = "\(jogador?.faltas.qtdFaltas ?? 0)"
+        
 
-        self.contentView.addSubview(rowVw)
+        contentView.addSubview(rowVw)
 
         rowVw.addSubview(numeroLbl)
         rowVw.addSubview(nomeLbl)
@@ -73,8 +74,8 @@ class SumulaTimeTableViewCell: UITableViewCell {
 
         NSLayoutConstraint.activate([
             rowVw.heightAnchor.constraint(equalToConstant: 44),
-            rowVw.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
-            rowVw.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
+            rowVw.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
+            rowVw.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),
 
             numeroLbl.topAnchor.constraint(equalTo: rowVw.topAnchor, constant: 16),
             numeroLbl.leadingAnchor.constraint(equalTo: rowVw.leadingAnchor, constant: 56),

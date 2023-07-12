@@ -10,20 +10,27 @@ import UIKit
 
 
 struct Sumula {
-    let id : UUID
-    let timeA: TimeJogando
-    let timeB: TimeJogando
-    let campeonato: Campeonato
+    //identificador da sumula
+    var id : UUID
+    //contem as caracteristicas dinamicas da partida de times durante o jogo
+    var timeA: TimeJogando
+    var timeB: TimeJogando
+    // Contem dados referentes ao campeoanto que pertence
+    //let campeonato: Campeonato
+    // contem dados sobre prorrogação da partida
     var periodosExtra: Int = 0
-    let arbitros: [String]
-    let local: String
+    // String com nome dos arbitros
+    var arbitros: [String]
+    // local do jogo
+    var local: String
+    //Marcadores de partida
     var horarioInicio: Date
     var horarioTermino: Date
+    // responsáveis pela mesa (fiscal e mesa)
     var mesa: [String]
 }
 
 
-let sumula = Sumula(id: UUID(), timeA: timeJogando1, timeB: timeJogando2, campeonato: camp1, periodosExtra: 0, arbitros: ["Árbitro 1", "Árbitro 2"], local: "Ginásio XYZ", horarioInicio: Date(), horarioTermino: Date(), mesa: ["Membro 1", "Membro 2"])
 
 
 

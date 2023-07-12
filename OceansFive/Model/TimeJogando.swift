@@ -7,6 +7,8 @@
 
 import Foundation
 
+
+// usado para controle do time durante o jogo, usado para preencher os dados dos jogadores naquela partida, porntando os botões devem preencher estes dados durante o jogo, e ao final do jogo, passar estes dados aos demais locais do aplicativo
 struct TimeJogando {
     var time: Time
     var faltas : Array<Array<UUID>>
@@ -16,8 +18,3 @@ struct TimeJogando {
     var numeroJogador: Dictionary<Int,UUID>
 }
 
-
-
-// Criação dos times jogando
-var timeJogando1 = TimeJogando(time: time1, faltas: [[],[],[],[]], tempos: [[],[],[],[]], jogando: jogadores1, ponto: Pontos(lanceLivrePonto: [[],[],[],[]], doisPontos: [[],[],[],[]], tresPontos: [[],[],[],[]]), numeroJogador: [:])
-let timeJogando2 = TimeJogando(time: time2, faltas: [[],[],[],[]], tempos: [[],[],[],[]], jogando: jogadores2, ponto: Pontos(lanceLivrePonto: [[],[],[],[]], doisPontos: [[],[],[],[]], tresPontos: [[],[],[],[]]), numeroJogador: [:])
