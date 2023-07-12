@@ -24,6 +24,12 @@ extension UIView {
             onClick()
         }
     }
+    
+    static func turnOnAutoLayout(_ views: [UIView]) {
+        views.forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
      
 }
 

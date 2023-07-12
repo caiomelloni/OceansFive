@@ -44,12 +44,22 @@ class SumulaTimeTableViewCell: UITableViewCell {
 
         self.jogador = item
 
-        numeroLbl.text = String(describing: index)
-        nomeLbl.text = jogador?.nome
-        pontosLbl.text = "\(jogador?.pontos.tresPontos[0].count ?? 0 )"
-        faltasLbl.text = "0"
+        var lv: Int = 0
+            var dp: Int = 0
+            var tp: Int = 0
+            for i in 0...3 {
+              lv += jogador?.pontos.lanceLivrePonto[i].count ?? 0
+              dp += (jogador?.pontos.doisPontos[i].count ?? 0) * 2
+              tp += (jogador?.pontos.tresPontos[i].count ?? 0) * 3
+            }
+        //print(jogador?.pontos.lanceLivrePonto[0])
 
-        self.contentView.addSubview(rowVw)
+            numeroLbl.text = String(describing: index)
+            nomeLbl.text = jogador?.nome
+            pontosLbl.text = "\(lv + dp + tp)"
+            faltasLbl.text = "\(jogador?.faltas.qtdFaltas ?? 0)"
+
+        contentView.addSubview(rowVw)
 
         rowVw.addSubview(numeroLbl)
         rowVw.addSubview(nomeLbl)
@@ -59,8 +69,8 @@ class SumulaTimeTableViewCell: UITableViewCell {
 
         NSLayoutConstraint.activate([
             rowVw.heightAnchor.constraint(equalToConstant: 44),
-            rowVw.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
-            rowVw.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
+            rowVw.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
+            rowVw.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),
 
             numeroLbl.topAnchor.constraint(equalTo: rowVw.topAnchor, constant: 16),
             numeroLbl.leadingAnchor.constraint(equalTo: rowVw.leadingAnchor, constant: 56),

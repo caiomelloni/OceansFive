@@ -11,18 +11,25 @@ class SumulaTimeTableView: UIView {
 
     //private lazy var timeViewModel = TimeViewModel()
 
-
+    
     private var time: Time = Time(id: UUID(),
                               nome: "",
                               abreviado: "",
                               tecnico: "",
-                              jogadores: [Jogador(nome: ""
+                                  jogadores: [Jogador(id: UUID(),
+                                                      nome: "",
+                                                      pontos: Pontos(lanceLivrePonto: [[],[],[],[]],
+                                                                     doisPontos: [[],[],[],[]],
+                                                                     tresPontos: [[],[],[],[]]),
+                                                      faltas: Faltas(jogoID: UUID(),
+                                                                     qtdFaltas: 0)
                                                   )])
 
     private lazy var timeTableVw: UITableView = {
         let tv = UITableView()
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.backgroundColor = .clear
+
         tv.rowHeight = UITableView.automaticDimension
         tv.estimatedRowHeight = 44
         tv.separatorStyle = .singleLine
@@ -51,6 +58,9 @@ class SumulaTimeTableView: UIView {
         return vw
     }()
 
+
+
+
     override func layoutSubviews() {
         super.layoutSubviews()
         setup()
@@ -60,9 +70,14 @@ class SumulaTimeTableView: UIView {
     
     func loadData(_ index: Int) {
         if index == 0 {
-            time = timeA
+            time = Singleton.shared.sumula.timeA.time
+
+
+//            withUnsafePointer(to: timeA.jogadores) { pointer in
+//                print(pointer)
+//            }
         } else if index == 1 {
-            time = timeB
+            time = Singleton.shared.sumula.timeB.time
         }
         timeTableVw.reloadData()
     }
@@ -72,15 +87,15 @@ class SumulaTimeTableView: UIView {
 
 extension SumulaTimeTableView {
     func setup() {
+        timeTableVw.delegate = self
+        timeTableVw.dataSource = self
 
-        self.translatesAutoresizingMaskIntoConstraints = false
-        
         numeroLbl.text = "Número"
         nomeLbl.text = "Nome"
         pontosLbl.text = "Pontos"
         faltasLbl.text = "Faltas"
+        
 
-        timeTableVw.dataSource = self
 
         self.addSubview(headerVw)
         
@@ -121,7 +136,7 @@ extension SumulaTimeTableView {
 
 }
 
-extension SumulaTimeTableView: UITableViewDataSource {
+extension SumulaTimeTableView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return time.jogadores.count
     }
@@ -130,13 +145,7 @@ extension SumulaTimeTableView: UITableViewDataSource {
         let jogador = time.jogadores[indexPath.row]
 
         let jogador_indice = time.jogadores.firstIndex(where: { $0 == jogador }) as! Int
-        //let jogador = timeA_jogadores[0]
-//        if time.id == timeA.id {
-//            print(jogador)
-////            time.jogadores.forEach { jogador in
-////                print(jogador)
-////            }
-//        }
+
         let cell = timeTableVw.dequeueReusableCell(withIdentifier: SumulaTimeTableViewCell.cellId, for: indexPath) as! SumulaTimeTableViewCell
         cell.configure(with: jogador, index: jogador_indice)
         

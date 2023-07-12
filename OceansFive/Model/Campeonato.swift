@@ -8,14 +8,14 @@ import UIKit
 import Foundation
 
 struct Campeonato {
-    let image: UIImage
-    let id: UUID
-    let nome: String
-    let qtdTimes: Int
-    let times: [Time]
+    var image: UIImage
+    var id: UUID
+    var nome: String
+    var qtdTimes: Int
+    var times: [Time]
     //let colaboradores: [Colaboradores]
 }
 
-var campeonato_mock: Campeonato = Campeonato(image: UIImage(imageLiteralResourceName: "cpi"), id: UUID(), nome: "TUC", qtdTimes: 1, times: TimeViewModel().times)
+
 
     

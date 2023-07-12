@@ -10,6 +10,7 @@ import Foundation
 
 // Preenchida com o ID do jogo e a quantidade de faltas do jogador
 struct Faltas: Equatable {
-    let jogoID: UUID
-    let qtdFaltas: Int
+    var jogoID: UUID
+    var qtdFaltas: Int
 }
+
