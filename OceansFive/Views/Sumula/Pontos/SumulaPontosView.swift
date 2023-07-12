@@ -28,6 +28,7 @@ class SumulaPontosView: UIView {
 
     private func viewInicial() -> UIView {
         let vw: UIView = UIView()
+    
         vw.translatesAutoresizingMaskIntoConstraints = false
         return vw
     }

@@ -49,7 +49,9 @@ class SumulaViewController: UIViewController {
 //        funcs.numeroJog()
     }
 
-
+    override func reloadInputViews() {
+        <#code#>
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,7 +118,7 @@ extension SumulaViewController: SumulaViewDelegate {
             case 3:
                 print("\(buttonTag) tapped")
             case 4:
-                print("\(buttonTag) tapped")
+                didTapBtnTempo(time: &Singleton.shared.sumula.timeA)
             case 5:
                 print("\(buttonTag) tapped")
             case 6:
@@ -128,7 +130,7 @@ extension SumulaViewController: SumulaViewDelegate {
             case 9:
                 print("\(buttonTag) tapped")
             case 10:
-                print("\(buttonTag) tapped")
+                didTapBtnTempo(time: &Singleton.shared.sumula.timeB)
             case 11:
                 print("\(buttonTag) tapped")
             default:
@@ -136,41 +138,36 @@ extension SumulaViewController: SumulaViewDelegate {
         }
         func didTapBtnPts(pts: Int, time: inout TimeJogando) {
             print(time)
-            withUnsafePointer(to: time) { pointer in
-                print("Dentro do tap :\(pointer)")
-            }
-
-            addButtonTapped(pts: pts, time: &time)
+            addButtonTapped(ref: pts, time: &time)
         }
         func didTapBtnFalta() {}
-        func didTapBtnTempo() {}
+        func didTapBtnTempo(time: inout TimeJogando) {
+            addButtonTapped(ref: 4, time: &time)
+        }
         func didTapBtnEditar() {}
     }
 
-//    func addButtonTapped(pts: Int, time: TimeJogando) {
-    func addButtonTapped(pts: Int, time: UnsafeMutablePointer<TimeJogando>) {
-        let alertController = UIAlertController(title: "Teste", message: "Adicionar \(pts) ponto(s) ao jogador.", preferredStyle: .alert)
-        alertController.addTextField { (textField) in
-          textField.placeholder = "Digite o número"
-          textField.keyboardType = .phonePad
+    func addButtonTapped(ref: Int, time: UnsafeMutablePointer<TimeJogando>) {
+        var title: String = ref < 4 ? "Pontuação \(time.pointee.time.abreviado)" : "Tempo \(time.pointee.time.abreviado)"
+        var message: String = ref < 4 ? "Adicionar \(ref) ponto(s) ao jogador." : "Informe o tempo atual do jogo."
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alertController.addTextField { (textField) in
+                textField.placeholder = ref < 4 ? "Digite o número do jogador" : "Tempo de jogo"
+            textField.keyboardType = .numberPad
         }
         let okAction = UIAlertAction(title: "Concluir", style: .default) { _ in
           if let numberString = alertController.textFields?.first?.text,
             let number = Int(numberString) {
             // Ação a ser executada quando o botão "Concluir" do alerta modal for pressionado
-              switch pts {
+              switch ref {
                   case 1:
                       Sum().lanceLivre(numeroJogador: number, time: &time.pointee)
                   case 2:
                       Sum().dois(numeroJogador: number, time: &time.pointee)
                   case 3:
-                      withUnsafePointer(to: time) { pointer in
-                          print("Dentro do switch :\(pointer)")
-                      }
-
                       Sum().tres(numeroJogador: number, time: &time.pointee)
-                      
-
+                  case 4:
+                      Sum().tempo(tempo: number, time: &time.pointee)
                   default:
                       break
               }
@@ -184,9 +181,6 @@ extension SumulaViewController: SumulaViewDelegate {
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
       }
-
-//    let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped)
-//)
 
 }
 

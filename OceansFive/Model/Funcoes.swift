@@ -97,9 +97,10 @@ struct Sum {
 //
 //    }
 
-//    func tempo() {
-//        timeJogando1.tempos[periodo].append(timeJogando1.tempos[periodo].count + 1)
-//    }
+    func tempo(tempo: Int, time: inout TimeJogando) {
+        time.tempos[periodo].append(tempo)
+        print(time.tempos)
+    }
     
     
     
