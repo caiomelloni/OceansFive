@@ -26,14 +26,13 @@ enum ButtonTag: Int {
 
 class SumulaPontosView: UIView {
     
-    //var quartoContador: Int = Sum().periodo
+    var dataInicio: Date?
     var funcs = Sum()
     weak var delegate: SumulaViewDelegate?
     var pontos: Int = 0
     var pontosb: Int = 0
     private func viewInicial() -> UIView {
         let vw: UIView = UIView()
-
         vw.translatesAutoresizingMaskIntoConstraints = false
         return vw
     }
@@ -52,7 +51,7 @@ class SumulaPontosView: UIView {
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.numberOfLines = 1
         lbl.font = .systemFont(ofSize: 24, weight: .medium)
-        lbl.text = "\(text)º Quarto"
+        lbl.text = "\(text)"
         return lbl
     }
 
@@ -110,9 +109,12 @@ class SumulaPontosView: UIView {
             }
         }
         btnControleQuarto.setOnClickListener {
+            if Singleton.shared.sumula.periodo == -1 {
+                Singleton.shared.sumula.horarioInicio = Date().formatted()
+            }
             self.funcs.quarto()
-            self.quarto.text = self.funcs.periodo + Singleton.shared.sumula.periodosExtra <= 3 ? "\(self.funcs.periodo + 1)º Quarto" : "\(Singleton.shared.sumula.periodosExtra)º Tempo Extra"
-            self.btnControleQuarto.configuration?.title = self.funcs.periodo + Singleton.shared.sumula.periodosExtra <= 3 ? "Final de Quarto" : "Fim de Jogo"
+            self.quarto.text = Singleton.shared.sumula.periodo + Singleton.shared.sumula.periodosExtra <= 3 ? "\(Singleton.shared.sumula.periodo + 1)º Quarto" : "\(Singleton.shared.sumula.periodosExtra)º Tempo Extra"
+            self.btnControleQuarto.configuration?.title = Singleton.shared.sumula.periodo + Singleton.shared.sumula.periodosExtra <= 3 ? "Final de Quarto" : "Fim de Jogo"
 
         }
         configurar()
@@ -131,12 +133,12 @@ class SumulaPontosView: UIView {
     private lazy var x: UILabel = placarLbl("x")
     private lazy var pontosTime1: UILabel = placarLbl("\(pontos)")
     private lazy var pontosTime2: UILabel = placarLbl("\(pontosb)")
-    private lazy var quarto: UILabel = quartoLbl("1")
+    private lazy var quarto: UILabel = quartoLbl("Jogo Pronto")
     private lazy var viewPlacar: UIView = viewInicial()
     private lazy var viewBotoes: UIView = viewInicial()
     private lazy var viewBotoesTime1: UIView = viewInicial()
     private lazy var viewBotoesTime2: UIView = viewInicial()
-    private lazy var btnControleQuarto: UIButton = botaoaMaior(text: "Final de Quarto", image: "clock.fill")
+    private lazy var btnControleQuarto: UIButton = botaoaMaior(text: "Iniciar Partida", image: "clock.fill")
     private lazy var btnLanceLivreTime1: UIButton = botaoMenor(text: "Ponto ", image: "1.square.fill", tag: .btnLanceLivreTime1)
     private lazy var btn2PtsTime1: UIButton = botaoMenor(text: "Pontos", image: "2.square.fill", tag: .btn2PtsTime1)
     private lazy var btn3PtsTime1: UIButton = botaoMenor(text: "Pontos", image: "3.square.fill", tag: .btn3PtsTime1)

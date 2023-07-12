@@ -41,7 +41,7 @@ class ExplorarViewController: UIViewController {
         
         var cards: [CardView] = []
         
-        for _ in 0...20 {
+        for _ in 0...1 {
             let card = CardView(
                 Torneio(cardColor: .systemBlue, title: "Torneio Universitario de Campinas", imagePath: "cpi1"))
             
