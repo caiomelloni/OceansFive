@@ -19,7 +19,7 @@ struct Sum {
             flag += 1
         }
         else {
-        
+            
             
         }
         
@@ -90,6 +90,27 @@ struct Sum {
         
 //        print(pts)
         return pts
+    }
+    
+    func faltas(numeroJogador: Int , time: inout TimeJogando){
+        
+        time.faltas[periodo].append(time.numeroJogador[numeroJogador]!)
+        
+        for (index, jg) in time.time.jogadores.enumerated() {
+            if jg.id == time.numeroJogador[numeroJogador]{
+                //colocar o UUID do jogo e nao do jogador
+                time.time.jogadores[index].faltas.qtdFaltas += 1
+            }
+            else{
+            }
+        }
+    }
+    
+    func leitorFaltas(prd: Int ,time : inout TimeJogando) -> Int{
+        var fts:Int = 0
+        fts = time.faltas[prd].count
+        
+        return fts
     }
 }
     

@@ -60,23 +60,23 @@ class CampeonatoViewController: UIViewController {
         view.addSubview(segmentedControl)
         
         let jogos: [Jogo] = [
-            Jogo(timeA: "LCN", timeB: "LAU", placar: "-- x --", backgroundColor: .red, onClick: {
+            Jogo(timeA: "LCN", timeB: "LAU", placar: "-- x --", backgroundColor: .systemBlue, onClick: {
                 //tela do marcelo aqui
                 let newViewController = SumulaViewController()
                 self.navigationController?.pushViewController(newViewController, animated: true)
 
             }),
-            Jogo(timeA: "LCN", timeB: "LAU", placar: "57 x 37", backgroundColor: .darkGray, onClick: {
-                
-                self.navigationController?.pushViewController(SumulaPreenchidaViewController(), animated: true)
-                
-            }),
-            Jogo(timeA: "LCN", timeB: "LAU", placar: "57 x 37", backgroundColor: .black, onClick: {
-                
-            }),
-            Jogo(timeA: "LCN", timeB: "LAU", placar: "57 x 37", backgroundColor: .orange, onClick: {
-                
-            }),
+//            Jogo(timeA: "LCN", timeB: "LAU", placar: "57 x 37", backgroundColor: .systemBlue, onClick: {
+//                
+//                self.navigationController?.pushViewController(SumulaPreenchidaViewController(), animated: true)
+//                
+//            }),
+//            Jogo(timeA: "LCN", timeB: "LAU", placar: "57 x 37", backgroundColor: .systemBlue, onClick: {
+//                
+//            }),
+//            Jogo(timeA: "LCN", timeB: "LAU", placar: "57 x 37", backgroundColor: .systemBlue, onClick: {
+//                
+//            }),
         ]
 
         

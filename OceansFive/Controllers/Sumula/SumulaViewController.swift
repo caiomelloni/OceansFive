@@ -143,7 +143,10 @@ extension SumulaViewController: SumulaViewDelegate {
 
             addButtonTapped(pts: pts, time: &time)
         }
-        func didTapBtnFalta() {}
+        func didTapBtnFalta() {
+            
+            
+        }
         func didTapBtnTempo() {}
         func didTapBtnEditar() {}
     }
