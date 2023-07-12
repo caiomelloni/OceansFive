@@ -50,17 +50,37 @@ class Backend {
     }
     
     
-    static func fetchTorneios(onFinished: @escaping (Result<CKQueryOperation.Cursor?, any Error>) -> Void) {
-        let pred = NSPredicate(value: true)
-        let query = CKQuery(recordType: "Torneio", predicate: pred)
-        let operation = CKQueryOperation(query: query)
+    static func fetchTorneios(onFinished: @escaping ([CKTorneio]) -> Void) {
+        let query = CKQuery(recordType: "Torneio", predicate: NSPredicate(value: true))
+        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         
-        operation.queryResultBlock = {result in
-            
-            onFinished(result)
+        CKContainer.default().publicCloudDatabase.fetch(withQuery: query) { result in
+            switch result {
+            case .success(let success):
+                let fetches = success.matchResults
+                var torneios: [CKTorneio] = []
+                for fetch in fetches {
+                    let fetchResult = fetch.1
+                    switch fetchResult {
+                    case .success(let record):
+                        let formato = FormatoTorneio(rawValue: record["formato"] as! String)!
+                        let torneio = CKTorneio(nome: record["nome"] as! String, formato: formato, qtdTimes: record["qtdTime"] as! Int)
+                        torneios.append(torneio)
+                        //print(torneio)
+                        
+                        
+                    case .failure(let errorFetchingRecord):
+                        print("Nao conseguiu baixar um card em especifico")
+                        
+                    }
+                    
+                }
+                onFinished(torneios)
+                
+            case .failure(let failure):
+                print("Nao conseguiu puxar nenhum torneio")
+            }
         }
-        
-        CKContainer.default().publicCloudDatabase.add(operation)
     }
     
 }

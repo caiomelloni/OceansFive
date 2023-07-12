@@ -9,7 +9,7 @@ import UIKit
 
 class MeusCampeonatosViewController: UIViewController {
     
-    var cardsSection: CardsSectionView = CardsSectionView(cards: [])
+    var cardsSection: CardsSectionView = CardsSectionView(cards: [], delegate: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +59,7 @@ class MeusCampeonatosViewController: UIViewController {
             cards.append(card)
         }
         
-        cardsSection = CardsSectionView(cards: cards)
+        cardsSection = CardsSectionView(cards: cards, delegate: nil)
         
     }
     

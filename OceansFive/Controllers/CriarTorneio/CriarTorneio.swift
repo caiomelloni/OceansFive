@@ -256,7 +256,7 @@ class Criar_Torneio: UIViewController, UITableViewDataSource, UITableViewDelegat
         let qtdTimes = quantityStepper?.value
 
         Backend.createTorneio(nome: nomeTorneio!, formato: formato!, qtdTimes: Int(qtdTimes!)) { record, error in
-           // lidar com handler de erro e feedback ao usuario
+           // lidar com handler de erro e feedback ao usuari
         }
        
     }

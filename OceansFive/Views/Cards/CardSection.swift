@@ -7,13 +7,20 @@
 
 import UIKit
 
+protocol CardsSectionViewDelegate: AnyObject {
+    func shouldRefreshData() async
+}
+
 class CardsSectionView: UIView {
+    
+    weak var delegate: CardsSectionViewDelegate?
     
     var cards:[UIView] = []
     
-    init(cards:[UIView]) {
+    init(cards:[UIView], delegate: CardsSectionViewDelegate?) {
         super.init(frame: .zero)
         self.cards = cards
+        self.delegate = delegate
         buildLayout()
     }
     
@@ -40,6 +47,7 @@ class CardsSectionView: UIView {
     private func buildLayout() {
         addSubview(scrollView)
         scrollView.addSubview(scrollStackViewContainer)
+        configureRefreshControl()
         
         NSLayoutConstraint.activate([
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -63,6 +71,25 @@ class CardsSectionView: UIView {
         }
     }
     
+    func configureRefreshControl () {
+        scrollView.refreshControl = UIRefreshControl()
+        scrollView.refreshControl?.addTarget(self, action:
+                                                #selector(handleRefreshControl),
+                                             for: .valueChanged)
+    }
+    
+    @objc func handleRefreshControl() {
+        DispatchQueue.main.async {            
+            Task {
+                await self.delegate?.shouldRefreshData()
+                self.scrollView.refreshControl?.endRefreshing()
+            }
+        }
+        
+        
+    }
+    
     
 }
+
 
