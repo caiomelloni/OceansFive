@@ -64,14 +64,15 @@ class Backend {
             onFinished(record, error)
         }
         
-        let record = CKRecord(recordType: "Jogo")
+        let jogoRecord = CKRecord(recordType: "Jogo")
         record.setValuesForKeys([
-            "nome": nome,
-            "formato" : formato.rawValue,
-            "qtdTime": qtdTimes,
-            "userId": userId,
-            "times": ["LAU", "LEU"]
+            "criador": userId,
+            "jogoFinalizado": false,
+            "timeCasa": "LAU",
+            "timeVisitante": "LEU",
+            
         ])
+        
     }
     
     

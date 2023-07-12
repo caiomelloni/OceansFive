@@ -7,18 +7,24 @@
 
 import UIKit
 
+protocol SumulaViewDelegate: AnyObject {
+    func didTapBtn(_ buttonTag: Int)
+}
+
 class SumulaViewController: UIViewController {
+
 
     var currentView: UIView = UIView()
     // MARK: Properties
-
+    var funcs = Sum()
     let items = ["TimeA", "TimeB", "Pontos", "Informações"]
     let haptic = UISelectionFeedbackGenerator()
-    let tableVw = SumulaTimeTableView()
+    var tableVw = SumulaTimeTableView()
     let pontosVw = SumulaPontosView()
     let infosVw = InfosView(
         infos_vazia
     )
+//    let funcs = Sum()
 
     //MARK: UI - Elements
     lazy var segmentedControl: UISegmentedControl = {
@@ -36,9 +42,14 @@ class SumulaViewController: UIViewController {
 
     override func loadView() {
         super.loadView()
+        
+        funcs.numeroJog(time: &Singleton.shared.sumula.timeA)
+        funcs.numeroJog(time: &Singleton.shared.sumula.timeB)
         títuloSv()
         tableVw.loadData(segmentedControl.selectedSegmentIndex)
+//        funcs.numeroJog()
     }
+
 
 
     override func viewDidLoad() {
@@ -69,17 +80,20 @@ class SumulaViewController: UIViewController {
         )
     }
 
+
+
     @objc func changeSelector() {
 
         haptic.selectionChanged()
         switch segmentedControl.selectedSegmentIndex {
             case 0:
-                insertViewSection(tableVw)
                 tableVw.loadData(segmentedControl.selectedSegmentIndex)
+                insertViewSection(tableVw)
             case 1:
                 insertViewSection(tableVw)
                 tableVw.loadData(segmentedControl.selectedSegmentIndex)
             case 2:
+                pontosVw.delegate = self
                 insertViewSection(pontosVw)
             case 3:
                 insertViewSection(infosVw)
@@ -88,6 +102,98 @@ class SumulaViewController: UIViewController {
 
         }
     }
+
+}
+
+extension SumulaViewController: SumulaViewDelegate {
+    func didTapBtn(_ buttonTag: Int) {
+        switch buttonTag {
+            case 0:
+                didTapBtnPts(pts: 1, time: &Singleton.shared.sumula.timeA)
+            case 1:
+                didTapBtnPts(pts: 2, time: &Singleton.shared.sumula.timeA)
+            case 2:
+                didTapBtnPts(pts: 3, time: &Singleton.shared.sumula.timeA)
+            case 3:
+                print("\(buttonTag) tapped")
+            case 4:
+                print("\(buttonTag) tapped")
+            case 5:
+                print("\(buttonTag) tapped")
+            case 6:
+                didTapBtnPts(pts: 1, time: &Singleton.shared.sumula.timeB)
+            case 7:
+                didTapBtnPts(pts: 2, time: &Singleton.shared.sumula.timeB)
+            case 8:
+                didTapBtnPts(pts: 3, time: &Singleton.shared.sumula.timeB)
+            case 9:
+                print("\(buttonTag) tapped")
+            case 10:
+                print("\(buttonTag) tapped")
+            case 11:
+                print("\(buttonTag) tapped")
+            default:
+                print("did tap button")
+        }
+        func didTapBtnPts(pts: Int, time: inout TimeJogando) {
+            //print(time)
+            withUnsafePointer(to: time) { pointer in
+                print("Dentro do tap :\(pointer)")
+            }
+
+            addButtonTapped(pts: pts, time: &time)
+        }
+        func didTapBtnFalta() {
+            
+            
+        }
+        func didTapBtnTempo() {}
+        func didTapBtnEditar() {}
+    }
+
+//    func addButtonTapped(pts: Int, time: TimeJogando) {
+    func addButtonTapped(pts: Int, time: UnsafeMutablePointer<TimeJogando>) {
+        let alertController = UIAlertController(title: "Teste", message: "Adicionar \(pts) ponto(s) ao jogador.", preferredStyle: .alert)
+        alertController.addTextField { (textField) in
+          textField.placeholder = "Digite o número"
+          textField.keyboardType = .phonePad
+        }
+        let okAction = UIAlertAction(title: "Concluir", style: .default) { _ in
+          if let numberString = alertController.textFields?.first?.text,
+            let number = Int(numberString) {
+            // Ação a ser executada quando o botão "Concluir" do alerta modal for pressionado
+              switch pts {
+                  case 1:
+                      Sum().lanceLivre(numeroJogador: number, time: &time.pointee)
+                  self.pontosVw.setNeedsDisplay()
+                  case 2:
+                      Sum().dois(numeroJogador: number, time: &time.pointee)
+                  self.pontosVw.setNeedsDisplay()
+                  case 3:
+                      withUnsafePointer(to: time) { pointer in
+                          print("Dentro do switch :\(pointer)")
+                      }
+
+                      Sum().tres(numeroJogador: number, time: &time.pointee)
+                  self.pontosVw.setNeedsDisplay()
+                      
+
+                  default:
+                      break
+              }
+          } else {
+            print("Número inválido")
+          }
+        }
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .destructive, handler: nil)
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+      }
+
+//    let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped)
+//)
 
 }
 
