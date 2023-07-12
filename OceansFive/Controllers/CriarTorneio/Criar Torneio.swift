@@ -1,5 +1,6 @@
 import UIKit
 
+
 class Criar_Torneio: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     let tableData = ["Nome", "Formato", "Quantidade de Times", "Adicionar Colaboradores"]
     let reuseIdentifier = "cellReuseIdentifier"
@@ -12,72 +13,71 @@ class Criar_Torneio: UIViewController, UITableViewDataSource, UITableViewDelegat
     var quantityLabel: UILabel?
     var tableView: UITableView!
     var secondTableView: UITableView!
-    private lazy var logo: UIImageView = {
-        let img = UIImageView()
-        img.translatesAutoresizingMaskIntoConstraints = false
-        img.contentMode = .scaleAspectFit
-        img.layer.cornerRadius = 10
-        
-        return img
-    }()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.logo.image = UIImage(named: "Image")
-        view.backgroundColor = .white
+        
+        self.title = "Criar Torneio"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        view.backgroundColor = .secondarySystemBackground
+        
 
-        let titleLabel = UILabel()
-        titleLabel.text = "Criar Torneio"
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
-        titleLabel.textAlignment = .left
-        titleLabel.backgroundColor = .white
-        titleLabel.layer.cornerRadius = 4
-        titleLabel.layer.masksToBounds = true
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-
-        view.addSubview(titleLabel)
 
         tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
+        tableView.isScrollEnabled = false
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
-
+        tableView.layer.cornerRadius = 10
+        tableView.layer.masksToBounds = true
+        
+        
         view.addSubview(tableView)
         
 
         secondTableView = UITableView()
         secondTableView.translatesAutoresizingMaskIntoConstraints = false
         secondTableView.dataSource = self
+        secondTableView.isScrollEnabled = false
         secondTableView.delegate = self
         secondTableView.register(UITableViewCell.self, forCellReuseIdentifier: secondReuseIdentifier)
-
+        secondTableView.layer.cornerRadius = 10
+        secondTableView.layer.masksToBounds = true
         view.addSubview(secondTableView)
-        view.addSubview(logo)
         
-       
+
+        let subtitleLabel = UILabel()
+        subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        subtitleLabel.text = "Imagem"
+        subtitleLabel.font = UIFont.systemFont(ofSize: 10)
+        subtitleLabel.textColor = .black
+        view.addSubview(subtitleLabel)
+        
+//        let subtitleLabel = UILabel()
+//        subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
+//        subtitleLabel.text = "Defina imagem de perfil do campeonato"
+//        subtitleLabel.font = UIFont.systemFont(ofSize: 10)
+//        view.addSubview(subtitleLabel)
+        
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
 
-            tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.heightAnchor.constraint(equalToConstant: 200),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            tableView.heightAnchor.constraint(equalToConstant: 175.5),
 
-            secondTableView.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 16),
-            secondTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            secondTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            secondTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -300),
+            secondTableView.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 32),
+            secondTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            secondTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            secondTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant:  -90),
             
-            logo.heightAnchor.constraint(equalToConstant: 200),
-            logo.widthAnchor.constraint(equalToConstant: 200),
-            logo.topAnchor.constraint(equalTo: secondTableView.bottomAnchor, constant: 10),
-            logo.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 100)
+            subtitleLabel.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 12),
+            subtitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25)
             
-
+            
 
         ])
 
@@ -105,7 +105,7 @@ class Criar_Torneio: UIViewController, UITableViewDataSource, UITableViewDelegat
                 cell.textLabel?.text = tableData[indexPath.row]
 
                 if nameTextField == nil {
-                    nameTextField = UITextField(frame: CGRect(x: 0, y: 0, width: cell.contentView.bounds.width - 30, height: cell.contentView.bounds.height))
+                    nameTextField = UITextField(frame: CGRect(x: 0, y: 0, width: cell.contentView.bounds.width - 85, height: cell.contentView.bounds.height))
                     nameTextField?.placeholder = "Digite o nome do torneio"
                     nameTextField?.delegate = self
                 }
@@ -152,22 +152,26 @@ class Criar_Torneio: UIViewController, UITableViewDataSource, UITableViewDelegat
             }
 
             return cell
+            
         } else if tableView == secondTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: secondReuseIdentifier, for: indexPath)
             cell.textLabel?.text = secondTableData[indexPath.row]
             cell.accessoryType = .disclosureIndicator
+            
+            
             return cell
         }
         
         return UITableViewCell()
     }
-
+    
     // MARK: - UITableViewDelegate
+
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        if tableView == self.tableView {
+       if tableView == self.tableView {
             if indexPath.row == 1 {
                 showFormatOptions()
             } else if indexPath.row == 3 {
