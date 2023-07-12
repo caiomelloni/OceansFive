@@ -5,6 +5,7 @@
 //  Created by Caio Melloni dos Santos on 09/07/23.
 //
 
+import Foundation
 import UIKit
 
 protocol CardsSectionViewDelegate: AnyObject {
@@ -63,6 +64,7 @@ class CardsSectionView: UIView {
         ])
         
         configureContainerView()
+        
     }
     
     private func configureContainerView() {
@@ -79,17 +81,11 @@ class CardsSectionView: UIView {
     }
     
     @objc func handleRefreshControl() {
-        DispatchQueue.main.async {            
-            Task {
-                await self.delegate?.shouldRefreshData()
-                self.scrollView.refreshControl?.endRefreshing()
-            }
+        
+        Task {
+            await self.delegate?.shouldRefreshData()
         }
         
-        
+        self.scrollView.refreshControl?.endRefreshing()
     }
-    
-    
 }
-
-
