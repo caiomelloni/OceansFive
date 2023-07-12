@@ -77,7 +77,7 @@ struct Sum {
     }
     
     func falta() {
-        falt.qtdFaltas += 1
+        
         
         
             timeJogando1.faltas[periodo].append(timeJogando1.numeroJogador[10]!)
@@ -97,11 +97,20 @@ struct Sum {
         timeJogando1.tempos[periodo].append(timeJogando1.tempos[periodo].count + 1)
     }
     
-    
-    
-    
+    func contapontototal()-> Int {
+        var pto : Int = 0
         
-        
+            for (_, ptos) in jogadores1.enumerated() {
+                for i in 0...4{
+                    pto += ptos.pontos.lanceLivrePonto[i].count + (ptos.pontos.doisPontos[i].count * 2) + (ptos.pontos.tresPontos[i].count * 3)
+            }
+        }
+        return pto
+    }
+    
+    
+    
+    
     }
     
     
