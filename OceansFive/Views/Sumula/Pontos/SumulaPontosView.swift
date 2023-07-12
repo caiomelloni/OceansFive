@@ -20,15 +20,20 @@ enum ButtonTag: Int {
     case btnFaltasTime2 = 9
     case btnTempoTime2 = 10
     case btnEditarTime2 = 11
+    case btnContaQuarto = 12
 }
 
+
 class SumulaPontosView: UIView {
-
+    
+    //var quartoContador: Int = Sum().periodo
+    var funcs = Sum()
     weak var delegate: SumulaViewDelegate?
-
+    var pontos: Int = 0
+    var pontosb: Int = 0
     private func viewInicial() -> UIView {
         let vw: UIView = UIView()
-    
+
         vw.translatesAutoresizingMaskIntoConstraints = false
         return vw
     }
@@ -82,9 +87,10 @@ class SumulaPontosView: UIView {
     }
 
     override func layoutSubviews() {
+        
         super.layoutSubviews()
+        
         //self.translatesAutoresizingMaskIntoConstraints = false
-        configurar()
         [btnLanceLivreTime1,
          btn2PtsTime1,
          btn3PtsTime1,
@@ -96,26 +102,41 @@ class SumulaPontosView: UIView {
          btn3PtsTime2,
          btnFaltasTime2,
          btnTempoTime2,
-         btnEditarTime2].forEach { btn in
+         btnEditarTime2,
+         btnControleQuarto].forEach { btn in
             btn.setOnClickListener {
                 self.delegate?.didTapBtn(btn.tag)
+
             }
         }
+        btnControleQuarto.setOnClickListener {
+            self.funcs.quarto()
+            self.quarto.text = self.funcs.periodo + Singleton.shared.sumula.periodosExtra <= 3 ? "\(self.funcs.periodo + 1)º Quarto" : "\(Singleton.shared.sumula.periodosExtra)º Tempo Extra"
+            self.btnControleQuarto.configuration?.title = self.funcs.periodo + Singleton.shared.sumula.periodosExtra <= 3 ? "Final de Quarto" : "Fim de Jogo"
 
+        }
+        configurar()
     }
 
+    func atualizaPlacar() {
 
+        pontos = Sum().leitorPontos(time: &Singleton.shared.sumula.timeA)
+        pontosb = Sum().leitorPontos(time: &Singleton.shared.sumula.timeB)
+        pontosTime1.text = "\(self.pontos)"
+        pontosTime2.text = "\(self.pontosb)"
+    }
+    
     private lazy var timeAbr1: UILabel = placarLbl("TiA")
     private lazy var timeAbr2: UILabel = placarLbl("TiB")
     private lazy var x: UILabel = placarLbl("x")
-    private lazy var pontosTime1: UILabel = placarLbl("0")
-    private lazy var pontosTime2: UILabel = placarLbl("0")
+    private lazy var pontosTime1: UILabel = placarLbl("\(pontos)")
+    private lazy var pontosTime2: UILabel = placarLbl("\(pontosb)")
     private lazy var quarto: UILabel = quartoLbl("1")
     private lazy var viewPlacar: UIView = viewInicial()
     private lazy var viewBotoes: UIView = viewInicial()
     private lazy var viewBotoesTime1: UIView = viewInicial()
     private lazy var viewBotoesTime2: UIView = viewInicial()
-    private lazy var btnControleQuarto: UIView = botaoaMaior(text: "Final de Quarto", image: "clock.fill")
+    private lazy var btnControleQuarto: UIButton = botaoaMaior(text: "Final de Quarto", image: "clock.fill")
     private lazy var btnLanceLivreTime1: UIButton = botaoMenor(text: "Ponto ", image: "1.square.fill", tag: .btnLanceLivreTime1)
     private lazy var btn2PtsTime1: UIButton = botaoMenor(text: "Pontos", image: "2.square.fill", tag: .btn2PtsTime1)
     private lazy var btn3PtsTime1: UIButton = botaoMenor(text: "Pontos", image: "3.square.fill", tag: .btn3PtsTime1)
@@ -133,6 +154,7 @@ class SumulaPontosView: UIView {
 
 extension SumulaPontosView {
     func configurar() {
+        
 
         self.addSubview(viewPlacar)
         viewPlacar.addSubview(timeAbr1)
@@ -157,10 +179,10 @@ extension SumulaPontosView {
             pontosTime2.leadingAnchor.constraint(equalTo: x.trailingAnchor, constant: 16),
 
             timeAbr1.topAnchor.constraint(equalTo: x.topAnchor),
-            timeAbr1.trailingAnchor.constraint(equalTo: pontosTime1.leadingAnchor, constant: -16),
+            timeAbr1.leadingAnchor.constraint(equalToSystemSpacingAfter: viewPlacar.leadingAnchor, multiplier: 12),
 
             timeAbr2.topAnchor.constraint(equalTo: x.topAnchor),
-            timeAbr2.leadingAnchor.constraint(equalTo: pontosTime2.trailingAnchor, constant: 16),
+            timeAbr2.leadingAnchor.constraint(equalToSystemSpacingAfter: viewPlacar.leadingAnchor, multiplier: 32),
 
             quarto.centerXAnchor.constraint(equalTo: x.centerXAnchor),
             quarto.topAnchor.constraint(equalTo: x.bottomAnchor),
@@ -183,7 +205,7 @@ extension SumulaPontosView {
         viewBotoesTime1.addSubview(btn3PtsTime1)
         viewBotoesTime1.addSubview(btnFaltasTime1)
         viewBotoesTime1.addSubview(btnTempoTime1)
-        viewBotoesTime1.addSubview(btnEditarTime1)
+        //viewBotoesTime1.addSubview(btnEditarTime1)
 
         NSLayoutConstraint.activate([
             viewBotoesTime1.widthAnchor.constraint(equalTo: viewBotoes.widthAnchor, multiplier: 0.5),
@@ -206,8 +228,8 @@ extension SumulaPontosView {
             btnTempoTime1.centerXAnchor.constraint(equalTo: viewBotoesTime1.centerXAnchor),
             btnTempoTime1.topAnchor.constraint(equalTo: btnFaltasTime1.bottomAnchor, constant: 16),
 
-            btnEditarTime1.centerXAnchor.constraint(equalTo: viewBotoesTime1.centerXAnchor),
-            btnEditarTime1.topAnchor.constraint(equalTo: btnTempoTime1.bottomAnchor, constant: 16),
+//            btnEditarTime1.centerXAnchor.constraint(equalTo: viewBotoesTime1.centerXAnchor),
+//            btnEditarTime1.topAnchor.constraint(equalTo: btnTempoTime1.bottomAnchor, constant: 16),
         ])
 
         viewBotoesTime2.addSubview(btnLanceLivreTime2)
@@ -215,7 +237,7 @@ extension SumulaPontosView {
         viewBotoesTime2.addSubview(btn3PtsTime2)
         viewBotoesTime2.addSubview(btnFaltasTime2)
         viewBotoesTime2.addSubview(btnTempoTime2)
-        viewBotoesTime2.addSubview(btnEditarTime2)
+//        viewBotoesTime2.addSubview(btnEditarTime2)
 
         NSLayoutConstraint.activate([
             viewBotoesTime2.widthAnchor.constraint(equalTo: viewBotoes.widthAnchor, multiplier: 0.5),
@@ -238,8 +260,8 @@ extension SumulaPontosView {
             btnTempoTime2.centerXAnchor.constraint(equalTo: viewBotoesTime2.centerXAnchor),
             btnTempoTime2.topAnchor.constraint(equalTo: btnFaltasTime2.bottomAnchor, constant: 16),
 
-            btnEditarTime2.centerXAnchor.constraint(equalTo: viewBotoesTime2.centerXAnchor),
-            btnEditarTime2.topAnchor.constraint(equalTo: btnTempoTime2.bottomAnchor, constant: 16),
+//            btnEditarTime2.centerXAnchor.constraint(equalTo: viewBotoesTime2.centerXAnchor),
+//            btnEditarTime2.topAnchor.constraint(equalTo: btnTempoTime2.bottomAnchor, constant: 16),
         ])
 
         NSLayoutConstraint.activate([

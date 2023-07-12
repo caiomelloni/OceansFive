@@ -17,3 +17,4 @@ struct TimeJogando {
     var ponto: Pontos
     var numeroJogador: Dictionary<Int,UUID>
 }
+

@@ -71,11 +71,6 @@ class SumulaTimeTableView: UIView {
     func loadData(_ index: Int) {
         if index == 0 {
             time = Singleton.shared.sumula.timeA.time
-
-
-//            withUnsafePointer(to: timeA.jogadores) { pointer in
-//                print(pointer)
-//            }
         } else if index == 1 {
             time = Singleton.shared.sumula.timeB.time
         }

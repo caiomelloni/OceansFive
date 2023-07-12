@@ -73,3 +73,4 @@ class Singleton {
                                        horarioTermino: Date(),
                                        mesa: ["Henrique Guedes", "Milton Veloso", "Maria Faria"])
 }
+

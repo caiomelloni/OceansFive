@@ -42,15 +42,12 @@ class SumulaViewController: UIViewController {
 
     override func loadView() {
         super.loadView()
+        
         funcs.numeroJog(time: &Singleton.shared.sumula.timeA)
         funcs.numeroJog(time: &Singleton.shared.sumula.timeB)
         títuloSv()
         tableVw.loadData(segmentedControl.selectedSegmentIndex)
 //        funcs.numeroJog()
-    }
-
-    override func reloadInputViews() {
-        <#code#>
     }
 
     override func viewDidLoad() {
@@ -133,11 +130,13 @@ extension SumulaViewController: SumulaViewDelegate {
                 didTapBtnTempo(time: &Singleton.shared.sumula.timeB)
             case 11:
                 print("\(buttonTag) tapped")
+            //case 12:
+                
+
             default:
                 print("did tap button")
         }
         func didTapBtnPts(pts: Int, time: inout TimeJogando) {
-            print(time)
             addButtonTapped(ref: pts, time: &time)
         }
         func didTapBtnFalta() {}
@@ -148,8 +147,8 @@ extension SumulaViewController: SumulaViewDelegate {
     }
 
     func addButtonTapped(ref: Int, time: UnsafeMutablePointer<TimeJogando>) {
-        var title: String = ref < 4 ? "Pontuação \(time.pointee.time.abreviado)" : "Tempo \(time.pointee.time.abreviado)"
-        var message: String = ref < 4 ? "Adicionar \(ref) ponto(s) ao jogador." : "Informe o tempo atual do jogo."
+        let title: String = ref < 4 ? "Pontuação \(time.pointee.time.abreviado)" : "Tempo \(time.pointee.time.abreviado)"
+        let message: String = ref < 4 ? "Adicionar \(ref) ponto(s) ao jogador." : "Informe o tempo atual do jogo."
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alertController.addTextField { (textField) in
                 textField.placeholder = ref < 4 ? "Digite o número do jogador" : "Tempo de jogo"
@@ -162,10 +161,13 @@ extension SumulaViewController: SumulaViewDelegate {
               switch ref {
                   case 1:
                       Sum().lanceLivre(numeroJogador: number, time: &time.pointee)
+                      self.pontosVw.atualizaPlacar()
                   case 2:
                       Sum().dois(numeroJogador: number, time: &time.pointee)
+                      self.pontosVw.atualizaPlacar()
                   case 3:
                       Sum().tres(numeroJogador: number, time: &time.pointee)
+                      self.pontosVw.atualizaPlacar()
                   case 4:
                       Sum().tempo(tempo: number, time: &time.pointee)
                   default:
