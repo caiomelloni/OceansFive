@@ -2,7 +2,7 @@ import UIKit
 
 
 class Criar_Torneio: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
-    let tableData = ["Nome", "Formato", "Quantidade de Times", "Adicionar Colaboradores"]
+    let tableData = ["Nome", "Formato", "Quantidade de Times", "Adicionar Times"]
     let reuseIdentifier = "cellReuseIdentifier"
     let secondTableData = ["Escolher foto", "Escolher existente"]
     let secondReuseIdentifier = "secondCellReuseIdentifier"
@@ -45,7 +45,7 @@ class Criar_Torneio: UIViewController, UITableViewDataSource, UITableViewDelegat
         secondTableView.register(UITableViewCell.self, forCellReuseIdentifier: secondReuseIdentifier)
         secondTableView.layer.cornerRadius = 10
         secondTableView.layer.masksToBounds = true
-        view.addSubview(secondTableView)
+        //view.addSubview(secondTableView)
         
 
         let subtitleLabel = UILabel()
@@ -53,7 +53,7 @@ class Criar_Torneio: UIViewController, UITableViewDataSource, UITableViewDelegat
         subtitleLabel.text = "Imagem"
         subtitleLabel.font = UIFont.systemFont(ofSize: 10)
         subtitleLabel.textColor = .black
-        view.addSubview(subtitleLabel)
+       //view.addSubview(subtitleLabel)
         
 //        let subtitleLabel = UILabel()
 //        subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -69,13 +69,13 @@ class Criar_Torneio: UIViewController, UITableViewDataSource, UITableViewDelegat
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             tableView.heightAnchor.constraint(equalToConstant: 175.5),
 
-            secondTableView.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 32),
-            secondTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            secondTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            secondTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant:  -90),
+            //secondTableView.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 32),
+            //secondTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            //secondTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            //secondTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant:  -90),
             
-            subtitleLabel.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 12),
-            subtitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25)
+            //subtitleLabel.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 12),
+            //subtitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25)
             
             
 
@@ -220,14 +220,14 @@ class Criar_Torneio: UIViewController, UITableViewDataSource, UITableViewDelegat
     // MARK: - Collaborator Options
 
     func showCollaboratorOptions() {
-        let alertController = UIAlertController(title: "Adicionar Colaborador", message: nil, preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: "Adicionar Times", message: nil, preferredStyle: .actionSheet)
 
-        let perfilAction = UIAlertAction(title: "Perfil", style: .default) { [weak self] _ in
+        let perfilAction = UIAlertAction(title: "Time A", style: .default) { [weak self] _ in
             self?.openPerfil()
         }
         alertController.addAction(perfilAction)
 
-        let linkAction = UIAlertAction(title: "Link", style: .default) { [weak self] _ in
+        let linkAction = UIAlertAction(title: "Time B", style: .default) { [weak self] _ in
             self?.openLink()
         }
         alertController.addAction(linkAction)
@@ -272,4 +272,5 @@ class Criar_Torneio: UIViewController, UITableViewDataSource, UITableViewDelegat
         }
     }
 }
+
 
