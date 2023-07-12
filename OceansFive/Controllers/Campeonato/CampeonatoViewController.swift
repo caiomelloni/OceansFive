@@ -31,6 +31,18 @@ class CampeonatoViewController: UIViewController {
         
     
     var currentView: UIView = UIView()
+    
+    var torneio: Torneio
+    
+    init(_ torneio: Torneio) {
+        self.torneio = torneio
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("This class does not support NSCoder")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,7 +107,7 @@ class CampeonatoViewController: UIViewController {
         //Navbar
         let navbar = navigationController?.navigationBar
         //navbar?.topItem?.title = "Campeonato"
-        self.title = "Campeonato"
+        self.title = torneio.title
         navbar?.prefersLargeTitles = true
         navbar?.topItem?.rightBarButtonItem = {
            let btn = UIBarButtonItem()

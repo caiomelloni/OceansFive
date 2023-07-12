@@ -53,7 +53,8 @@ class Backend {
             "nome": nome,
             "formato" : formato.rawValue,
             "qtdTime": qtdTimes,
-            "userId": userId
+            "userId": userId,
+            "times": ["LAU", "LEU"]
         ])
         
         let container = CKContainer.default()
@@ -62,6 +63,15 @@ class Backend {
         database.save(record) { record, error in
             onFinished(record, error)
         }
+        
+        let record = CKRecord(recordType: "Jogo")
+        record.setValuesForKeys([
+            "nome": nome,
+            "formato" : formato.rawValue,
+            "qtdTime": qtdTimes,
+            "userId": userId,
+            "times": ["LAU", "LEU"]
+        ])
     }
     
     
