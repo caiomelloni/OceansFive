@@ -77,7 +77,7 @@ class MeusCampeonatosViewController: UIViewController {
                 
                 self.removeLoading()
             }
-        })
+        }, true)
     }
     
     func refreshCards() async {
