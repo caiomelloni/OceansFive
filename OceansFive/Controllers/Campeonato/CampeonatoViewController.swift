@@ -66,17 +66,17 @@ class CampeonatoViewController: UIViewController {
                 self.navigationController?.pushViewController(newViewController, animated: true)
 
             }),
-//            Jogo(timeA: "LCN", timeB: "LAU", placar: "57 x 37", backgroundColor: .systemBlue, onClick: {
-//                
-//                self.navigationController?.pushViewController(SumulaPreenchidaViewController(), animated: true)
-//                
-//            }),
-//            Jogo(timeA: "LCN", timeB: "LAU", placar: "57 x 37", backgroundColor: .systemBlue, onClick: {
-//                
-//            }),
-//            Jogo(timeA: "LCN", timeB: "LAU", placar: "57 x 37", backgroundColor: .systemBlue, onClick: {
-//                
-//            }),
+            Jogo(timeA: "LCN", timeB: "LAU", placar: "57 x 37", backgroundColor: .systemBlue, onClick: {
+                
+                self.navigationController?.pushViewController(SumulaPreenchidaViewController(), animated: true)
+                
+            }),
+            Jogo(timeA: "LCN", timeB: "LAU", placar: "57 x 37", backgroundColor: .systemBlue, onClick: {
+                
+            }),
+            Jogo(timeA: "LCN", timeB: "LAU", placar: "57 x 37", backgroundColor: .systemBlue, onClick: {
+                
+            }),
         ]
 
         
