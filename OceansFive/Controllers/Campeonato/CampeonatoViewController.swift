@@ -63,25 +63,33 @@ class CampeonatoViewController: UIViewController {
     func layoutViews() {
         view.addSubview(segmentedControl)
         
-        let jogos: [Jogo] = [
-            Jogo(timeA: "LCN", timeB: "LAU", placar: "-- x --", backgroundColor: .red, onClick: {
-                //tela do marcelo aqui
-                let newViewController = SumulaViewController()
-                self.navigationController?.pushViewController(newViewController, animated: true)
-
-            }),
-            Jogo(timeA: "LCN", timeB: "LAU", placar: "57 x 37", backgroundColor: .darkGray, onClick: {
-                
-                self.navigationController?.pushViewController(SumulaPreenchidaViewController(), animated: true)
-                
-            }),
-            Jogo(timeA: "LCN", timeB: "LAU", placar: "57 x 37", backgroundColor: .black, onClick: {
-                
-            }),
-            Jogo(timeA: "LCN", timeB: "LAU", placar: "57 x 37", backgroundColor: .orange, onClick: {
-                
-            }),
+        var jogos: [Jogo] = [
+//            Jogo(timeA: "LCN", timeB: "LAU", placar: "-- x --", backgroundColor: .red, onClick: {
+//                //tela do marcelo aqui
+//                let newViewController = SumulaViewController()
+//                self.navigationController?.pushViewController(newViewController, animated: true)
+//
+//            }),
+//            Jogo(timeA: "LCN", timeB: "LAU", placar: "57 x 37", backgroundColor: .darkGray, onClick: {
+//
+//                self.navigationController?.pushViewController(SumulaPreenchidaViewController(), animated: true)
+//
+//            }),
+//            Jogo(timeA: "LCN", timeB: "LAU", placar: "57 x 37", backgroundColor: .black, onClick: {
+//                self.navigationController?.pushViewController(SumulaPreenchidaViewController(), animated: true)
+//            }),
+//            Jogo(timeA: "LCN", timeB: "LAU", placar: "57 x 37", backgroundColor: .orange, onClick: {
+//                self.navigationController?.pushViewController(SumulaPreenchidaViewController(), animated: true)
+//            }),
         ]
+        
+        for _ in 1...quantidadeJogosF {
+            jogos.append(Jogo(timeA: "Time 1", timeB: "Time 2", placar: "-- x --", backgroundColor: .red, onClick: {
+                let newViewController = SumulaPreenchidaViewController()
+//                let newViewController = SumulaViewController()
+                self.navigationController?.pushViewController(newViewController, animated: true)
+            }))
+        }
 
         
         jogosView = JogosView().getView(self, jogos)
@@ -109,7 +117,7 @@ class CampeonatoViewController: UIViewController {
         navbar?.topItem?.backButtonTitle = "Explorar"
         //
     }
-    
+     
     @objc func changeSelector() {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
@@ -118,6 +126,10 @@ class CampeonatoViewController: UIViewController {
             setCurrentView(jogosView)
         case 2:
             setCurrentView(statsVW)
+            print(listaTimes.count)
+            print(quantidadeTimes)
+            print(quantidadeJogosF)
+            print(quantidadeJogosM)
         default:
             print("out of range segmented control item")
         }

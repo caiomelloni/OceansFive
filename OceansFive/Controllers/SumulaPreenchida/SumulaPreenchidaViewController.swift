@@ -90,8 +90,10 @@ class SumulaPreenchidaViewController: UIViewController {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             insertViewSection(playerList)
+            playerList.loadData(segmentedControl.selectedSegmentIndex)
         case 1:
             insertViewSection(playerList)
+            playerList.loadData(segmentedControl.selectedSegmentIndex)
         case 2:
             insertViewSection(estatisticasView)
         case 3:

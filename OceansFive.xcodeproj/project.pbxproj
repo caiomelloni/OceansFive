@@ -13,6 +13,7 @@
 		0358C6372A56EE450089B267 /* Pontos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0358C6362A56EE450089B267 /* Pontos.swift */; };
 		0358C63E2A5C309A0089B267 /* Funcoes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0358C63D2A5C309A0089B267 /* Funcoes.swift */; };
 		31FD702F2A55AE6F000F4C87 /* Criar Torneio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FD702E2A55AE6F000F4C87 /* Criar Torneio.swift */; };
+		78FAF0D42A5D9CAF002A8809 /* LogicaJogos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FAF0D32A5D9CAF002A8809 /* LogicaJogos.swift */; };
 		9562FD922A530378005945A9 /* SumulaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FD912A530378005945A9 /* SumulaViewController.swift */; };
 		9562FD992A5306FF005945A9 /* Jogador.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FD982A5306FF005945A9 /* Jogador.swift */; };
 		9562FD9B2A53074D005945A9 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FD9A2A53074D005945A9 /* Time.swift */; };
@@ -50,6 +51,7 @@
 		0358C6362A56EE450089B267 /* Pontos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pontos.swift; sourceTree = "<group>"; };
 		0358C63D2A5C309A0089B267 /* Funcoes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Funcoes.swift; sourceTree = "<group>"; };
 		31FD702E2A55AE6F000F4C87 /* Criar Torneio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Criar Torneio.swift"; sourceTree = "<group>"; };
+		78FAF0D32A5D9CAF002A8809 /* LogicaJogos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicaJogos.swift; sourceTree = "<group>"; };
 		9562FD912A530378005945A9 /* SumulaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumulaViewController.swift; sourceTree = "<group>"; };
 		9562FD982A5306FF005945A9 /* Jogador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jogador.swift; sourceTree = "<group>"; };
 		9562FD9A2A53074D005945A9 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 			children = (
 				F8FC3E652A4CCE4B0033E3E0 /* CustomColor.swift */,
 				F81235222A572F7800953E1C /* UIViewExtension.swift */,
+				78FAF0D32A5D9CAF002A8809 /* LogicaJogos.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				F8FC3E662A4CCE4B0033E3E0 /* CustomColor.swift in Sources */,
 				F81235232A572F7800953E1C /* UIViewExtension.swift in Sources */,
 				F8439ECF2A55F3B900375491 /* CampeonatoViewController.swift in Sources */,
+				78FAF0D42A5D9CAF002A8809 /* LogicaJogos.swift in Sources */,
 				F8FC3E4B2A4CC7F20033E3E0 /* MainTabbarViewController.swift in Sources */,
 				F8439EC72A55AF3500375491 /* EstatisticaTableView.swift in Sources */,
 				F8FC3E612A4CCB440033E3E0 /* MeusCampeonatosViewController.swift in Sources */,

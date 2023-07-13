@@ -40,7 +40,7 @@ class SumulaTimeTableViewCell: UITableViewCell {
 
     private var jogador: Jogador?
 
-    func configure(with item: Jogador, index: Int ) {
+    func configure(with item: Jogador, index: Int ){
 
         self.jogador = item
 
