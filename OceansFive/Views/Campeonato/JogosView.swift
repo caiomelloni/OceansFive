@@ -109,7 +109,7 @@ class JogosView: UIView {
     }
     
     func generateCard(timeCasa: String, timeVisitante: String, pontos: String, backgroundColor: UIColor) -> UIView {
-        let brasaoCasa = UIView()
+        let brasaoCasa = UIImageView()
         
         let placar = UIView()
         
@@ -135,13 +135,16 @@ class JogosView: UIView {
             placarText.centerXAnchor.constraint(equalTo: placar.centerXAnchor),
         ])
         
-        let generateBrasao = {(nome: String, parentView: UIView, isEspelhado: Bool) in
-            let brasaoCard = UIView()
-            brasaoCard.layer.cornerRadius = CGFloat(10)
+        let generateBrasao = {(nome: String, parentView: UIView, isEspelhado: Bool, path: String) in
+            let brasaoCard = UIImageView(image: UIImage(named: path))
+
             brasaoCard.translatesAutoresizingMaskIntoConstraints = false
+            brasaoCard.contentMode = .scaleAspectFit
+            brasaoCard.layer.cornerRadius = 10.0
+            brasaoCard.clipsToBounds = true
             brasaoCard.widthAnchor.constraint(equalToConstant: 70).isActive = true
             brasaoCard.heightAnchor.constraint(equalToConstant: 60).isActive = true
-            brasaoCard.backgroundColor = .systemGray6
+            //brasaoCard.backgroundColor = .systemGray6
             parentView.addSubview(brasaoCard)
             NSLayoutConstraint.activate([
                 brasaoCard.topAnchor.constraint(equalTo: parentView.topAnchor, constant: 8)
@@ -166,8 +169,8 @@ class JogosView: UIView {
         }
         
         
-        generateBrasao(timeCasa, brasaoCasa, false)
-        generateBrasao(timeVisitante, brasaovisitante, true)
+        generateBrasao(timeCasa, brasaoCasa, false, "teamPlaceHolder")
+        generateBrasao(timeVisitante, brasaovisitante, true, "teamPlaceHolder1")
         
         return card
     }
