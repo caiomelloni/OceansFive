@@ -110,7 +110,7 @@ class SumulaPontosView: UIView {
         }
         btnControleQuarto.setOnClickListener {
             if Singleton.shared.sumula.periodo == -1 {
-                Singleton.shared.sumula.horarioInicio = Date().formatted()
+                Singleton.shared.sumula.horarioInicio = Date().formatted().lowercased()
             }
             self.funcs.quarto()
             self.quarto.text = Singleton.shared.sumula.periodo + Singleton.shared.sumula.periodosExtra <= 3 ? "\(Singleton.shared.sumula.periodo + 1)º Quarto" : "\(Singleton.shared.sumula.periodosExtra)º Tempo Extra"

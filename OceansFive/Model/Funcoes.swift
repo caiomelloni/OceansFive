@@ -25,7 +25,7 @@ struct Sum {
             if pontosA == pontosB {
                 Singleton.shared.sumula.periodosExtra += 1
             } else {
-                Singleton.shared.sumula.horarioTermino = Date().formatted(date: .omitted, time: .shortened)
+                Singleton.shared.sumula.horarioTermino = Date().formatted(date: .omitted, time: .shortened).lowercased()
             }
 
         }

@@ -69,8 +69,6 @@ class Singleton {
                                        //campeonato: <#T##Campeonato#>,
                                        arbitros: ["Jeferson Soares"],
                                        local: "Ginásio Mané Garrincha",
-                                       horarioInicio: "",
-                                       horarioTermino: "",
                                        mesa: ["Henrique Guedes", "Milton Veloso", "Maria Faria"])
 }
 

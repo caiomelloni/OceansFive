@@ -108,7 +108,7 @@ class SumulaViewController: UIViewController {
 
 extension SumulaViewController: SumulaViewDelegate {
     func didTapBtn(_ buttonTag: Int) {
-        if Singleton.shared.sumula.periodo >= 0 {
+        if Singleton.shared.sumula.periodo >= 0 && Singleton.shared.sumula.horarioTermino == nil {
             switch buttonTag {
                 case 0:
                     didTapBtnPts(pts: 1, time: &Singleton.shared.sumula.timeA)

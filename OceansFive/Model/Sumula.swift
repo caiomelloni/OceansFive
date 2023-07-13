@@ -25,8 +25,8 @@ struct Sumula {
     // local do jogo
     var local: String
     //Marcadores de partida
-    var horarioInicio: String
-    var horarioTermino: String
+    var horarioInicio: String?
+    var horarioTermino: String?
     // responsáveis pela mesa (fiscal e mesa)
     var mesa: [String]
 }
