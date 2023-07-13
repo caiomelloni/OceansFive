@@ -21,7 +21,7 @@ class CardView: UIView {
     
     let card: UIView = {
         let card = UIView()
-        card.backgroundColor = .systemBlue
+        card.backgroundColor = PaleteColor.orange
         card.layer.cornerRadius = CGFloat(12)
         card.translatesAutoresizingMaskIntoConstraints = false
         return card

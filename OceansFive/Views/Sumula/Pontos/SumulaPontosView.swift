@@ -20,7 +20,7 @@ enum ButtonTag: Int {
     case btnFaltasTime2 = 9
     case btnTempoTime2 = 10
     case btnEditarTime2 = 11
-    //case btnContaQuarto = 12
+    case btnControleQuarto = 12
 }
 
 
@@ -57,7 +57,7 @@ class SumulaPontosView: UIView {
 
     private func botaoMenor(text: String, image: String, tag: ButtonTag) -> UIButton {
 
-        var configuration = UIButton.Configuration.gray()
+        var configuration = UIButton.Configuration.tinted()
         configuration.cornerStyle = .medium
         configuration.buttonSize = .large
         configuration.title = "\(text)"
@@ -66,6 +66,7 @@ class SumulaPontosView: UIView {
         //configuration.baseBackgroundColor = PaleteColor.primary15pct
 
         let btn = UIButton(configuration: configuration, primaryAction: nil)
+        btn.isEnabled = false
         btn.tag = tag.rawValue
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
@@ -101,51 +102,59 @@ class SumulaPontosView: UIView {
          btn3PtsTime2,
          btnFaltasTime2,
          btnTempoTime2,
-         btnEditarTime2
-         ].forEach { btn in
+         btnEditarTime2,
+         btnEditarTime2,
+         btnControleQuarto
+        ].forEach { btn in
             btn.setOnClickListener {
                 self.delegate?.didTapBtn(btn.tag)
 
             }
         }
         btnControleQuarto.setOnClickListener {
-            if Singleton.shared.sumula.horarioInicio == nil {
-                [self.btnLanceLivreTime1,
-                 self.btn2PtsTime1,
-                 self.btn3PtsTime1,
-                 self.btnFaltasTime1,
-                 self.btnTempoTime1,
-                 self.btnEditarTime1,
-                 self.btnLanceLivreTime2,
-                 self.btn2PtsTime2,
-                 self.btn3PtsTime2,
-                 self.btnFaltasTime2,
-                 self.btnTempoTime2,
-                 self.btnEditarTime2
-                ].forEach { btn in
-                    btn.configuration? = .tinted()
+            if Singleton.shared.sumula.horarioTermino == nil {
+                self.funcs.quarto()
+            }
+            //habilita botões no inicio de jogo e desabilita no fim do jogo
+            [self.btnLanceLivreTime1,
+             self.btn2PtsTime1,
+             self.btn3PtsTime1,
+             self.btnFaltasTime1,
+             self.btnTempoTime1,
+             self.btnEditarTime1,
+             self.btnLanceLivreTime2,
+             self.btn2PtsTime2,
+             self.btn3PtsTime2,
+             self.btnFaltasTime2,
+             self.btnTempoTime2,
+             self.btnControleQuarto
+            ].forEach { btn in
+                if Singleton.shared.sumula.horarioInicio == nil {
+                    btn.isEnabled = true
+                } else if Singleton.shared.sumula.horarioTermino != nil {
+                    btn.isEnabled = false
                 }
-                Singleton.shared.sumula.horarioInicio = Date().formatted().lowercased()
 
             }
-            self.funcs.quarto()
+            if Singleton.shared.sumula.horarioInicio == nil {
+                Singleton.shared.sumula.horarioInicio = Date().formatted(date: .abbreviated, time: .shortened)
+            }
 
             if Singleton.shared.sumula.periodo + Singleton.shared.sumula.periodosExtra <= 3 {
 
                 self.quarto.text = "\(Singleton.shared.sumula.periodo + 1)º Quarto"
-
+                self.btnControleQuarto.configuration?.title = "Final de Quarto"
             } else if Singleton.shared.sumula.horarioTermino == nil {
-
+                self.btnControleQuarto.configuration?.title = "Fim de Jogo"
                 self.quarto.text = "\(Singleton.shared.sumula.periodosExtra)º Tempo Extra"
-
-            } else {
-
-                self.quarto.text = "Jogo Finalizado"
-
             }
-
-
-            self.btnControleQuarto.configuration?.title = Singleton.shared.sumula.periodo + Singleton.shared.sumula.periodosExtra <= 3 ? "Final de Quarto" : "Fim de Jogo"
+            if Singleton.shared.sumula.horarioTermino != nil {
+                self.btnControleQuarto.configuration?.title = "Fim de Jogo"
+                self.btnControleQuarto.isEnabled = false
+                self.quarto.text = "Jogo Finalizado"
+                var placarFinal = "\(self.pontos) x \(self.pontosb)"
+                self.delegate?.finalizarJogo(placarFinal)
+            }
 
         }
         configurar()
@@ -260,8 +269,8 @@ extension SumulaPontosView {
             btnTempoTime1.centerXAnchor.constraint(equalTo: viewBotoesTime1.centerXAnchor),
             btnTempoTime1.topAnchor.constraint(equalTo: btnFaltasTime1.bottomAnchor, constant: 16),
 
-//            btnEditarTime1.centerXAnchor.constraint(equalTo: viewBotoesTime1.centerXAnchor),
-//            btnEditarTime1.topAnchor.constraint(equalTo: btnTempoTime1.bottomAnchor, constant: 16),
+            //            btnEditarTime1.centerXAnchor.constraint(equalTo: viewBotoesTime1.centerXAnchor),
+            //            btnEditarTime1.topAnchor.constraint(equalTo: btnTempoTime1.bottomAnchor, constant: 16),
         ])
 
         viewBotoesTime2.addSubview(btnLanceLivreTime2)
@@ -269,7 +278,7 @@ extension SumulaPontosView {
         viewBotoesTime2.addSubview(btn3PtsTime2)
         viewBotoesTime2.addSubview(btnFaltasTime2)
         viewBotoesTime2.addSubview(btnTempoTime2)
-//        viewBotoesTime2.addSubview(btnEditarTime2)
+        //        viewBotoesTime2.addSubview(btnEditarTime2)
 
         NSLayoutConstraint.activate([
             viewBotoesTime2.widthAnchor.constraint(equalTo: viewBotoes.widthAnchor, multiplier: 0.5),
@@ -292,8 +301,8 @@ extension SumulaPontosView {
             btnTempoTime2.centerXAnchor.constraint(equalTo: viewBotoesTime2.centerXAnchor),
             btnTempoTime2.topAnchor.constraint(equalTo: btnFaltasTime2.bottomAnchor, constant: 16),
 
-//            btnEditarTime2.centerXAnchor.constraint(equalTo: viewBotoesTime2.centerXAnchor),
-//            btnEditarTime2.topAnchor.constraint(equalTo: btnTempoTime2.bottomAnchor, constant: 16),
+            //            btnEditarTime2.centerXAnchor.constraint(equalTo: viewBotoesTime2.centerXAnchor),
+            //            btnEditarTime2.topAnchor.constraint(equalTo: btnTempoTime2.bottomAnchor, constant: 16),
         ])
 
         NSLayoutConstraint.activate([

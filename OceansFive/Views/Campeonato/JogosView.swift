@@ -29,7 +29,7 @@ class JogosView: UIView {
         super.init(frame: .zero)
         Backend.fetchJogos(torneio.idTorneio) { ckjogos in
             for jogo in ckjogos {
-                self.jogos.append(Jogo(timeA: jogo.timeCasa, timeB: jogo.timeVisitante, placar: jogo.jogoFinalizado ? jogo.placar : "-- X --", gameId: jogo.gameId ,backgroundColor: .systemBlue,onClick: {
+                self.jogos.append(Jogo(timeA: jogo.timeCasa, timeB: jogo.timeVisitante, placar: jogo.jogoFinalizado ? jogo.placar : "-- X --", gameId: jogo.gameId ,backgroundColor: PaleteColor.orange ,onClick: {
                     if jogo.jogoFinalizado {
                         // go to sumulapreenchida
                         // se o jogo estiver preenchido vai para sula preenchida, se nao vai para sumula
@@ -42,7 +42,7 @@ class JogosView: UIView {
                     } else {
                         // go to preencher sumula
                         //Backend.updateGame(gameId: jogo.gameId, placar: "2 X 1")
-                        parentView.navigationController?.pushViewController(SumulaViewController(), animated: true)
+                        parentView.navigationController?.pushViewController(SumulaViewController(jogoID: jogo.gameId, updateJgVw: {}), animated: true)
                     }
                 }))
             }
@@ -122,7 +122,7 @@ class JogosView: UIView {
         //placar
         let placarText = UILabel()
         placarText.text = pontos
-        placarText.textColor = .white
+        placarText.textColor = .black
         placarText.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         placarText.translatesAutoresizingMaskIntoConstraints = false
         placar.addSubview(placarText)
@@ -137,7 +137,7 @@ class JogosView: UIView {
             brasaoCard.translatesAutoresizingMaskIntoConstraints = false
             brasaoCard.widthAnchor.constraint(equalToConstant: 70).isActive = true
             brasaoCard.heightAnchor.constraint(equalToConstant: 60).isActive = true
-            brasaoCard.backgroundColor = .blue
+            brasaoCard.backgroundColor = .systemGray6
             parentView.addSubview(brasaoCard)
             NSLayoutConstraint.activate([
                 brasaoCard.topAnchor.constraint(equalTo: parentView.topAnchor, constant: 8)
@@ -152,7 +152,7 @@ class JogosView: UIView {
             let nomeCasa = UILabel()
             nomeCasa.translatesAutoresizingMaskIntoConstraints = false
             nomeCasa.text = nome
-            nomeCasa.textColor = .white
+            nomeCasa.textColor = .black
             nomeCasa.font = UIFont.systemFont(ofSize: 15, weight: .bold)
             parentView.addSubview(nomeCasa)
             NSLayoutConstraint.activate([

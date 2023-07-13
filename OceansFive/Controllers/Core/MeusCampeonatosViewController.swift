@@ -70,7 +70,7 @@ class MeusCampeonatosViewController: UIViewController {
             DispatchQueue.main.async {
                 var cards: [CardView] = []
                 for torneio in torneios {
-                    let card = CardView(Torneio(cardColor: .systemBlue, title: torneio.nome, imagePath: "cpi1", qtdTime: torneio.qtdTimes, formato: torneio.formato, idTorneio: torneio.idTorneio))
+                    let card = CardView(Torneio(cardColor: PaleteColor.orange, title: torneio.nome, imagePath: "cpi1", qtdTime: torneio.qtdTimes, formato: torneio.formato, idTorneio: torneio.idTorneio))
                     card.delegate = self
                     cards.append(card)
                 }
@@ -88,7 +88,7 @@ class MeusCampeonatosViewController: UIViewController {
                 DispatchQueue.main.async {
                     var cards: [CardView] = []
                     for torneio in torneios {
-                        let card = CardView(Torneio(cardColor: .systemBlue, title: torneio.nome, imagePath: "cpi1", qtdTime: torneio.qtdTimes, formato: torneio.formato, idTorneio: torneio.idTorneio))
+                        let card = CardView(Torneio(cardColor: PaleteColor.orange , title: torneio.nome, imagePath: "cpi1", qtdTime: torneio.qtdTimes, formato: torneio.formato, idTorneio: torneio.idTorneio))
                         card.delegate = self
                         cards.append(card)
                     }
