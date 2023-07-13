@@ -11,9 +11,8 @@
 		0358C6332A56DED70089B267 /* Sumula.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0358C6322A56DED70089B267 /* Sumula.swift */; };
 		0358C6352A56EE230089B267 /* TimeJogando.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0358C6342A56EE230089B267 /* TimeJogando.swift */; };
 		0358C6372A56EE450089B267 /* Pontos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0358C6362A56EE450089B267 /* Pontos.swift */; };
-		31FD702F2A55AE6F000F4C87 /* CriarTorneio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FD702E2A55AE6F000F4C87 /* CriarTorneio.swift */; };
 		0358C63E2A5C309A0089B267 /* Funcoes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0358C63D2A5C309A0089B267 /* Funcoes.swift */; };
-		31FD702F2A55AE6F000F4C87 /* Criar Torneio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FD702E2A55AE6F000F4C87 /* Criar Torneio.swift */; };
+		31FD702F2A55AE6F000F4C87 /* CriarTorneio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FD702E2A55AE6F000F4C87 /* CriarTorneio.swift */; };
 		9562FD922A530378005945A9 /* SumulaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FD912A530378005945A9 /* SumulaViewController.swift */; };
 		9562FD992A5306FF005945A9 /* Jogador.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FD982A5306FF005945A9 /* Jogador.swift */; };
 		9562FD9B2A53074D005945A9 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562FD9A2A53074D005945A9 /* Time.swift */; };
@@ -52,8 +51,9 @@
 		0358C6322A56DED70089B267 /* Sumula.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sumula.swift; sourceTree = "<group>"; };
 		0358C6342A56EE230089B267 /* TimeJogando.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeJogando.swift; sourceTree = "<group>"; };
 		0358C6362A56EE450089B267 /* Pontos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pontos.swift; sourceTree = "<group>"; };
-		31FD702E2A55AE6F000F4C87 /* CriarTorneio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriarTorneio.swift; sourceTree = "<group>"; };
 		0358C63D2A5C309A0089B267 /* Funcoes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Funcoes.swift; sourceTree = "<group>"; };
+		31FD702E2A55AE6F000F4C87 /* CriarTorneio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriarTorneio.swift; sourceTree = "<group>"; };
+		95128DA42A6064AC008175F4 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		9562FD912A530378005945A9 /* SumulaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumulaViewController.swift; sourceTree = "<group>"; };
 		9562FD982A5306FF005945A9 /* Jogador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jogador.swift; sourceTree = "<group>"; };
 		9562FD9A2A53074D005945A9 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
@@ -336,11 +336,11 @@
 			};
 			buildConfigurationList = F8FC3E3E2A4CC7F20033E3E0 /* Build configuration list for PBXProject "OceansFive" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = "pt-BR";
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = F8FC3E3A2A4CC7F20033E3E0;
 			productRefGroup = F8FC3E442A4CC7F20033E3E0 /* Products */;
@@ -415,6 +415,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F8FC3E522A4CC7F30033E3E0 /* Base */,
+				95128DA42A6064AC008175F4 /* pt-BR */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -426,6 +427,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -472,6 +474,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -486,6 +489,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -526,6 +530,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -549,8 +554,8 @@
 				INFOPLIST_FILE = OceansFive/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -577,8 +582,8 @@
 				INFOPLIST_FILE = OceansFive/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
