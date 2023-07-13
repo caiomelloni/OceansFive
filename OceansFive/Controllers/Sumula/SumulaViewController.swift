@@ -56,7 +56,7 @@ class SumulaViewController: UIViewController {
         super.loadView()
         funcs.numeroJog(time: &Singleton.shared.sumula.timeA)
         funcs.numeroJog(time: &Singleton.shared.sumula.timeB)
-        print("Singleton.shared.sumula.periodo \(Singleton.shared.sumula.periodo)")
+//        print("Singleton.shared.sumula.periodo \(Singleton.shared.sumula.periodo)")
         títuloSv()
         tableVw.loadData(segmentedControl.selectedSegmentIndex)
     }
@@ -153,7 +153,7 @@ extension SumulaViewController: SumulaViewDelegate {
             case 11:
                 print("\(buttonTag) tapped")
             case 12:
-                print("Aqui")
+                print("\(buttonTag) tapped")
             default:
                 print("did tap button")
         }

@@ -62,7 +62,7 @@ class InfosView: UIView {
        setDelegates()
         setTableLayout()
         tableview.register(InfoTableCell.self, forCellReuseIdentifier: InfoTableCell.cellId)
-        print(Singleton.shared.sumula.timeA.faltas)
+//        print(Singleton.shared.sumula.timeA.faltas)
         tableview.reloadData()
     }
     
