@@ -51,7 +51,34 @@ class CampeonatoViewController: UIViewController {
         layoutViews()
         setNavBar()
     }
-    
+
+    private lazy var estatisticaView: UIView = {
+        var vw: UIView = UIView()
+        vw.translatesAutoresizingMaskIntoConstraints = false
+
+    var imgvw: UIImageView = UIImageView()
+        func buildImage() -> UIImageView {
+            let imgvw = UIImageView()
+            imgvw.translatesAutoresizingMaskIntoConstraints = false
+            imgvw.contentMode = .scaleAspectFit
+            imgvw.layer.cornerRadius = 10.0
+            imgvw.clipsToBounds = true
+            imgvw.image = UIImage(named: "alert")
+            return imgvw
+        }
+        imgvw = buildImage()
+
+        vw.addSubview(imgvw)
+        NSLayoutConstraint.activate([
+            imgvw.leadingAnchor.constraint(equalTo: vw.leadingAnchor, constant:66),
+            imgvw.trailingAnchor.constraint(equalTo: vw.trailingAnchor, constant: -66),
+            imgvw.topAnchor.constraint(equalTo: vw.topAnchor),
+            imgvw.bottomAnchor.constraint(equalTo: vw.bottomAnchor),
+        ])
+        return vw
+
+    }()
+
     func setCurrentView(_ section: UIView) {
         currentView.removeFromSuperview()
         currentView = section
@@ -105,7 +132,7 @@ class CampeonatoViewController: UIViewController {
             jogosView = JogosView(torneio, self)
             setCurrentView(jogosView)
         case 2:
-            print("2")
+            setCurrentView(estatisticaView)
         default:
             print("out of range segmented control item")
         }
@@ -117,7 +144,7 @@ extension CampeonatoViewController: JogosViewDelegate {
     func updateJogosView() {
 
         Task {
-            await try Task.sleep(nanoseconds: 1_000_000_000)
+            try await Task.sleep(nanoseconds: 1_000_000_000)
             self.jogosView = JogosView(torneio, self)
             setCurrentView(jogosView)
         }

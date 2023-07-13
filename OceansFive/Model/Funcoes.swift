@@ -109,7 +109,7 @@ struct Sum {
         if numeroJogador < 12 && Singleton.shared.sumula.periodo >= 0 {
             time.faltas[Singleton.shared.sumula.periodo].append(time.numeroJogador[numeroJogador]!)
 
-        print("Singleton.shared.sumula.periodo \(Singleton.shared.sumula.periodo)")
+//        print("Singleton.shared.sumula.periodo \(Singleton.shared.sumula.periodo)")
             for (index, jg) in time.time.jogadores.enumerated() {
                 if jg.id == time.numeroJogador[numeroJogador]{
                     //colocar o UUID do jogo e nao do jogador
