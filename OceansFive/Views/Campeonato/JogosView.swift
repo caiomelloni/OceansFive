@@ -42,7 +42,7 @@ class JogosView: UIView {
                     } else {
                         // go to preencher sumula
                         //Backend.updateGame(gameId: jogo.gameId, placar: "2 X 1")
-                        parentView.navigationController?.pushViewController(SumulaViewController(jogoID: jogo.gameId, updateJgVw: {}), animated: true)
+                        parentView.navigationController?.pushViewController(SumulaViewController(jogoID: jogo.gameId, updateJgVw: parentView.), animated: true)
                     }
                 }))
             }
