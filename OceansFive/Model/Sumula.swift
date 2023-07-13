@@ -18,14 +18,15 @@ struct Sumula {
     // Contem dados referentes ao campeoanto que pertence
     //let campeonato: Campeonato
     // contem dados sobre prorrogação da partida
+    var periodo: Int = -1
     var periodosExtra: Int = 0
     // String com nome dos arbitros
     var arbitros: [String]
     // local do jogo
     var local: String
     //Marcadores de partida
-    var horarioInicio: Date
-    var horarioTermino: Date
+    var horarioInicio: String
+    var horarioTermino: String
     // responsáveis pela mesa (fiscal e mesa)
     var mesa: [String]
 }

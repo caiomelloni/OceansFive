@@ -17,12 +17,13 @@ class SumulaViewController: UIViewController {
     var currentView: UIView = UIView()
     // MARK: Properties
     var funcs = Sum()
-    let items = ["TimeA", "TimeB", "Pontos", "Informações"]
+    let items = ["Pontos", "Informações", "TimeA", "TimeB"]
     let haptic = UISelectionFeedbackGenerator()
     var tableVw = SumulaTimeTableView()
     let pontosVw = SumulaPontosView()
-    let infosVw = InfosView(
-        infos_vazia
+   // let infos = InfosSumulaJogando()
+    var infosVw = InfosView(
+        InfosSumulaJogando().infos_vazia
     )
 //    let funcs = Sum()
 
@@ -38,30 +39,28 @@ class SumulaViewController: UIViewController {
 
     // MARK: - methods
 
-
-
     override func loadView() {
         super.loadView()
-        
         funcs.numeroJog(time: &Singleton.shared.sumula.timeA)
         funcs.numeroJog(time: &Singleton.shared.sumula.timeB)
+        print("Singleton.shared.sumula.periodo \(Singleton.shared.sumula.periodo)")
         títuloSv()
         tableVw.loadData(segmentedControl.selectedSegmentIndex)
-//        funcs.numeroJog()
     }
-
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         haptic.prepare()
 
-        currentView = tableVw
+        currentView = pontosVw
+
         view.backgroundColor = .secondarySystemBackground
 
         view.addSubview(segmentedControl)
-
+        pontosVw.delegate = self
         insertViewSection(currentView)
+
         NSLayoutConstraint.activate([
             segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
             segmentedControl.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
@@ -73,11 +72,11 @@ class SumulaViewController: UIViewController {
 
     private func configNavBarItems() {
         navigationController?.navigationBar.tintColor = PaleteColor.primary
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add,
-            target: self,
-            action: nil
-        )
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(
+//            barButtonSystemItem: .add,
+//            target: self,
+//            action: nil
+//        )
     }
 
 
@@ -86,17 +85,19 @@ class SumulaViewController: UIViewController {
 
         haptic.selectionChanged()
         switch segmentedControl.selectedSegmentIndex {
+
             case 0:
-                tableVw.loadData(segmentedControl.selectedSegmentIndex)
-                insertViewSection(tableVw)
-            case 1:
-                insertViewSection(tableVw)
-                tableVw.loadData(segmentedControl.selectedSegmentIndex)
-            case 2:
                 pontosVw.delegate = self
                 insertViewSection(pontosVw)
-            case 3:
+            case 1:
+                infosVw = InfosView(InfosSumulaJogando().infos_vazia)
                 insertViewSection(infosVw)
+            case 2:
+                tableVw.loadData(segmentedControl.selectedSegmentIndex)
+                insertViewSection(tableVw)
+            case 3:
+                insertViewSection(tableVw)
+                tableVw.loadData(segmentedControl.selectedSegmentIndex)
             default:
                 segmentedControl.selectedSegmentIndex = 0
 
@@ -107,77 +108,84 @@ class SumulaViewController: UIViewController {
 
 extension SumulaViewController: SumulaViewDelegate {
     func didTapBtn(_ buttonTag: Int) {
-        switch buttonTag {
-            case 0:
-                didTapBtnPts(pts: 1, time: &Singleton.shared.sumula.timeA)
-            case 1:
-                didTapBtnPts(pts: 2, time: &Singleton.shared.sumula.timeA)
-            case 2:
-                didTapBtnPts(pts: 3, time: &Singleton.shared.sumula.timeA)
-            case 3:
-                print("\(buttonTag) tapped")
-            case 4:
-                print("\(buttonTag) tapped")
-            case 5:
-                print("\(buttonTag) tapped")
-            case 6:
-                didTapBtnPts(pts: 1, time: &Singleton.shared.sumula.timeB)
-            case 7:
-                didTapBtnPts(pts: 2, time: &Singleton.shared.sumula.timeB)
-            case 8:
-                didTapBtnPts(pts: 3, time: &Singleton.shared.sumula.timeB)
-            case 9:
-                print("\(buttonTag) tapped")
-            case 10:
-                print("\(buttonTag) tapped")
-            case 11:
-                print("\(buttonTag) tapped")
-            default:
-                print("did tap button")
+        if Singleton.shared.sumula.periodo >= 0 {
+            switch buttonTag {
+                case 0:
+                    didTapBtnPts(pts: 1, time: &Singleton.shared.sumula.timeA)
+                case 1:
+                    didTapBtnPts(pts: 2, time: &Singleton.shared.sumula.timeA)
+                case 2:
+                    didTapBtnPts(pts: 3, time: &Singleton.shared.sumula.timeA)
+                case 3:
+                    didTapBtnFalta(time: &Singleton.shared.sumula.timeA)
+                case 4:
+                    didTapBtnTempo(time: &Singleton.shared.sumula.timeA)
+                case 5:
+                    print("\(buttonTag) tapped")
+                case 6:
+                    didTapBtnPts(pts: 1, time: &Singleton.shared.sumula.timeB)
+                case 7:
+                    didTapBtnPts(pts: 2, time: &Singleton.shared.sumula.timeB)
+                case 8:
+                    didTapBtnPts(pts: 3, time: &Singleton.shared.sumula.timeB)
+                case 9:
+                    didTapBtnFalta(time: &Singleton.shared.sumula.timeB)
+                case 10:
+                    didTapBtnTempo(time: &Singleton.shared.sumula.timeB)
+                case 11:
+                    print("\(buttonTag) tapped")
+                default:
+                    print("did tap button")
+            }
         }
         func didTapBtnPts(pts: Int, time: inout TimeJogando) {
-            //print(time)
-            withUnsafePointer(to: time) { pointer in
-                print("Dentro do tap :\(pointer)")
-            }
-
-            addButtonTapped(pts: pts, time: &time)
+            addButtonTapped(ref: pts, time: &time)
         }
-        func didTapBtnFalta() {
-            
-            
+        func didTapBtnFalta(time: inout TimeJogando) {
+            addButtonTapped(ref: 5, time: &time)
         }
-        func didTapBtnTempo() {}
+        func didTapBtnTempo(time: inout TimeJogando) {
+            addButtonTapped(ref: 4, time: &time)
+        }
         func didTapBtnEditar() {}
     }
 
-//    func addButtonTapped(pts: Int, time: TimeJogando) {
-    func addButtonTapped(pts: Int, time: UnsafeMutablePointer<TimeJogando>) {
-        let alertController = UIAlertController(title: "Teste", message: "Adicionar \(pts) ponto(s) ao jogador.", preferredStyle: .alert)
-        alertController.addTextField { (textField) in
-          textField.placeholder = "Digite o número"
-          textField.keyboardType = .phonePad
+    func addButtonTapped(ref: Int, time: UnsafeMutablePointer<TimeJogando>) {
+        let title: String
+        let message: String
+        if ref < 4 {
+            title = "Pontuação \(time.pointee.time.abreviado)"
+            message = "Adicionar \(ref) ponto(s) ao jogador."
+        } else if ref == 4 {
+            title = "Tempo \(time.pointee.time.abreviado)"
+            message = "Informe o tempo atual do jogo."
+        } else {
+            title = "Falta \(time.pointee.time.abreviado)"
+            message = "Adicionar falta ao jogador."
+        }
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alertController.addTextField { (textField) in
+                textField.placeholder = ref == 4 ? "Tempo de jogo" : "Digite o número do jogador"
+                textField.keyboardType = .numberPad
         }
         let okAction = UIAlertAction(title: "Concluir", style: .default) { _ in
           if let numberString = alertController.textFields?.first?.text,
             let number = Int(numberString) {
             // Ação a ser executada quando o botão "Concluir" do alerta modal for pressionado
-              switch pts {
+              switch ref {
                   case 1:
                       Sum().lanceLivre(numeroJogador: number, time: &time.pointee)
-                  self.pontosVw.setNeedsDisplay()
+                      self.pontosVw.atualizaPlacar()
                   case 2:
                       Sum().dois(numeroJogador: number, time: &time.pointee)
-                  self.pontosVw.setNeedsDisplay()
+                      self.pontosVw.atualizaPlacar()
                   case 3:
-                      withUnsafePointer(to: time) { pointer in
-                          print("Dentro do switch :\(pointer)")
-                      }
-
                       Sum().tres(numeroJogador: number, time: &time.pointee)
-                  self.pontosVw.setNeedsDisplay()
-                      
-
+                      self.pontosVw.atualizaPlacar()
+                  case 4:
+                      Sum().tempo(tempo: number, time: &time.pointee)
+                  case 5:
+                      Sum().faltas(numeroJogador: number, time: &time.pointee)
                   default:
                       break
               }
@@ -191,9 +199,6 @@ extension SumulaViewController: SumulaViewDelegate {
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
       }
-
-//    let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped)
-//)
 
 }
 

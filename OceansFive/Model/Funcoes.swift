@@ -9,23 +9,32 @@
 //
 //
 //
+import Foundation
+
 struct Sum {
-    var periodo: Int = 0
+
     
-    func quarto () -> Int {
-        var flag = self.periodo
-        
-        if flag<=3{
-            flag += 1
+    mutating func quarto () {
+
+        if Singleton.shared.sumula.periodo < 3 {
+            Singleton.shared.sumula.periodo += 1
         }
         else {
-            
-            
+            let pontosA: Int = leitorPontos(time: &Singleton.shared.sumula.timeA)
+            let pontosB: Int = leitorPontos(time: &Singleton.shared.sumula.timeB)
+            if pontosA == pontosB {
+                Singleton.shared.sumula.periodosExtra += 1
+            } else {
+                Singleton.shared.sumula.horarioTermino = Date().formatted(date: .omitted, time: .shortened)
+            }
+
         }
-        
-        return periodo
     }
-    
+
+//    mutating func setaPeriodo() {
+//        self.quarto(self.periodo)
+//    }
+//
     func numeroJog(time: inout TimeJogando) {
         for (index, jg) in time.time.jogadores.enumerated(){
             time.numeroJogador[index] = jg.id
@@ -34,29 +43,25 @@ struct Sum {
     
     
     func lanceLivre(numeroJogador: Int, time: inout TimeJogando) {
-        //print(timeJogando1.numeroJogador[10])
-        time.ponto.lanceLivrePonto[periodo].append(time.numeroJogador[numeroJogador]!)
-        
-        for (index, jg) in time.time.jogadores.enumerated() {
-            if jg.id == time.numeroJogador[numeroJogador]{
-                //colocar o UUID do jogo e nao do jogador
-                
-                //                withUnsafePointer(to: jogadores1) { pointer in
-                //                    print(pointer)
-                //                }
-                
-                time.time.jogadores[index].pontos.lanceLivrePonto[periodo].append(Singleton.shared.sumula.id)
+        if numeroJogador < 12 && Singleton.shared.sumula.periodo >= 0 {
+            time.ponto.lanceLivrePonto[Singleton.shared.sumula.periodo].append(time.numeroJogador[numeroJogador]!)
+            for (index, jg) in time.time.jogadores.enumerated() {
+                if jg.id == time.numeroJogador[numeroJogador]{
+                    time.time.jogadores[index].pontos.lanceLivrePonto[Singleton.shared.sumula.periodo].append(Singleton.shared.sumula.id)
+                }
             }
         }
     }
     
     func dois(numeroJogador: Int, time: inout TimeJogando) {
-        time.ponto.doisPontos[periodo].append(time.numeroJogador[numeroJogador]!)
-        
-        for (index, jg) in time.time.jogadores.enumerated() {
-            if jg.id == time.numeroJogador[numeroJogador]{
-                //colocar o UUID do jogo e nao do jogador
-                time.time.jogadores[index].pontos.doisPontos[periodo].append(Singleton.shared.sumula.id)
+        if numeroJogador < 12 && Singleton.shared.sumula.periodo >= 0 {
+            time.ponto.doisPontos[Singleton.shared.sumula.periodo].append(time.numeroJogador[numeroJogador]!)
+
+            for (index, jg) in time.time.jogadores.enumerated() {
+                if jg.id == time.numeroJogador[numeroJogador]{
+                    //colocar o UUID do jogo e nao do jogador
+                    time.time.jogadores[index].pontos.doisPontos[Singleton.shared.sumula.periodo].append(Singleton.shared.sumula.id)
+                }
             }
         }
         
@@ -65,18 +70,28 @@ struct Sum {
     
     
     func tres(numeroJogador: Int, time: inout TimeJogando) {
-        
-        time.ponto.tresPontos[periodo].append(time.numeroJogador[numeroJogador]!)
-        
-        for (index, jg) in time.time.jogadores.enumerated() {
-            if jg.id == time.numeroJogador[numeroJogador]{
-                //colocar o UUID do jogo e nao do jogador
-                time.time.jogadores[index].pontos.tresPontos[periodo].append(Singleton.shared.sumula.id)
-            }
-            else{
+        if numeroJogador < 12 && Singleton.shared.sumula.periodo >= 0 {
+            time.ponto.tresPontos[Singleton.shared.sumula.periodo].append(time.numeroJogador[numeroJogador]!)
+
+            for (index, jg) in time.time.jogadores.enumerated() {
+                if jg.id == time.numeroJogador[numeroJogador]{
+                    //colocar o UUID do jogo e nao do jogador
+                    time.time.jogadores[index].pontos.tresPontos[Singleton.shared.sumula.periodo].append(Singleton.shared.sumula.id)
+                }
+                else{
+                }
             }
         }
     }
+
+    func tempo(tempo: Int, time: inout TimeJogando) {
+        if Singleton.shared.sumula.periodo >= 0 {
+            time.tempos[Singleton.shared.sumula.periodo].append(tempo)
+        }
+    }
+    
+    
+    
     
     func leitorPontos(time : inout TimeJogando) -> Int{
         
@@ -87,21 +102,21 @@ struct Sum {
             pts += time.ponto.doisPontos[i].count * 2
             pts += time.ponto.tresPontos[i].count * 3
         }
-        
-//        print(pts)
         return pts
     }
     
     func faltas(numeroJogador: Int , time: inout TimeJogando){
-        
-        time.faltas[periodo].append(time.numeroJogador[numeroJogador]!)
-        
-        for (index, jg) in time.time.jogadores.enumerated() {
-            if jg.id == time.numeroJogador[numeroJogador]{
-                //colocar o UUID do jogo e nao do jogador
-                time.time.jogadores[index].faltas.qtdFaltas += 1
-            }
-            else{
+        if numeroJogador < 12 && Singleton.shared.sumula.periodo >= 0 {
+            time.faltas[Singleton.shared.sumula.periodo].append(time.numeroJogador[numeroJogador]!)
+
+        print("Singleton.shared.sumula.periodo \(Singleton.shared.sumula.periodo)")
+            for (index, jg) in time.time.jogadores.enumerated() {
+                if jg.id == time.numeroJogador[numeroJogador]{
+                    //colocar o UUID do jogo e nao do jogador
+                    time.time.jogadores[index].faltas.qtdFaltas += 1
+                }
+                else{
+                }
             }
         }
     }
