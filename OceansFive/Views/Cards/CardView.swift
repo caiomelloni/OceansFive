@@ -8,14 +8,20 @@
 import UIKit
 
 struct Torneio {
-    let cardColor: UIColor, title: String, imagePath: String
+    let cardColor: UIColor, title: String, imagePath: String, qtdTime: Int, formato: FormatoTorneio, idTorneio: String
+}
+
+protocol CardViewDelegate {
+    func navigateToTornament(_ torneio: Torneio)
 }
 
 class CardView: UIView {
     
+    var delegate: CardViewDelegate?
+    
     let card: UIView = {
         let card = UIView()
-        card.backgroundColor = .systemBlue
+        card.backgroundColor = PaleteColor.orange
         card.layer.cornerRadius = CGFloat(12)
         card.translatesAutoresizingMaskIntoConstraints = false
         return card
@@ -44,14 +50,21 @@ class CardView: UIView {
     
 
     
-    
+    private var torneio: Torneio
     init(_ torneio: Torneio) {
+        self.torneio = torneio
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
         heightAnchor.constraint(equalToConstant: 120).isActive = true
         card.backgroundColor = torneio.cardColor
         lbl.text = torneio.title
         imgvw = buildImage(torneio.imagePath)
+        
+        //Add card click
+        card.setOnClickListener {
+            self.delegate?.navigateToTornament(self.torneio)
+        }
+        
         buildLayout()
     }
     

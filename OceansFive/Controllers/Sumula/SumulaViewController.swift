@@ -7,18 +7,38 @@
 
 import UIKit
 
+protocol SumulaViewDelegate: AnyObject {
+    func didTapBtn(_ buttonTag: Int)
+
+    func finalizarJogo(_ placarFinal: String)
+}
+
 class SumulaViewController: UIViewController {
+    var jogoID: String
+    var updateJgVw: () -> Void
+    init(jogoID: String, updateJgVw: @escaping () -> Void) {
+        self.jogoID = jogoID
+        self.updateJgVw = updateJgVw
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("This class does not support NSCoder")
+    }
 
     var currentView: UIView = UIView()
     // MARK: Properties
-
-    let items = ["TimeA", "TimeB", "Pontos", "Informações"]
+    var funcs = Sum()
+    let items = ["Pontos", "Informações", "TimeA", "TimeB"]
     let haptic = UISelectionFeedbackGenerator()
-    let tableVw = SumulaTimeTableView()
+    var tableVw = SumulaTimeTableView()
     let pontosVw = SumulaPontosView()
-    let infosVw = InfosView(
-        infos_vazia
+    // let infos = InfosSumulaJogando()
+    var infosVw = InfosView(
+        InfosSumulaJogando().infos_vazia
     )
+    //    let funcs = Sum()
 
     //MARK: UI - Elements
     lazy var segmentedControl: UISegmentedControl = {
@@ -32,61 +52,171 @@ class SumulaViewController: UIViewController {
 
     // MARK: - methods
 
-
-
     override func loadView() {
         super.loadView()
+        funcs.numeroJog(time: &Singleton.shared.sumula.timeA)
+        funcs.numeroJog(time: &Singleton.shared.sumula.timeB)
+        print("Singleton.shared.sumula.periodo \(Singleton.shared.sumula.periodo)")
         títuloSv()
         tableVw.loadData(segmentedControl.selectedSegmentIndex)
     }
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
+
         haptic.prepare()
 
-        currentView = tableVw
+        currentView = pontosVw
+
         view.backgroundColor = .secondarySystemBackground
 
         view.addSubview(segmentedControl)
-
+        pontosVw.delegate = self
         insertViewSection(currentView)
+
         NSLayoutConstraint.activate([
             segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
             segmentedControl.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             segmentedControl.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            ])
+        ])
 
         configNavBarItems()
     }
 
     private func configNavBarItems() {
         navigationController?.navigationBar.tintColor = PaleteColor.primary
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add,
-            target: self,
-            action: nil
-        )
+        //        navigationItem.rightBarButtonItem = UIBarButtonItem(
+        //            barButtonSystemItem: .add,
+        //            target: self,
+        //            action: nil
+        //        )
     }
+
+
 
     @objc func changeSelector() {
 
         haptic.selectionChanged()
         switch segmentedControl.selectedSegmentIndex {
+
             case 0:
-                insertViewSection(tableVw)
-                tableVw.loadData(segmentedControl.selectedSegmentIndex)
-            case 1:
-                insertViewSection(tableVw)
-                tableVw.loadData(segmentedControl.selectedSegmentIndex)
-            case 2:
+                pontosVw.delegate = self
                 insertViewSection(pontosVw)
-            case 3:
+            case 1:
+                infosVw = InfosView(InfosSumulaJogando().infos_vazia)
                 insertViewSection(infosVw)
+            case 2:
+                tableVw.loadData(segmentedControl.selectedSegmentIndex)
+                insertViewSection(tableVw)
+            case 3:
+                insertViewSection(tableVw)
+                tableVw.loadData(segmentedControl.selectedSegmentIndex)
             default:
                 segmentedControl.selectedSegmentIndex = 0
 
         }
+    }
+
+}
+
+extension SumulaViewController: SumulaViewDelegate {
+    func finalizarJogo(_ placarFinal: String) {
+        Backend.updateGame(gameId: jogoID, placar: placarFinal)
+        updateJgVw()
+        self.navigationController?.popViewController(animated: true)
+    }
+
+    func didTapBtn(_ buttonTag: Int) {
+        switch buttonTag {
+            case 0:
+                didTapBtnPts(pts: 1, time: &Singleton.shared.sumula.timeA)
+            case 1:
+                didTapBtnPts(pts: 2, time: &Singleton.shared.sumula.timeA)
+            case 2:
+                didTapBtnPts(pts: 3, time: &Singleton.shared.sumula.timeA)
+            case 3:
+                didTapBtnFalta(time: &Singleton.shared.sumula.timeA)
+            case 4:
+                didTapBtnTempo(time: &Singleton.shared.sumula.timeA)
+            case 5:
+                print("\(buttonTag) tapped")
+            case 6:
+                didTapBtnPts(pts: 1, time: &Singleton.shared.sumula.timeB)
+            case 7:
+                didTapBtnPts(pts: 2, time: &Singleton.shared.sumula.timeB)
+            case 8:
+                didTapBtnPts(pts: 3, time: &Singleton.shared.sumula.timeB)
+            case 9:
+                didTapBtnFalta(time: &Singleton.shared.sumula.timeB)
+            case 10:
+                didTapBtnTempo(time: &Singleton.shared.sumula.timeB)
+            case 11:
+                print("\(buttonTag) tapped")
+            case 12:
+                print("Aqui")
+            default:
+                print("did tap button")
+        }
+        func didTapBtnPts(pts: Int, time: inout TimeJogando) {
+            addButtonTapped(ref: pts, time: &time)
+        }
+        func didTapBtnFalta(time: inout TimeJogando) {
+            addButtonTapped(ref: 5, time: &time)
+        }
+        func didTapBtnTempo(time: inout TimeJogando) {
+            addButtonTapped(ref: 4, time: &time)
+        }
+        func didTapBtnEditar() {}
+    }
+
+    func addButtonTapped(ref: Int, time: UnsafeMutablePointer<TimeJogando>) {
+        let title: String
+        let message: String
+        if ref < 4 {
+            title = "Pontuação \(time.pointee.time.abreviado)"
+            message = "Adicionar \(ref) ponto(s) ao jogador."
+        } else if ref == 4 {
+            title = "Tempo \(time.pointee.time.abreviado)"
+            message = "Informe o tempo atual do jogo."
+        } else {
+            title = "Falta \(time.pointee.time.abreviado)"
+            message = "Adicionar falta ao jogador."
+        }
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addTextField { (textField) in
+            textField.placeholder = ref == 4 ? "Tempo de jogo" : "Digite o número do jogador"
+            textField.keyboardType = .numberPad
+        }
+        let okAction = UIAlertAction(title: "Concluir", style: .default) { _ in
+            if let numberString = alertController.textFields?.first?.text,
+               let number = Int(numberString) {
+                // Ação a ser executada quando o botão "Concluir" do alerta modal for pressionado
+                switch ref {
+                    case 1:
+                        Sum().marcaLanceLivre(numeroJogador: number, time: &time.pointee)
+                        self.pontosVw.atualizaPlacar()
+                    case 2:
+                        Sum().marcaDoisPts(numeroJogador: number, time: &time.pointee)
+                        self.pontosVw.atualizaPlacar()
+                    case 3:
+                        Sum().marcaTresPts(numeroJogador: number, time: &time.pointee)
+                        self.pontosVw.atualizaPlacar()
+                    case 4:
+                        Sum().tempo(tempo: number, time: &time.pointee)
+                    case 5:
+                        Sum().faltas(numeroJogador: number, time: &time.pointee)
+                    default:
+                        break
+                }
+            } else {
+                print("Número inválido")
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .destructive, handler: nil)
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
     }
 
 }
@@ -104,9 +234,9 @@ private extension SumulaViewController {
         view.addSubview(vw)
         currentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([currentView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 8),
-                currentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-                currentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-                currentView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0)])
+                                     currentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+                                     currentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+                                     currentView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0)])
     }
 
     

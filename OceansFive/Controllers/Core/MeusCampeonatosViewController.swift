@@ -70,7 +70,9 @@ class MeusCampeonatosViewController: UIViewController {
             DispatchQueue.main.async {
                 var cards: [CardView] = []
                 for torneio in torneios {
-                    cards.append(CardView(Torneio(cardColor: .systemBlue, title: torneio.nome, imagePath: "cpi1")))
+                    let card = CardView(Torneio(cardColor: PaleteColor.orange, title: torneio.nome, imagePath: "cpi1", qtdTime: torneio.qtdTimes, formato: torneio.formato, idTorneio: torneio.idTorneio))
+                    card.delegate = self
+                    cards.append(card)
                 }
                 
                 self.initCardsSection(cards: cards)
@@ -86,7 +88,9 @@ class MeusCampeonatosViewController: UIViewController {
                 DispatchQueue.main.async {
                     var cards: [CardView] = []
                     for torneio in torneios {
-                        cards.append(CardView(Torneio(cardColor: .systemBlue, title: torneio.nome, imagePath: "cpi1")))
+                        let card = CardView(Torneio(cardColor: PaleteColor.orange , title: torneio.nome, imagePath: "cpi1", qtdTime: torneio.qtdTimes, formato: torneio.formato, idTorneio: torneio.idTorneio))
+                        card.delegate = self
+                        cards.append(card)
                     }
                     
                     self.initCardsSection(cards: cards)
@@ -97,11 +101,15 @@ class MeusCampeonatosViewController: UIViewController {
     }
     
     @objc func goToCriarTorneio() {
-        self.navigationController?.pushViewController(Criar_Torneio(), animated: true)
+        self.navigationController?.pushViewController(CriarTorneio(), animated: true)
     }
 }
 
-extension MeusCampeonatosViewController: CardsSectionViewDelegate {
+extension MeusCampeonatosViewController: CardsSectionViewDelegate, CardViewDelegate {
+    func navigateToTornament(_ torneio: Torneio) {
+        self.navigationController?.pushViewController(CampeonatoViewController(torneio), animated: true)
+    }
+    
     func shouldRefreshData() async {
         await refreshCards()
     }

@@ -8,16 +8,27 @@
 import UIKit
 
 struct Estatistica {
-    let casa: Int
-    let visitante: Int
+    let timeA: Int
+    let timeB: Int
     let legenda: String
 }
 
+var timeAlanceLivre: Int = Sum().contaLanceLivre(time: Singleton.shared.sumula.timeA)
+var timeA2pts: Int = Sum().contaDoisPts(time: Singleton.shared.sumula.timeA)
+var timeA3pts: Int = Sum().contaTresPts(time: Singleton.shared.sumula.timeA)
+var timeAFaltas: Int = Sum().contaFaltas(time: Singleton.shared.sumula.timeA)
+
+var timeBlanceLivre: Int = Sum().contaLanceLivre(time: Singleton.shared.sumula.timeB)
+var timeB2pts: Int = Sum().contaDoisPts(time: Singleton.shared.sumula.timeB)
+var timeB3pts: Int = Sum().contaTresPts(time: Singleton.shared.sumula.timeB)
+var timeBFaltas: Int = Sum().contaFaltas(time: Singleton.shared.sumula.timeB)
+
+
 let estatisticas: [Estatistica] = [
-    Estatistica(casa: 7, visitante: 15, legenda: "3 pontos"),
-    Estatistica(casa: 25, visitante: 3, legenda: "2 pontos"),
-    Estatistica(casa: 8, visitante: 12, legenda: "lances livres"),
-    Estatistica(casa: 9, visitante: 4, legenda: "faltas"),
+    Estatistica(timeA: timeAlanceLivre, timeB: timeBlanceLivre, legenda: "3 Pontos"),
+    Estatistica(timeA: timeA2pts, timeB: timeB2pts, legenda: "2 Pontos"),
+    Estatistica(timeA: timeA3pts, timeB: timeB3pts, legenda: "Lances Livres"),
+    Estatistica(timeA: timeAFaltas, timeB: timeBFaltas, legenda: "Faltas"),
 ]
 
 class EstatisticaTableView: UIView {
@@ -51,6 +62,7 @@ class EstatisticaTableView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         configureTableView()
+        tableView.reloadData()
     }
     
     func setTableViewDelegates() {
@@ -80,19 +92,19 @@ extension EstatisticaTableView: UITableViewDelegate, UITableViewDataSource {
 class EstatisticasTableViewCell: UITableViewCell {
     
     func configure(with item: Estatistica) {
-        casa.text = String(item.casa)
-        visitante.text = String(item.visitante)
+        timeA.text = String(item.timeA)
+        timeB.text = String(item.timeB)
         legenda.text = item.legenda
     }
     
-    let casa: UILabel = {
+    let timeA: UILabel = {
       let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .gray
         return label
     }()
     
-    let visitante: UILabel = {
+    let timeB: UILabel = {
       let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .gray
@@ -118,16 +130,16 @@ class EstatisticasTableViewCell: UITableViewCell {
     private func setupViews() {
 
         
-        contentView.addSubview(casa)
-        contentView.addSubview(visitante)
+        contentView.addSubview(timeA)
+        contentView.addSubview(timeB)
         contentView.addSubview(legenda)
         
         NSLayoutConstraint.activate([
-            casa.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
-            casa.centerYAnchor.constraint(equalTo: centerYAnchor),
+            timeA.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
+            timeA.centerYAnchor.constraint(equalTo: centerYAnchor),
             
-            visitante.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32),
-            visitante.centerYAnchor.constraint(equalTo: centerYAnchor),
+            timeB.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32),
+            timeB.centerYAnchor.constraint(equalTo: centerYAnchor),
             
             legenda.centerYAnchor.constraint(equalTo: centerYAnchor),
             legenda.centerXAnchor.constraint(equalTo: centerXAnchor)

@@ -27,4 +27,5 @@ extension UIColor {
 class PaleteColor {
     static var primary: UIColor = UIColor(hex: 0x6F150C)
     static var primary15pct: UIColor = UIColor(hex: 0xDED1D4)
+    static var orange: UIColor = UIColor(hex: 0xE7652D)
 }

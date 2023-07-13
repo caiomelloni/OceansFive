@@ -9,15 +9,10 @@ import Foundation
 
 
 struct Time {
-    let id: UUID
-    let nome: String
-    let abreviado: String
-    let tecnico: String
+    var id: UUID
+    var nome: String
+    var abreviado: String
+    var tecnico: String
     //let campeonatos: [Campeonato]
-    let jogadores: [Jogador]
+    var jogadores: [Jogador]
 }
-
-
-
-
-		
