@@ -57,13 +57,17 @@ class PlayersList: UIView  {
 
 extension PlayersList: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.backgroundColor = .red
-        cell.textLabel?.text = "aaaa"
+        let jogador = Jogador(id: UUID(), nome: "Segio", pontos: Pontos(), faltas: Faltas(jogoID: UUID(), qtdFaltas: 3))
+
+        let jogador_indice = 5
+
+        let cell = SumulaTimeTableViewCell()
+        cell.configure(with: jogador, index: jogador_indice)
+        
         return cell
     }
     

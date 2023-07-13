@@ -24,8 +24,8 @@ class PerfilViewController: UIViewController {
         
         view.addSubview(imgvw)
         NSLayoutConstraint.activate([
-            imgvw.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            imgvw.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            imgvw.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant:66),
+            imgvw.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -66),
             imgvw.topAnchor.constraint(equalTo: view.topAnchor),
             imgvw.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])

@@ -31,6 +31,18 @@ class CampeonatoViewController: UIViewController {
         
     
     var currentView: UIView = UIView()
+    
+    var torneio: Torneio
+    
+    init(_ torneio: Torneio) {
+        self.torneio = torneio
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("This class does not support NSCoder")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,29 +70,8 @@ class CampeonatoViewController: UIViewController {
     
     func layoutViews() {
         view.addSubview(segmentedControl)
-        
-        let jogos: [Jogo] = [
-            Jogo(timeA: "LCN", timeB: "LAU", placar: "-- x --", backgroundColor: .systemBlue, onClick: {
-                //tela do marcelo aqui
-                let newViewController = SumulaViewController()
-                self.navigationController?.pushViewController(newViewController, animated: true)
 
-            }),
-//            Jogo(timeA: "LCN", timeB: "LAU", placar: "57 x 37", backgroundColor: .systemBlue, onClick: {
-//                
-//                self.navigationController?.pushViewController(SumulaPreenchidaViewController(), animated: true)
-//                
-//            }),
-//            Jogo(timeA: "LCN", timeB: "LAU", placar: "57 x 37", backgroundColor: .systemBlue, onClick: {
-//                
-//            }),
-//            Jogo(timeA: "LCN", timeB: "LAU", placar: "57 x 37", backgroundColor: .systemBlue, onClick: {
-//                
-//            }),
-        ]
-
-        
-        jogosView = JogosView().getView(self, jogos)
+        jogosView = JogosView(torneio, self)
         
         NSLayoutConstraint.activate([
             segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
@@ -95,7 +86,7 @@ class CampeonatoViewController: UIViewController {
         //Navbar
         let navbar = navigationController?.navigationBar
         //navbar?.topItem?.title = "Campeonato"
-        self.title = "Campeonato"
+        self.title = torneio.title
         navbar?.prefersLargeTitles = true
         navbar?.topItem?.rightBarButtonItem = {
            let btn = UIBarButtonItem()
@@ -111,6 +102,7 @@ class CampeonatoViewController: UIViewController {
         case 0:
             setCurrentView(tabelaView)
         case 1:
+            jogosView = JogosView(torneio, self)
             setCurrentView(jogosView)
         case 2:
             print("2")

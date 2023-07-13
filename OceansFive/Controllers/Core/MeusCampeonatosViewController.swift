@@ -1,5 +1,5 @@
 //
-//  MeusCampeonatosViewController.swift
+//  ExplorarViewController.swift
 //  OceansFive
 //
 //  Created by Caio Melloni dos Santos on 28/06/23.
@@ -9,14 +9,21 @@ import UIKit
 
 class MeusCampeonatosViewController: UIViewController {
     
-    var cardsSection: CardsSectionView = CardsSectionView(cards: [])
-  
+    var cardsSection: CardsSectionView = CardsSectionView(cards: [], delegate: nil)
+    var loadingSpinner = UIActivityIndicatorView(style: .large)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        initCardsSection()
+        
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector(goToCriarTorneio))
+            
+        
+        
         setUpTitle()
-        layout()
+        loadCardsFromBackend()
     }
+    
     
     func layout() {
         cardsSection.translatesAutoresizingMaskIntoConstraints = false
@@ -37,25 +44,74 @@ class MeusCampeonatosViewController: UIViewController {
         view.backgroundColor = .secondarySystemBackground
     }
     
-    func initCardsSection() {
+    func initCardsSection(cards: [CardView]) {
+        cardsSection.removeFromSuperview()
+        cardsSection = CardsSectionView(cards: cards, delegate: self)
+        layout()
+    }
+    
+    func insertLoading() {
+        loadingSpinner.translatesAutoresizingMaskIntoConstraints = false
+        loadingSpinner.startAnimating()
+        view.addSubview(loadingSpinner)
         
-        var cards: [CardView] = []
+        loadingSpinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        loadingSpinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+    
+    func removeLoading() {
+        loadingSpinner.removeFromSuperview()
+    }
+    
+    func loadCardsFromBackend() {
+        insertLoading()
         
-        for _ in 0...20 {
-            let card = CardView(
-                Torneio(cardColor: .systemBlue, title: "Torneio Universitario de Campinas", imagePath: "cpi1"))
-            
-            card.setOnClickListener {
-                self.navigationController?.pushViewController(CampeonatoViewController(), animated: true)
+        Backend.fetchTorneios(onFinished: {torneios in
+            DispatchQueue.main.async {
+                var cards: [CardView] = []
+                for torneio in torneios {
+                    let card = CardView(Torneio(cardColor: .systemBlue, title: torneio.nome, imagePath: "cpi1", qtdTime: torneio.qtdTimes, formato: torneio.formato, idTorneio: torneio.idTorneio))
+                    card.delegate = self
+                    cards.append(card)
+                }
+                
+                self.initCardsSection(cards: cards)
+                
+                self.removeLoading()
             }
-            
-            cards.append(card)
+        }, true)
+    }
+    
+    func refreshCards() async {
+        await withCheckedContinuation { continuation in
+            Backend.fetchTorneios(onFinished: {torneios in
+                DispatchQueue.main.async {
+                    var cards: [CardView] = []
+                    for torneio in torneios {
+                        let card = CardView(Torneio(cardColor: .systemBlue, title: torneio.nome, imagePath: "cpi1", qtdTime: torneio.qtdTimes, formato: torneio.formato, idTorneio: torneio.idTorneio))
+                        card.delegate = self
+                        cards.append(card)
+                    }
+                    
+                    self.initCardsSection(cards: cards)
+                    continuation.resume()
+                }
+            }, true)
         }
-        
-        cardsSection = CardsSectionView(cards: cards)
-        
+    }
+    
+    @objc func goToCriarTorneio() {
+        self.navigationController?.pushViewController(Criar_Torneio(), animated: true)
     }
 }
 
-
+extension MeusCampeonatosViewController: CardsSectionViewDelegate, CardViewDelegate {
+    func navigateToTornament(_ torneio: Torneio) {
+        self.navigationController?.pushViewController(CampeonatoViewController(torneio), animated: true)
+    }
+    
+    func shouldRefreshData() async {
+        await refreshCards()
+    }
+}
 
