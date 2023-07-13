@@ -32,6 +32,12 @@ class JogosView: UIView {
                 self.jogos.append(Jogo(timeA: jogo.timeCasa, timeB: jogo.timeVisitante, placar: jogo.jogoFinalizado ? jogo.placar : "-- X --", gameId: jogo.gameId ,backgroundColor: .systemBlue,onClick: {
                     if jogo.jogoFinalizado {
                         // go to sumulapreenchida
+                        // se o jogo estiver preenchido vai para sula preenchida, se nao vai para sumula
+                        // quando finalizar o jogo, dar update na jogosView chamando parentView.updateJogosView
+                        // atualizar nuvem e localmente
+                        //para todo viewcontroller, sobrescerver função willdisapper
+                        // essa funçao roda sempre que view controller for tirado de tela
+                        // chamar função will
                         parentView.navigationController?.pushViewController(SumulaPreenchidaViewController(), animated: true)
                     } else {
                         // go to preencher sumula

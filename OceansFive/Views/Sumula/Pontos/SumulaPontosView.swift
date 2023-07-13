@@ -20,7 +20,7 @@ enum ButtonTag: Int {
     case btnFaltasTime2 = 9
     case btnTempoTime2 = 10
     case btnEditarTime2 = 11
-    case btnContaQuarto = 12
+    //case btnContaQuarto = 12
 }
 
 
@@ -57,13 +57,13 @@ class SumulaPontosView: UIView {
 
     private func botaoMenor(text: String, image: String, tag: ButtonTag) -> UIButton {
 
-        var configuration = UIButton.Configuration.tinted()
+        var configuration = UIButton.Configuration.gray()
         configuration.cornerStyle = .medium
         configuration.buttonSize = .large
         configuration.title = "\(text)"
         configuration.imagePadding = 8
         configuration.image = UIImage(systemName: "\(image)")
-        configuration.baseBackgroundColor = PaleteColor.primary15pct
+        //configuration.baseBackgroundColor = PaleteColor.primary15pct
 
         let btn = UIButton(configuration: configuration, primaryAction: nil)
         btn.tag = tag.rawValue
@@ -101,19 +101,50 @@ class SumulaPontosView: UIView {
          btn3PtsTime2,
          btnFaltasTime2,
          btnTempoTime2,
-         btnEditarTime2,
-         btnControleQuarto].forEach { btn in
+         btnEditarTime2
+         ].forEach { btn in
             btn.setOnClickListener {
                 self.delegate?.didTapBtn(btn.tag)
 
             }
         }
         btnControleQuarto.setOnClickListener {
-            if Singleton.shared.sumula.periodo == -1 {
+            if Singleton.shared.sumula.horarioInicio == nil {
+                [self.btnLanceLivreTime1,
+                 self.btn2PtsTime1,
+                 self.btn3PtsTime1,
+                 self.btnFaltasTime1,
+                 self.btnTempoTime1,
+                 self.btnEditarTime1,
+                 self.btnLanceLivreTime2,
+                 self.btn2PtsTime2,
+                 self.btn3PtsTime2,
+                 self.btnFaltasTime2,
+                 self.btnTempoTime2,
+                 self.btnEditarTime2
+                ].forEach { btn in
+                    btn.configuration? = .tinted()
+                }
                 Singleton.shared.sumula.horarioInicio = Date().formatted().lowercased()
+
             }
             self.funcs.quarto()
-            self.quarto.text = Singleton.shared.sumula.periodo + Singleton.shared.sumula.periodosExtra <= 3 ? "\(Singleton.shared.sumula.periodo + 1)º Quarto" : "\(Singleton.shared.sumula.periodosExtra)º Tempo Extra"
+
+            if Singleton.shared.sumula.periodo + Singleton.shared.sumula.periodosExtra <= 3 {
+
+                self.quarto.text = "\(Singleton.shared.sumula.periodo + 1)º Quarto"
+
+            } else if Singleton.shared.sumula.horarioTermino == nil {
+
+                self.quarto.text = "\(Singleton.shared.sumula.periodosExtra)º Tempo Extra"
+
+            } else {
+
+                self.quarto.text = "Jogo Finalizado"
+
+            }
+
+
             self.btnControleQuarto.configuration?.title = Singleton.shared.sumula.periodo + Singleton.shared.sumula.periodosExtra <= 3 ? "Final de Quarto" : "Fim de Jogo"
 
         }
@@ -121,7 +152,6 @@ class SumulaPontosView: UIView {
     }
 
     func atualizaPlacar() {
-
         pontos = Sum().leitorPontos(time: &Singleton.shared.sumula.timeA)
         pontosb = Sum().leitorPontos(time: &Singleton.shared.sumula.timeB)
         pontosTime1.text = "\(self.pontos)"
@@ -133,7 +163,7 @@ class SumulaPontosView: UIView {
     private lazy var x: UILabel = placarLbl("x")
     private lazy var pontosTime1: UILabel = placarLbl("\(pontos)")
     private lazy var pontosTime2: UILabel = placarLbl("\(pontosb)")
-    private lazy var quarto: UILabel = quartoLbl("Jogo Pronto")
+    private lazy var quarto: UILabel = quartoLbl("Novo Jogo")
     private lazy var viewPlacar: UIView = viewInicial()
     private lazy var viewBotoes: UIView = viewInicial()
     private lazy var viewBotoesTime1: UIView = viewInicial()
