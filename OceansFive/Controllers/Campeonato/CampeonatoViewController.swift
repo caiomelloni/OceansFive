@@ -88,11 +88,11 @@ class CampeonatoViewController: UIViewController {
         //navbar?.topItem?.title = "Campeonato"
         self.title = torneio.title
         navbar?.prefersLargeTitles = true
-        navbar?.topItem?.rightBarButtonItem = {
-           let btn = UIBarButtonItem()
-            btn.image = UIImage(systemName: "list.bullet.circle")
-            return btn
-        }()
+//        navbar?.topItem?.rightBarButtonItem = {
+//           let btn = UIBarButtonItem()
+//            btn.image = UIImage(systemName: "list.bullet.circle")
+//            return btn
+//        }()
         navbar?.topItem?.backButtonTitle = "Explorar"
         //
     }
@@ -113,3 +113,14 @@ class CampeonatoViewController: UIViewController {
 }
 
 
+extension CampeonatoViewController: JogosViewDelegate {
+    func updateJogosView() {
+
+        Task {
+            await try Task.sleep(nanoseconds: 1_000_000_000)
+            self.jogosView = JogosView(torneio, self)
+            setCurrentView(jogosView)
+        }
+
+    }
+}

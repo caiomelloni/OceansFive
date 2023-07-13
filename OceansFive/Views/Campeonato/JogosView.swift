@@ -16,14 +16,18 @@ struct Jogo {
     let onClick: () -> Void
 }
 
+protocol JogosViewDelegate:UIViewController {
+    func updateJogosView()
+}
+
 
 
 class JogosView: UIView {
     var jogos: [Jogo] = []
-    var parentView: UIViewController
+    var parentView: JogosViewDelegate
     var torneio: Torneio
     
-    init(_ torneio: Torneio, _ parentView: UIViewController) {
+    init(_ torneio: Torneio, _ parentView: JogosViewDelegate) {
         self.parentView = parentView
         self.torneio = torneio
         super.init(frame: .zero)
@@ -42,7 +46,7 @@ class JogosView: UIView {
                     } else {
                         // go to preencher sumula
                         //Backend.updateGame(gameId: jogo.gameId, placar: "2 X 1")
-                        parentView.navigationController?.pushViewController(SumulaViewController(jogoID: jogo.gameId, updateJgVw: parentView.), animated: true)
+                        parentView.navigationController?.pushViewController(SumulaViewController(jogoID: jogo.gameId, updateJgVw: parentView.updateJogosView), animated: true)
                     }
                 }))
             }

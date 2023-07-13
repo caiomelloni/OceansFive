@@ -42,7 +42,7 @@ struct Sum {
     }
     
     
-    func lanceLivre(numeroJogador: Int, time: inout TimeJogando) {
+    func marcaLanceLivre(numeroJogador: Int, time: inout TimeJogando) {
         if numeroJogador < 12 && Singleton.shared.sumula.periodo >= 0 {
             time.ponto.lanceLivrePonto[Singleton.shared.sumula.periodo].append(time.numeroJogador[numeroJogador]!)
             for (index, jg) in time.time.jogadores.enumerated() {
@@ -53,7 +53,7 @@ struct Sum {
         }
     }
     
-    func dois(numeroJogador: Int, time: inout TimeJogando) {
+    func marcaDoisPts(numeroJogador: Int, time: inout TimeJogando) {
         if numeroJogador < 12 && Singleton.shared.sumula.periodo >= 0 {
             time.ponto.doisPontos[Singleton.shared.sumula.periodo].append(time.numeroJogador[numeroJogador]!)
 
@@ -69,7 +69,7 @@ struct Sum {
     
     
     
-    func tres(numeroJogador: Int, time: inout TimeJogando) {
+    func marcaTresPts(numeroJogador: Int, time: inout TimeJogando) {
         if numeroJogador < 12 && Singleton.shared.sumula.periodo >= 0 {
             time.ponto.tresPontos[Singleton.shared.sumula.periodo].append(time.numeroJogador[numeroJogador]!)
 
@@ -89,7 +89,7 @@ struct Sum {
             time.tempos[Singleton.shared.sumula.periodo].append(tempo)
         }
     }
-    
+
     
     
     
@@ -120,8 +120,37 @@ struct Sum {
             }
         }
     }
+
+    func contaTresPts(time: TimeJogando) -> Int {
+        var pts: Int = 0
+        for periodo in  0...3 {
+            pts += time.ponto.tresPontos[periodo].count
+        }
+        return pts
+    }
+    func contaDoisPts(time: TimeJogando) -> Int {
+        var pts: Int = 0
+        for periodo in  0...3 {
+            pts += time.ponto.doisPontos[periodo].count
+        }
+        return pts
+    }
+    func contaLanceLivre(time: TimeJogando) -> Int {
+        var pts: Int = 0
+        for periodo in  0...3 {
+            pts += time.ponto.lanceLivrePonto[periodo].count
+        }
+        return pts
+    }
+    func contaFaltas(time: TimeJogando) -> Int {
+        var faltas: Int = 0
+        for periodo in  0...3 {
+            faltas += time.faltas[periodo].count
+        }
+        return faltas
+    }
     
-    func leitorFaltas(prd: Int ,time : inout TimeJogando) -> Int{
+    func leitorFaltas(prd: Int ,time: inout TimeJogando) -> Int{
         var fts:Int = 0
         fts = time.faltas[prd].count
         

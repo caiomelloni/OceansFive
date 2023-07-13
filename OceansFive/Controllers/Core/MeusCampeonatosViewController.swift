@@ -101,7 +101,7 @@ class MeusCampeonatosViewController: UIViewController {
     }
     
     @objc func goToCriarTorneio() {
-        self.navigationController?.pushViewController(Criar_Torneio(), animated: true)
+        self.navigationController?.pushViewController(CriarTorneio(), animated: true)
     }
 }
 

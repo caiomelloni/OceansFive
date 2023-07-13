@@ -8,9 +8,9 @@
 import UIKit
 
 class SumulaPreenchidaViewController: UIViewController {
-   
+
     
-    let segmentedControlSections = ["Flu", "Fla", "Estatisticas", "Infos"]
+    let segmentedControlSections = ["TimeA", "TimeB", "Estatisticas", "Infos"]
     
     lazy var segmentedControl: UISegmentedControl = {
         let view = UISegmentedControl(items: segmentedControlSections)
@@ -41,25 +41,30 @@ class SumulaPreenchidaViewController: UIViewController {
     
     var currentView: UIView = UIView()
     
-      override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
-          
-          //Navbar
-          let navbar = navigationController?.navigationBar
-          self.title = "Flu 00 X 00 Fla"
-          navbar?.prefersLargeTitles = true
-          navbar?.topItem?.rightBarButtonItem = {
-             let btn = UIBarButtonItem()
-              btn.image = UIImage(systemName: "plus")
-              return btn
-          }()
-          navbar?.topItem?.backButtonTitle = "Jogos"
-          //
-          
-          view.backgroundColor = .systemBackground
-          
-          
+
+        //Navbar
+        let navbar = navigationController?.navigationBar
+        let nomeTimeA = Singleton.shared.sumula.timeA.time.abreviado
+        let nomeTimeB = Singleton.shared.sumula.timeB.time.abreviado
+        let pontosTimeA = Sum().leitorPontos(time: &Singleton.shared.sumula.timeA)
+        let pontosTimeB = Sum().leitorPontos(time: &Singleton.shared.sumula.timeB)
+        self.title = "\(nomeTimeA) \(pontosTimeA) X \(pontosTimeB) \(nomeTimeB)"
+        navbar?.prefersLargeTitles = true
+        navbar?.topItem?.rightBarButtonItem = {
+            let btn = UIBarButtonItem()
+            btn.image = UIImage(systemName: "plus")
+            return btn
+        }()
+        navbar?.topItem?.backButtonTitle = "Jogos"
+        //
+
+        view.backgroundColor = .systemBackground
+
+
         view.addSubview(segmentedControl)
+        playerList.loadData(segmentedControl.selectedSegmentIndex)
         currentView = playerList
         view.addSubview(currentView)
 
@@ -69,7 +74,7 @@ class SumulaPreenchidaViewController: UIViewController {
             segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
         ])
         insertViewSection(playerList)
-          
+
     }
     
     func insertViewSection(_ targetView: UIView) {
@@ -88,16 +93,18 @@ class SumulaPreenchidaViewController: UIViewController {
     
     @objc func changeTab() {
         switch segmentedControl.selectedSegmentIndex {
-        case 0:
-            insertViewSection(playerList)
-        case 1:
-            insertViewSection(playerList)
-        case 2:
-            insertViewSection(estatisticasView)
-        case 3:
-            insertViewSection(infosView)
-        default:
-            print("tab out of range")
+            case 0:
+                playerList.loadData(segmentedControl.selectedSegmentIndex)
+                insertViewSection(playerList)
+            case 1:
+                playerList.loadData(segmentedControl.selectedSegmentIndex)
+                insertViewSection(playerList)
+            case 2:
+                insertViewSection(estatisticasView)
+            case 3:
+                insertViewSection(infosView)
+            default:
+                print("tab out of range")
         }
     }
 }

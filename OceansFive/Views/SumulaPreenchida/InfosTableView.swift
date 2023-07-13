@@ -13,15 +13,15 @@ struct Info {
     let trailing: String
 }
 
-let infos = [
-    Info(icon: SFSymbolIcon.view("calendar"), leading: "Data", trailing: "Junho 2023 - 06:00 pm"),
-    Info(icon: SFSymbolIcon.view("mappin.and.ellipse"), leading: "Local", trailing: "FEF quadra 1"),
-    Info(icon: SFSymbolIcon.view("hand.raised.fill"), leading: "Arbitro", trailing: "Otavio Mosquita"),
-    Info(icon: SFSymbolIcon.view("person.fill"), leading: "Tecnico Flu", trailing: "Cleiton Fonseca"),
-    Info(icon: SFSymbolIcon.view("person.fill"), leading: "Tecnico Fla", trailing: "Arnaldo Romano"),
-    Info(icon: SFSymbolIcon.view("exclamationmark.triangle.fill"), leading: "Faltas Flu", trailing: "35"),
-    Info(icon: SFSymbolIcon.view("exclamationmark.triangle.fill"), leading: "Faltas Fla", trailing: "23"),
-    Info(icon: SFSymbolIcon.view("clock.fill"), leading: "Horario de Termino", trailing: "8:30 pm"),
+var infos = [
+    Info(icon: SFSymbolIcon.view("calendar"), leading: "Data", trailing: "\(Singleton.shared.sumula.horarioInicio ?? "")"),
+    Info(icon: SFSymbolIcon.view("mappin.and.ellipse"), leading: "Local", trailing: "\(Singleton.shared.sumula.local)"),
+    Info(icon: SFSymbolIcon.view("hand.raised.fill"), leading: "Arbitro", trailing: "\(Singleton.shared.sumula.arbitros[0])"),
+    Info(icon: SFSymbolIcon.view("person.fill"), leading: "Tecnico \(Singleton.shared.sumula.timeA.time.abreviado)", trailing: Singleton.shared.sumula.timeA.time.tecnico),
+    Info(icon: SFSymbolIcon.view("person.fill"), leading: "Tecnico \(Singleton.shared.sumula.timeB.time.abreviado)", trailing: Singleton.shared.sumula.timeB.time.tecnico),
+    Info(icon: SFSymbolIcon.view("exclamationmark.triangle.fill"), leading: "Faltas \(Singleton.shared.sumula.timeA.time.abreviado)", trailing: "\(Sum().leitorFaltas(prd: 0, time: &Singleton.shared.sumula.timeA)) - \(Sum().leitorFaltas(prd: 1,time: &Singleton.shared.sumula.timeA)) - \(Sum().leitorFaltas(prd: 2,time: &Singleton.shared.sumula.timeA)) - \(Sum().leitorFaltas(prd: 3,time: &Singleton.shared.sumula.timeA))"),
+    Info(icon: SFSymbolIcon.view("exclamationmark.triangle.fill"), leading: "Faltas \(Singleton.shared.sumula.timeB.time.abreviado)", trailing: "\(Sum().leitorFaltas(prd: 0,time: &Singleton.shared.sumula.timeB)) - \(Sum().leitorFaltas(prd: 1,time: &Singleton.shared.sumula.timeB)) - \(Sum().leitorFaltas(prd: 2,time: &Singleton.shared.sumula.timeB)) - \(Sum().leitorFaltas(prd: 3,time: &Singleton.shared.sumula.timeB))"),
+    Info(icon: SFSymbolIcon.view("clock.fill"), leading: "Horario de Termino", trailing: "\(Singleton.shared.sumula.horarioTermino ?? "")"),
 ]
 
 let tabelaClassificacao: [Info] = [
@@ -62,6 +62,8 @@ class InfosView: UIView {
        setDelegates()
         setTableLayout()
         tableview.register(InfoTableCell.self, forCellReuseIdentifier: InfoTableCell.cellId)
+        print(Singleton.shared.sumula.timeA.faltas)
+        tableview.reloadData()
     }
     
     func setTableLayout() {

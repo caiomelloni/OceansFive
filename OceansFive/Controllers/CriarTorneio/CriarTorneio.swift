@@ -1,7 +1,7 @@
 import UIKit
 import CloudKit
 
-class Criar_Torneio: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+class CriarTorneio: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     let tableData = ["Nome", "Formato", "Quantidade de Times", "Adicionar Colaboradores"]
     let reuseIdentifier = "cellReuseIdentifier"
     let secondTableData = ["Escolher foto", "Escolher existente"]
@@ -18,7 +18,7 @@ class Criar_Torneio: UIViewController, UITableViewDataSource, UITableViewDelegat
         img.translatesAutoresizingMaskIntoConstraints = false
         img.contentMode = .scaleAspectFit
         img.layer.cornerRadius = 10
-        
+
         return img
     }()
 
@@ -45,7 +45,7 @@ class Criar_Torneio: UIViewController, UITableViewDataSource, UITableViewDelegat
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
 
         view.addSubview(tableView)
-        
+
 
         secondTableView = UITableView()
         secondTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -55,8 +55,8 @@ class Criar_Torneio: UIViewController, UITableViewDataSource, UITableViewDelegat
 
         view.addSubview(secondTableView)
         view.addSubview(logo)
-        
-       
+
+
 
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
@@ -72,12 +72,12 @@ class Criar_Torneio: UIViewController, UITableViewDataSource, UITableViewDelegat
             secondTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             secondTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             secondTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -300),
-            
+
             logo.heightAnchor.constraint(equalToConstant: 200),
             logo.widthAnchor.constraint(equalToConstant: 200),
             logo.topAnchor.constraint(equalTo: secondTableView.bottomAnchor, constant: 10),
             logo.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 100)
-            
+
 
 
         ])
@@ -94,7 +94,7 @@ class Criar_Torneio: UIViewController, UITableViewDataSource, UITableViewDelegat
         } else if tableView == secondTableView {
             return secondTableData.count
         }
-        
+
         return 0
     }
 
@@ -110,25 +110,25 @@ class Criar_Torneio: UIViewController, UITableViewDataSource, UITableViewDelegat
                     nameTextField?.placeholder = "Digite o nome do torneio"
                     nameTextField?.delegate = self
                 }
-                
+
                 cell.accessoryView = nameTextField
             } else if indexPath.row == 1 {
                 cell.textLabel?.text = "Formato: \(formatSelected ?? "")"
                cell.accessoryView = nil
             } else if indexPath.row == 2 {
                 cell.textLabel?.text = "Quantidade de Times"
-                
+
                 let stackView = UIStackView(frame: CGRect(x: 0, y: 0, width: 150, height: cell.contentView.bounds.height))
                 stackView.axis = .horizontal
                 stackView.alignment = .center
                 stackView.distribution = .fill
                 stackView.spacing = 8
-                
+
                 if quantityLabel == nil {
                     quantityLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 30, height: cell.contentView.bounds.height))
                     quantityLabel?.textAlignment = .center
                 }
-                
+
                 if quantityStepper == nil {
                     quantityStepper = UIStepper(frame: CGRect(x: 0, y: 0, width: 100, height: cell.contentView.bounds.height))
                     quantityStepper?.minimumValue = 2
@@ -137,10 +137,10 @@ class Criar_Torneio: UIViewController, UITableViewDataSource, UITableViewDelegat
                     quantityStepper?.value = 2
                     quantityStepper?.addTarget(self, action: #selector(quantityStepperValueChanged), for: .valueChanged)
                 }
-                
+
                 stackView.addArrangedSubview(quantityLabel!)
                 stackView.addArrangedSubview(quantityStepper!)
-                
+
                 cell.accessoryView = stackView
             } else if indexPath.row == 3 {
                 cell.textLabel?.text = tableData[indexPath.row]
@@ -159,7 +159,7 @@ class Criar_Torneio: UIViewController, UITableViewDataSource, UITableViewDelegat
             cell.accessoryType = .disclosureIndicator
             return cell
         }
-        
+
         return UITableViewCell()
     }
 
@@ -250,7 +250,7 @@ class Criar_Torneio: UIViewController, UITableViewDataSource, UITableViewDelegat
     @objc func saveButtonTapped() {
         // Lógica para salvar os dados
         print("botão salver pressionado")
-        
+
         let nomeTorneio = nameTextField?.text
         let formato = FormatoTorneio(rawValue: formatSelected ?? FormatoTorneio.faseGrupos.rawValue)
         let qtdTimes = quantityStepper?.value
@@ -258,24 +258,23 @@ class Criar_Torneio: UIViewController, UITableViewDataSource, UITableViewDelegat
         Backend.createTorneio(nome: nomeTorneio!, formato: formato!, qtdTimes: Int(qtdTimes!)) { record, error in
            // lidar com handler de erro e feedback ao usuari
         }
-       
+
     }
-    
+
     // MARK: - UITextFieldDelegate
-    
+
     func textFieldDidEndEditing(_ textField: UITextField) {
         // Você pode obter o valor do campo de texto aqui
         if textField == nameTextField, let text = textField.text {
             print("Nome do torneio: \(text)")
         }
     }
-    
+
     // MARK: - UIStepper Action
-    
+
     @objc func quantityStepperValueChanged() {
         if let stepper = quantityStepper {
             quantityLabel?.text = "\(Int(stepper.value))"
         }
     }
 }
-

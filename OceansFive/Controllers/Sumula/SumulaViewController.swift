@@ -193,13 +193,13 @@ extension SumulaViewController: SumulaViewDelegate {
                 // Ação a ser executada quando o botão "Concluir" do alerta modal for pressionado
                 switch ref {
                     case 1:
-                        Sum().lanceLivre(numeroJogador: number, time: &time.pointee)
+                        Sum().marcaLanceLivre(numeroJogador: number, time: &time.pointee)
                         self.pontosVw.atualizaPlacar()
                     case 2:
-                        Sum().dois(numeroJogador: number, time: &time.pointee)
+                        Sum().marcaDoisPts(numeroJogador: number, time: &time.pointee)
                         self.pontosVw.atualizaPlacar()
                     case 3:
-                        Sum().tres(numeroJogador: number, time: &time.pointee)
+                        Sum().marcaTresPts(numeroJogador: number, time: &time.pointee)
                         self.pontosVw.atualizaPlacar()
                     case 4:
                         Sum().tempo(tempo: number, time: &time.pointee)
