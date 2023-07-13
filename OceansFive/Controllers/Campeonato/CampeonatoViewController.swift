@@ -113,3 +113,9 @@ class CampeonatoViewController: UIViewController {
 }
 
 
+extension CampeonatoViewController: JogosViewDelegate {
+    func updateJogosView() {
+        jogosView = JogosView(torneio, self)
+        setCurrentView(jogosView)
+    }
+}

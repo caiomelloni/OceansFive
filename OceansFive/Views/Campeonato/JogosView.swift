@@ -16,28 +16,33 @@ struct Jogo {
     let onClick: () -> Void
 }
 
+protocol JogosViewDelegate:UIViewController {
+    func updateJogosView()
+}
+
 
 
 class JogosView: UIView {
     var jogos: [Jogo] = []
-    var parentView: UIViewController
+    var parentView: JogosViewDelegate
     var torneio: Torneio
     
-    init(_ torneio: Torneio, _ parentView: UIViewController) {
+    init(_ torneio: Torneio, _ parentView: JogosViewDelegate) {
         self.parentView = parentView
         self.torneio = torneio
         super.init(frame: .zero)
         Backend.fetchJogos(torneio.idTorneio) { ckjogos in
             for jogo in ckjogos {
                 self.jogos.append(Jogo(timeA: jogo.timeCasa, timeB: jogo.timeVisitante, placar: jogo.jogoFinalizado ? jogo.placar : "-- X --", gameId: jogo.gameId ,backgroundColor: .systemBlue,onClick: {
-                    if jogo.jogoFinalizado {
-                        // go to sumulapreenchida
-                        parentView.navigationController?.pushViewController(SumulaPreenchidaViewController(), animated: true)
-                    } else {
-                        // go to preencher sumula
-                        //Backend.updateGame(gameId: jogo.gameId, placar: "2 X 1")
-                        parentView.navigationController?.pushViewController(SumulaViewController(), animated: true)
-                    }
+                    parentView.updateJogosView()
+//                    if jogo.jogoFinalizado {
+//                        // go to sumulapreenchida
+//                        parentView.navigationController?.pushViewController(SumulaPreenchidaViewController(), animated: true)
+//                    } else {
+//                        // go to preencher sumula
+//                        //Backend.updateGame(gameId: jogo.gameId, placar: "2 X 1")
+//                        parentView.navigationController?.pushViewController(SumulaViewController(), animated: true)
+//                    }
                 }))
             }
             DispatchQueue.main.async {
