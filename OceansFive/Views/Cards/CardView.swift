@@ -8,7 +8,7 @@
 import UIKit
 
 struct Torneio {
-    let cardColor: UIColor, title: String, imagePath: String, qtdTime: Int, formato: FormatoTorneio
+    let cardColor: UIColor, title: String, imagePath: String, qtdTime: Int, formato: FormatoTorneio, idTorneio: String
 }
 
 protocol CardViewDelegate {

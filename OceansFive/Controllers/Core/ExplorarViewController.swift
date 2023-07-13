@@ -64,7 +64,7 @@ class ExplorarViewController: UIViewController {
             DispatchQueue.main.async {
                 var cards: [CardView] = []
                 for torneio in torneios {
-                    let card = CardView(Torneio(cardColor: .systemBlue, title: torneio.nome, imagePath: "cpi1", qtdTime: torneio.qtdTimes, formato: torneio.formato))
+                    let card = CardView(Torneio(cardColor: .systemBlue, title: torneio.nome, imagePath: "cpi1", qtdTime: torneio.qtdTimes, formato: torneio.formato, idTorneio: torneio.idTorneio))
                     card.delegate = self
                     cards.append(card)
                 }
@@ -82,7 +82,7 @@ class ExplorarViewController: UIViewController {
                 DispatchQueue.main.async {
                     var cards: [CardView] = []
                     for torneio in torneios {
-                        let card = CardView(Torneio(cardColor: .systemBlue, title: torneio.nome, imagePath: "cpi1", qtdTime: torneio.qtdTimes, formato: torneio.formato))
+                        let card = CardView(Torneio(cardColor: .systemBlue, title: torneio.nome, imagePath: "cpi1", qtdTime: torneio.qtdTimes, formato: torneio.formato, idTorneio: torneio.idTorneio))
                         card.delegate = self
                         cards.append(card)
                     }
