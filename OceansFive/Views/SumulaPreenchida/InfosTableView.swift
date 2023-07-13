@@ -25,14 +25,8 @@ var infos = [
 ]
 
 let tabelaClassificacao: [Info] = [
-    Info(icon: NumberIcon.view("1"), leading: "CEM", trailing: "9 pts"),
-    Info(icon: NumberIcon.view("2"), leading: "LEU", trailing: "6 pts"),
-    Info(icon: NumberIcon.view("3"), leading: "LAU", trailing: "4 pts"),
-    Info(icon: NumberIcon.view("4"), leading: "LCN", trailing: "3 pts"),
-    Info(icon: NumberIcon.view("5"), leading: "LMN", trailing: "1 pts"),
-    Info(icon: NumberIcon.view("6"), leading: "LTR", trailing: "0 pts"),
-    Info(icon: NumberIcon.view("7"), leading: "LHE", trailing: "0 pts"),
-    Info(icon: NumberIcon.view("8"), leading: "VLA", trailing: "0 pts"),
+    Info(icon: NumberIcon.view("1"), leading: "TimeA", trailing: "0 pts"),
+    Info(icon: NumberIcon.view("2"), leading: "TimeB", trailing: "0 pts"),
 
 ]
 
@@ -52,6 +46,8 @@ class InfosView: UIView {
     let tableview: UITableView = {
       let tv = UITableView()
         tv.layer.cornerRadius = CGFloat(20)
+        tv.rowHeight = UITableView.automaticDimension
+        tv.estimatedRowHeight = 44
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.separatorStyle = .singleLine
 
@@ -68,11 +64,14 @@ class InfosView: UIView {
     
     func setTableLayout() {
         addSubview(tableview)
-        
+        var tableHeight:CGFloat = 360
+        if tableData.count == 2 {
+            tableHeight = 89
+        }
         
         NSLayoutConstraint.activate([
             tableview.topAnchor.constraint(equalTo: self.topAnchor, constant: 80),
-            tableview.heightAnchor.constraint(equalToConstant: 360),
+            tableview.heightAnchor.constraint(equalToConstant: tableHeight),
             tableview.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
             tableview.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15)
         ])
